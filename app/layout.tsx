@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Poppins, Space_Grotesk, } from "next/font/google";
 import "./globals.css";
 
-const space = Space_Grotesk({ subsets: ["latin"], weight: ['400', '500', '600'], variable: '--font-space' });
+const space = Space_Grotesk({ subsets: ["latin"], weight: ['400', '500', '600', '700'], variable: '--font-space' });
 
 const poppins = Poppins({ subsets: ["latin"], weight: ['400', '500', '600'], variable: '--font-poppins' });
 

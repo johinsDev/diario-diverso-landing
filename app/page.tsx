@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Book } from "lucide-react";
+import { Book, Laptop } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -35,7 +35,7 @@ export default function Home() {
             Blog
           </Link>
 
-          <Button size={'xl'} className="ml-auto">Comprar</Button>
+          <Button size={'xl'} variant={"outline"} className="ml-auto">Comprar</Button>
         </nav>
       </header>
 
@@ -75,6 +75,39 @@ export default function Home() {
 
         <div className="flex-1">
           <Image src='/hero.svg' width={500} height={500} layout='responsive' alt="Hero Image" />
+        </div>
+      </section>
+
+
+      <section className="full-width bg-gray-100 mt-28">
+        <div className="container mx-auto text-center py-20">
+          <div className="text-gray-600">SERVICES</div>
+          <div className="text-subTitle font-space font-bold">Our Expertise</div>
+
+          <div className="grid grid-cols-4 mt-10 text-left gap-12">
+            {
+              new Array(4).fill(0).map((_, i) => (
+                <article
+                  key={i}
+                  className="bg-primary relative text-white p-6 flex flex-col justify-end gap-4 rounded-2xl hover:bg-amber-200 group cursor-pointer transition-all  pt-40">
+                  <Image src='/bg-service.svg' width={192} height={192} alt="Service Image" className="absolute top-0 size-36 right-0 -rotate-90 transform" />
+
+                  <div className=" bg-white text-black size-16 rounded-full grid place-content-center group-hover:text-white group-hover:bg-black transition-all">
+                    <Laptop className="size-8" />
+                  </div>
+
+                  <div className="font-space text-2xl font-medium group-hover:text-foreground">
+                    <div>Digital</div>
+                    <div>Marketing</div>
+                  </div>
+
+                  <div className="text-gray-200 group-hover:text-gray-600">
+                    Expand your reach and grow your business with our digital marketing services.
+                  </div>
+                </article>
+              ))
+            }
+          </div>
         </div>
       </section>
     </main >

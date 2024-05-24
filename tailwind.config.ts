@@ -25,6 +25,7 @@ const config = {
       },
       fontSize: {
         title: "clamp(3.125rem, 2.875rem + 1.25vw, 4rem)",
+        subTitle: "clamp(2.125rem, 1.9286rem + 0.9821vw, 2.8125rem)",
       },
       lineHeight: {
         title: "clamp(3.5rem, 3.25rem + 1.25vw, 4.5rem)",
