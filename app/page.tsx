@@ -89,8 +89,8 @@ export default function Home() {
               new Array(4).fill(0).map((_, i) => (
                 <article
                   key={i}
-                  className="bg-primary relative text-white p-6 flex flex-col justify-end gap-4 rounded-2xl hover:bg-amber-200 group cursor-pointer transition-all  pt-40">
-                  <Image src='/bg-service.svg' width={192} height={192} alt="Service Image" className="absolute top-0 size-36 right-0 -rotate-90 transform" />
+                  className="bg-primary relative text-white p-6 flex flex-col justify-end gap-4 rounded-2xl hover:bg-amber-200 group cursor-pointer transition-all pt-32">
+                  <Image src='/bg-service.svg' width={192} height={192} alt="Service Image" className="absolute top-0 size-32 right-0 -rotate-90 transform" />
 
                   <div className=" bg-white text-black size-16 rounded-full grid place-content-center group-hover:text-white group-hover:bg-black transition-all">
                     <Laptop className="size-8" />
