@@ -6,40 +6,41 @@ import Link from "next/link";
 const IMAGES = ['/habit.jpg', '/aventuras.jpg', '/crecimiento.jpg', '/lectura.jpg']
 
 export default function Home() {
-  return (
+  return (<>
+    <header className="sticky top-0 flex h-20 items-center gap-4 w-full bg-white z-50">
+      <nav className="hidden container mx-auto w-full flex-col gap-6 text-lg md:flex md:flex-row md:items-center md:gap-5 md:text-base lg:gap-12">
+        <Link
+          href="#"
+          className="flex items-center gap-2 text-lg font-semibold mr-auto"
+        >
+          <Book className="h-6 w-6 text-primary" />
+          <span>Diario Diverso</span>
+        </Link>
+
+        <Link
+          href="#"
+          className="text-muted-foreground transition-colors hover:text-primary"
+        >
+          Inicio
+        </Link>
+        <Link
+          href="#"
+          className="text-muted-foreground transition-colors hover:text-primary"
+        >
+          Tienda
+        </Link>
+        <Link
+          href="#"
+          className="text-muted-foreground transition-colors hover:text-primary"
+        >
+          Blog
+        </Link>
+
+        <Button size={'xl'} variant={"outline"} className="ml-auto">Comprar</Button>
+      </nav>
+    </header>
     <main className="flex min-h-screen flex-col container">
-      <header className="sticky top-0 flex h-20 items-center gap-4 w-full bg-background">
-        <nav className="hidden w-full flex-col gap-6 text-lg md:flex md:flex-row md:items-center md:gap-5 md:text-base lg:gap-12">
-          <Link
-            href="#"
-            className="flex items-center gap-2 text-lg font-semibold mr-auto"
-          >
-            <Book className="h-6 w-6 text-primary" />
-            <span>Diario Diverso</span>
-          </Link>
 
-          <Link
-            href="#"
-            className="text-muted-foreground transition-colors hover:text-primary"
-          >
-            Inicio
-          </Link>
-          <Link
-            href="#"
-            className="text-muted-foreground transition-colors hover:text-primary"
-          >
-            Tienda
-          </Link>
-          <Link
-            href="#"
-            className="text-muted-foreground transition-colors hover:text-primary"
-          >
-            Blog
-          </Link>
-
-          <Button size={'xl'} variant={"outline"} className="ml-auto">Comprar</Button>
-        </nav>
-      </header>
 
 
       <section className="flex items-stretch gap-5 w-full pt-12">
@@ -265,7 +266,7 @@ export default function Home() {
           <div className="text-gray-600">SERVICES</div>
           <div className="text-subTitle font-space font-bold">Our Expertise</div>
 
-          <div className="grid grid-cols-4 mt-10 text-left gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 mt-10 text-left gap-12">
             {
               new Array(4).fill(0).map((_, i) => {
                 return (
@@ -296,5 +297,6 @@ export default function Home() {
 
 
     </main >
+  </>
   );
 }
