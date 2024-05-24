@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn('font-poppins', space.variable, poppins.variable)}>{children}</body>
+      <body className={cn('font-poppins overflow-x-hidden', space.variable, poppins.variable)}>{children}</body>
     </html>
   );
 }
