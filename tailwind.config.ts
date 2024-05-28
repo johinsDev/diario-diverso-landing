@@ -25,7 +25,7 @@ const config = {
       },
       fontSize: {
         title: "clamp(3.125rem, 2.875rem + 1.25vw, 4rem)",
-        subTitle: "clamp(2.125rem, 1.9286rem + 0.9821vw, 2.8125rem)",
+        h2: "clamp(2.125rem, 1.7321rem + 1.9643vw, 3.5rem)",
       },
       boxShadow: {
         journal:
@@ -33,6 +33,7 @@ const config = {
       },
       lineHeight: {
         title: "clamp(3.5rem, 3.25rem + 1.25vw, 4.5rem)",
+        h2: "clamp(2.5rem, 2.25rem + 1.25vw, 3.75rem)",
       },
       colors: {
         border: "hsl(var(--border))",

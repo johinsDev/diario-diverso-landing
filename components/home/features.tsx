@@ -5,7 +5,7 @@ export function Features() {
   return <section className="full-width bg-[#F0E9DE]/30">
     <div className="container mx-auto text-center py-20">
       <div className="text-gray-600">SERVICES</div>
-      <div className="text-subTitle font-space font-bold">Our Expertise</div>
+      <div className="text-h2 leading-h2 font-space font-bold">Our Expertise</div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 mt-10 text-left gap-12">
         {

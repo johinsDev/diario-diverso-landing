@@ -1,3 +1,4 @@
+import { AboutUs } from "@/components/home/about-us";
 import { BestSeller } from "@/components/home/best-seller";
 import { Features } from "@/components/home/features";
 import { Button } from "@/components/ui/button";
@@ -85,10 +86,7 @@ export default function Home() {
 
       <BestSeller />
 
-      <section className="bg-white h-[700px] mx-auto text-center py-20 w-full">
-        <div className="text-gray-600">SERVICES</div>
-        <div className="text-subTitle font-space font-bold">Our Expertise</div>
-      </section>
+      <AboutUs />
 
       <Features />
     </main >
