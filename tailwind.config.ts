@@ -24,7 +24,7 @@ const config = {
         space: ["var(--font-space)", "sans-serif"],
       },
       fontSize: {
-        title: "clamp(3.125rem, 2.875rem + 1.25vw, 4rem)",
+        h1: "clamp(3.125rem, 2.875rem + 1.25vw, 4rem)",
         h2: "clamp(2.125rem, 1.7321rem + 1.9643vw, 3.5rem)",
       },
       boxShadow: {
@@ -32,7 +32,7 @@ const config = {
           "rgba(0, 0, 0, 0.05) 0px 1.8px 3.6px 0px, rgba(0, 0, 0, 0.08) 0px 10.8px 21.6px 0px, rgba(0, 0, 0, 0.1) 0px -0.9px 0px 0px inset, rgba(255, 255, 255, 0.1) 0px 1.8px 1.8px 0px inset, rgba(0, 0, 0, 0.1) 3.6px 0px 3.6px 0px inset",
       },
       lineHeight: {
-        title: "clamp(3.5rem, 3.25rem + 1.25vw, 4.5rem)",
+        h1: "clamp(3.5rem, 3.25rem + 1.25vw, 4.5rem)",
         h2: "clamp(2.5rem, 2.25rem + 1.25vw, 3.75rem)",
       },
       colors: {

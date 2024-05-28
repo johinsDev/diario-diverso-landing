@@ -48,7 +48,7 @@ export default function Home() {
 
       <section className="flex items-stretch gap-5 w-full pt-12">
         <div className="flex-1">
-          <h1 className="text-title leading-title font-semibold text-stone-800">
+          <h1 className="text-h1 leading-h1 font-semibold text-stone-800">
             Transforma tu vida con <span className="bg-gradient-to-b from-primary/90 via-primary to-accent-foreground/50 inline-block text-transparent bg-clip-text">Habitos</span>
           </h1>
 
