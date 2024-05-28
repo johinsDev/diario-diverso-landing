@@ -2,7 +2,7 @@ import { Laptop } from "lucide-react"
 import Image from "next/image"
 
 export function Features() {
-  return <section className="full-width bg-[#F0E9DE]/30">
+  return <section className="full-width bg-stone-50">
     <div className="container mx-auto text-center py-20">
       <div className="text-gray-600">SERVICES</div>
       <div className="text-h2 leading-h2 font-space font-bold">Our Expertise</div>

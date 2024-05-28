@@ -23,7 +23,7 @@ export function LatestPost() {
             </div>
 
             <div className="bg-white p-5 pt-10 text-left text-black group-hover:text-white group-hover:bg-primary relative">
-              <div className="uppercase bg-primary text-white group-hover:bg-accent group-hover:text-primary absolute -top-5 rounded h-10 p-2 px-6 py-2 text-base font-semibold">
+              <div className="uppercase bg-primary text-white group-hover:bg-amber-200 group-hover:text-black absolute -top-5 rounded h-10 p-2 px-6 py-2 text-base font-semibold">
                 General
               </div>
 

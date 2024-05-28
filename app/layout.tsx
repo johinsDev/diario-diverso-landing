@@ -1,3 +1,5 @@
+import { Footer } from "@/components/shared/footer";
+import { Nav } from "@/components/shared/nav";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Poppins, Space_Grotesk, } from "next/font/google";
@@ -19,7 +21,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn('font-poppins overflow-x-hidden', space.variable, poppins.variable)}>{children}</body>
+      <body className={cn('font-poppins overflow-x-hidden', space.variable, poppins.variable)}>
+        <Nav />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
