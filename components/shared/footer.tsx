@@ -48,25 +48,25 @@ export function Footer() {
 
             <div className="flex items-center gap-2">
               <Input type="email" placeholder="Enter your email" />
-              <Button className="rounded px-2" size='xl'>Subscribir</Button>
+              <Button className="rounded px-2" size='xl' variant={'secondary'}>Subscribir</Button>
             </div>
           </div>
 
           <div className="flex items-center gap-4 w-2/5 justify-end">
             <Link href="#" className="text-primary">
-              <Instagram className="size-[50px] text-primary" />
+              <Instagram className="size-[50px] text-secondary" />
             </Link>
 
-            <Link href="#" className="text-primary">
-              <Twitter className="size-[50px] text-primary" />
+            <Link href="#" className="text-secondary">
+              <Twitter className="size-[50px] text-secondary" />
             </Link>
 
-            <Link href="#" className="text-primary">
-              <Youtube className="size-[50px] text-primary" />
+            <Link href="#" className="text-secondary">
+              <Youtube className="size-[50px] text-secondary" />
             </Link>
 
-            <Link href="#" className="text-primary">
-              <Facebook className="size-[50px] text-primary" />
+            <Link href="#" className="text-secondary">
+              <Facebook className="size-[50px] text-secondary" />
             </Link>
           </div>
         </div>
