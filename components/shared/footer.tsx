@@ -21,23 +21,43 @@ export function Footer() {
             </div>
           </div>
 
-          <ul className="space-y-2">
-            <li className="font-semibold pb-2">
-              Menu
-            </li>
-            <li>
-              <Link href="#" className="text-gray-500 hover:text-primary">Inicio</Link>
-            </li>
-            <li>
-              <Link href="#" className="text-gray-500 hover:text-primary">Tienda</Link>
-            </li>
-            <li>
-              <Link href="#" className="text-gray-500 hover:text-primary">Blog</Link>
-            </li>
-            <li>
-              <Link href="#" className="text-gray-500 hover:text-primary">Contacto</Link>
-            </li>
-          </ul>
+          <div className="flex items-center gap-20">
+            <ul className="space-y-2">
+              <li className="font-semibold pb-2">
+                Menu
+              </li>
+              <li>
+                <Link href="#" className="text-gray-500 hover:text-primary">Inicio</Link>
+              </li>
+              <li>
+                <Link href="#" className="text-gray-500 hover:text-primary">Tienda</Link>
+              </li>
+              <li>
+                <Link href="#" className="text-gray-500 hover:text-primary">Blog</Link>
+              </li>
+              <li>
+                <Link href="#" className="text-gray-500 hover:text-primary">Contacto</Link>
+              </li>
+            </ul>
+
+            <ul className="space-y-2">
+              <li className="font-semibold pb-2">
+                Diarios
+              </li>
+              <li>
+                <Link href="#" className="text-gray-500 hover:text-primary">Lectura</Link>
+              </li>
+              <li>
+                <Link href="#" className="text-gray-500 hover:text-primary">Escritura</Link>
+              </li>
+              <li>
+                <Link href="#" className="text-gray-500 hover:text-primary">Dibujo</Link>
+              </li>
+              <li>
+                <Link href="#" className="text-gray-500 hover:text-primary">Pintura</Link>
+              </li>
+            </ul>
+          </div>
         </div>
 
 
