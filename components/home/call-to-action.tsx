@@ -20,7 +20,7 @@ export function CallToAction() {
           <Button className="mt-8 px-12 font-semibold" variant={"secondary"}>Get Started</Button>
         </div>
 
-        <Image src="/hero.svg" width={512} height={512} alt="CTA" className="absolute right-0 top-0 w-3/4" />
+        <Image src="/hero.svg" width={512} height={512} alt="CTA" className="absolute right-0 top-0 w-2/3" />
       </div>
     </div>
   </section>
