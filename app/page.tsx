@@ -1,12 +1,12 @@
 import { AboutUs } from "@/components/home/about-us";
 import { BestSeller } from "@/components/home/best-seller";
 import { Features } from "@/components/home/features";
+import { LatestPost } from "@/components/home/latest-post";
 import { Button } from "@/components/ui/button";
 import { Book } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-const IMAGES = ['/habit.jpg', '/aventuras.jpg', '/crecimiento.jpg', '/lectura.jpg']
 
 export default function Home() {
   return (<>
@@ -42,18 +42,16 @@ export default function Home() {
         <Button size={'xl'} variant={"outline"} className="ml-auto">Comprar</Button>
       </nav>
     </header>
+
     <main className="flex min-h-screen flex-col container">
-
-
-
       <section className="flex items-stretch gap-5 w-full pt-12">
         <div className="flex-1">
           <h1 className="text-h1 leading-h1 font-semibold text-stone-800">
-            Transforma tu vida con <span className="bg-gradient-to-b from-primary/90 via-primary to-accent-foreground/50 inline-block text-transparent bg-clip-text">Habitos</span>
+            Tu vida, tus colores, tu <span className="bg-gradient-to-b from-primary/90 via-primary to-accent-foreground/50 inline-block text-transparent bg-clip-text">diario.</span>
           </h1>
 
           <div className="mt-5 text-gray-500 text-base">
-            Empowering businesses with innovative digital solutions that create lasting impressions. Elevate your brand with us!
+            Descubre Diario Diverso. Un diario para ti, para tus colores, para tu vida.
           </div>
 
           <div className="mt-8 flex items-center gap-4">
@@ -89,6 +87,8 @@ export default function Home() {
       <AboutUs />
 
       <Features />
+
+      <LatestPost />
     </main >
   </>
   );

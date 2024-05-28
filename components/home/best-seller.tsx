@@ -1,5 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
+import { Button } from "../ui/button"
 
 const IMAGES = ['/habit.jpg', '/aventuras.jpg', '/crecimiento.jpg', '/lectura.jpg']
 
@@ -11,7 +12,7 @@ export function BestSeller() {
       </div>
       <div className="text-h2 leading-h2 font-space font-bold">Nuestros diarios</div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 mt-10 text-left gap-12">
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 mt-16 text-left gap-12">
         {
           new Array(4).fill(0).map((_, i) => {
             const image = IMAGES[i % IMAGES.length]
@@ -80,6 +81,10 @@ export function BestSeller() {
           })
         }
       </div>
+
+      <Button size={'xl'} className="mt-12" asChild variant='link'>
+        <Link href={'/products'}>Ver más diarios</Link>
+      </Button>
     </div>
   </section>
 }
