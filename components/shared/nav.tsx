@@ -32,7 +32,7 @@ export function Nav() {
         Blog
       </Link>
 
-      <Button size={'xl'} variant={"outline"} className="ml-auto">Comprar</Button>
+      <Button size={'xl'} variant={"outline"}>Comprar</Button>
     </nav>
   </header>
 }
