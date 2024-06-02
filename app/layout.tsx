@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     siteName: "Diario Diverso",
     images: [
       {
-        url: "https://diariodiverso.com/logo-color.png",
+        url: "https://pub-a29fc50331ec472d81857ca846d65d30.r2.dev/logo-color.png",
         alt: "Diario Diverso",
       },
     ],
