@@ -10,11 +10,19 @@ import Image from "next/image";
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col container">
-      <section className="w-full py-12 bg-white full-width">
+      {/* <div className="flex gap-4 items-center">
+        <Button variant={'default'}>Primary</Button>
+        <Button variant={'secondary'}>Secondary</Button>
+        <Button variant={'accent'}>Accent</Button>
+        <Button variant={'destructive'}>destructive</Button>
+        <Button variant={'link'}>Link</Button>
+        <Button variant={'ghost'}>White</Button>
+      </div> */}
+      <section className="w-full py-12 bg-secondary/50 full-width">
         <div className="container mx-auto flex items-stretch gap-5">
           <div className="flex-1">
             <h1 className="text-h1 leading-h1 font-semibold text-stone-800">
-              Tu vida, tus colores, tu <span className="bg-gradient-to-b from-primary via-primary/80 to-primary/60 inline-block text-transparent bg-clip-text">diario.</span>
+              Tu vida, tus colores, tu <span className="text-accent">diario.</span>
             </h1>
 
             <div className="mt-5 text-gray-500 text-base">
