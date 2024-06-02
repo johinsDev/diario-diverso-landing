@@ -2,7 +2,7 @@ import { Laptop } from "lucide-react"
 import Image from "next/image"
 
 export function Features() {
-  return <section className="full-width bg-stone-50">
+  return <section className="full-width ">
     <div className="container mx-auto text-center py-20">
       <div className="text-gray-600">SERVICES</div>
       <div className="text-h2 leading-h2 font-space font-bold">Our Expertise</div>
@@ -13,19 +13,19 @@ export function Features() {
             return (
               <article
                 key={i}
-                className="bg-primary relative text-white p-6 flex flex-col justify-end gap-4 rounded-2xl hover:bg-amber-200 group cursor-pointer transition-all aspect-[2/3]">
+                className="bg-primary relative text-white p-6 flex flex-col justify-end gap-4 rounded-2xl hover:bg-accent group cursor-pointer transition-all aspect-[2/3]">
                 <Image src='/bg-service.svg' width={192} height={192} alt="Service Image" className="absolute top-0 size-32 right-0 -rotate-90 transform" />
 
                 <div className=" bg-white text-black size-16 rounded-full grid place-content-center group-hover:text-white group-hover:bg-black transition-all">
                   <Laptop className="size-8" />
                 </div>
 
-                <div className="font-space text-2xl font-medium group-hover:text-foreground">
+                <div className="font-space text-2xl font-medium text-white">
                   <div>Digital</div>
                   <div>Marketing</div>
                 </div>
 
-                <div className="text-gray-200 group-hover:text-gray-600">
+                <div className="text-gray-100">
                   Expand your reach and grow your business with our digital marketing services.
                 </div>
               </article>

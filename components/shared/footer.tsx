@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export function Footer() {
   return (
-    <footer className="bg-stone-50 pb-20">
+    <footer className="pb-20">
       <div className="container mx-auto">
         <div className="flex items-start justify-between">
           <div>
