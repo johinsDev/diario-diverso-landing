@@ -10,50 +10,42 @@ import Image from "next/image";
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col container">
-      {/* <div className="flex gap-4 items-center">
-        <Button variant={'default'}>Primary</Button>
-        <Button variant={'secondary'}>Secondary</Button>
-        <Button variant={'accent'}>Accent</Button>
-        <Button variant={'destructive'}>destructive</Button>
-        <Button variant={'link'}>Link</Button>
-        <Button variant={'ghost'}>White</Button>
-      </div> */}
       <section className="w-full py-12 bg-secondary/50 full-width">
         <div className="container mx-auto flex items-stretch gap-5">
           <div className="flex-1">
             <h1 className="text-h1 leading-h1 font-semibold text-stone-800">
-              Tu vida, tus colores, tu <span className="text-accent">diario.</span>
+              La <span className="text-accent">clave</span> para una vida llena de inspiración y relaciones significativas
             </h1>
 
             <div className="mt-5 text-gray-500 text-base">
-              Descubre Diario Diverso. Un diario para ti, para tus colores, para tu vida.
+              Diarios personalizables que impulsan tu creatividad y tu salud mental
             </div>
 
             <div className="mt-8 flex items-center gap-4">
               <Button size={'xl'}>Comprar</Button>
-              <Button size={'xl'} variant={'link'} className="px-4">Aprender más</Button>
             </div>
 
             <div className="mt-12">
-              <div className="text-gray-500">Worked with</div>
+              <div className="text-gray-500">Incluye:</div>
 
               <div className="flex items-center gap-12 mt-4 text-foreground/90">
                 <div className="flex flex-col gap-1 text-left justify-start">
-                  <div className="text-5xl font-semibold font-space">100 +</div>
-                  <div className="font-semibold">Clients & Partnerships</div>
+                  <div className="text-3xl font-semibold font-space">+5 REFERENCIAS</div>
+                  <div className="font-semibold">Para que disfrutes tu proceso y logres tus objetivos</div>
                 </div>
+
                 <div>
                   <div className="flex flex-col gap-1 text-left justify-start">
-                    <div className="text-5xl font-semibold font-space">80%</div>
-                    <div className="font-semibold">Project Succession Rate</div>
+                    <div className="text-3xl font-semibold font-space">+3 COLORES</div>
+                    <div className="font-semibold">Para que eligas tu favorito</div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="flex-1">
-            <Image src='/hero.svg' width={500} height={500} layout='responsive' alt="Hero Image" />
+          <div className="w-1/2 relative">
+            <Image src='/hero-2.png' width={500} height={500} alt="Hero Image" className="w-full aspect-4/3 object-cover drop-shadow-xl" />
           </div>
         </div>
       </section>

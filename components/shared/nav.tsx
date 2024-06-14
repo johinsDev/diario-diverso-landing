@@ -30,6 +30,18 @@ export function Nav() {
       >
         Blog
       </Link>
+      <Link
+        href="#"
+        className="text-muted-foreground transition-colors hover:text-primary"
+      >
+        Nosotros
+      </Link>
+      <Link
+        href="#"
+        className="text-muted-foreground transition-colors hover:text-primary"
+      >
+        FAQ
+      </Link>
 
       <Button size={'xl'} variant={"default"}>Comprar</Button>
     </nav>
