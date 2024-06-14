@@ -3,7 +3,10 @@ import { Nav } from "@/components/shared/nav";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Poppins, Space_Grotesk, } from "next/font/google";
+import localFont from 'next/font/local';
 import "./globals.css";
+
+const MoonTime = localFont({ src: '../public/FontsFree-Net-MoonTime-Regular-1.ttf', variable: '--font-moontime' });
 
 const space = Space_Grotesk({ subsets: ["latin"], weight: ['400', '500', '600', '700'], variable: '--font-space' });
 
@@ -38,7 +41,7 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
       </head>
-      <body className={cn('font-poppins overflow-x-hidden', space.variable, poppins.variable)}>
+      <body className={cn('font-poppins overflow-x-hidden', space.variable, poppins.variable, MoonTime.variable)}>
         <Nav />
         {children}
         <Footer />

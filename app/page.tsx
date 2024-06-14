@@ -61,7 +61,7 @@ export default function Home() {
         <div className="container mx-auto flex items-stretch gap-5">
           <div className="flex-1">
             <h1 className="text-h1 leading-h1 font-semibold text-stone-800">
-              La <span className="text-accent">clave</span> para una vida llena de inspiración y relaciones significativas
+              La <span className="text-accent/70">clave</span> para una vida llena de inspiración y relaciones significativas
             </h1>
 
             <div className="mt-5 text-gray-500 text-base">

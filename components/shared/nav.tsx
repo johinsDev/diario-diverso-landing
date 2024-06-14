@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
 import Link from "next/link";
 
 export function Nav() {
@@ -9,7 +8,8 @@ export function Nav() {
         href="#"
         className="flex items-center gap-2 text-lg font-semibold mr-auto"
       >
-        <Image src='/logo-color.png' alt="Diario Diverso" width={72} height={72} />
+
+        <div className="text-foreground text-6xl font-moontime font-normal text-primary">Diario Diverso</div>
       </Link>
 
       <Link
