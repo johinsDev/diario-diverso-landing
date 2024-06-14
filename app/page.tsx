@@ -72,7 +72,7 @@ export default function Home() {
               <Button size={'xl'} className="uppercase">Comprar</Button>
             </div>
 
-            <div className="mt-12">
+            {/* <div className="mt-12">
               <div className="text-gray-500">Incluye:</div>
 
               <div className="flex md:items-center gap-8 md:gap-12 mt-4 text-foreground/90 flex-col md:flex-row">
@@ -88,7 +88,7 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
 
           <div className="w-1/2 relative">
