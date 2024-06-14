@@ -13,7 +13,7 @@ export function Features() {
             return (
               <article
                 key={i}
-                className="bg-primary relative text-white p-6 flex flex-col justify-end gap-4 rounded-2xl hover:bg-accent group cursor-pointer transition-all aspect-[2/3]">
+                className="bg-primary relative text-white p-6 flex flex-col justify-end gap-4 rounded-2xl hover:bg-accent/60 group cursor-pointer transition-all aspect-[2/3]">
                 <Image src='/bg-service.svg' width={192} height={192} alt="Service Image" className="absolute top-0 size-32 right-0 -rotate-90 transform" />
 
                 <div className=" bg-white text-black size-16 rounded-full grid place-content-center group-hover:text-white group-hover:bg-black transition-all">

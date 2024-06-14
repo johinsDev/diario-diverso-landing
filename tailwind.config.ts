@@ -29,6 +29,7 @@ const config = {
         h3: "clamp(1.875rem, 1.7321rem + 1.25vw, 2.5rem)",
         h4: "clamp(1.625rem, 1.7321rem + 0.8929vw, 2.25rem)",
         h5: "clamp(1.375rem, 1.7321rem + 0.5357vw, 2rem)",
+        body: "clamp(1rem, 1.7321rem + 0.1786vw, 1.25rem)",
       },
       boxShadow: {
         journal:
@@ -40,6 +41,7 @@ const config = {
         h3: "clamp(2.25rem, 2.25rem + 1.25vw, 3rem)",
         h4: "clamp(2rem, 2.25rem + 1.25vw, 2.75rem)",
         h5: "clamp(1.75rem, 2.25rem + 1.25vw, 2.5rem)",
+        body: "clamp(1.5rem, 2.25rem + 1.25vw, 2rem)",
       },
       colors: {
         border: "hsl(var(--border))",
