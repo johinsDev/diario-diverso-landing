@@ -42,11 +42,19 @@ const IMAGES = [
 ]
 
 
-const baseUrl =
-  process.env.NODE_ENV === "development"
-    ? "http://localhost:3000"
-    : process.env.NEXT_PUBLIC_DOMAIN;
+function generateSiteURL() {
+  if (process.env['VERCEL_ENV'] === 'production') {
+    return 'https://www.cruisebound.com'
+  }
 
+  if (process.env['VERCEL_ENV'] === 'preview') {
+    return `https://${process.env['VERCEL_URL']}`
+  }
+
+  return 'http://localhost:3000'
+}
+
+const baseUrl = generateSiteURL()
 
 async function generateBase64(url: string) {
   const base64str = await fetch(
