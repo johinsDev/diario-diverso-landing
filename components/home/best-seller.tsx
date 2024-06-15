@@ -5,7 +5,7 @@ import { Button } from "../ui/button"
 const IMAGES = ['/habit.jpg', '/aventuras.jpg', '/crecimiento.jpg', '/lectura.jpg']
 
 export function BestSeller() {
-  return <section className="full-width mt-20">
+  return <section className="full-width">
     <div className="container mx-auto text-center py-20">
       <div className="text-gray-600">
         BEST SELLER

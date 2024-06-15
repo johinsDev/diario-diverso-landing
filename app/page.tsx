@@ -97,10 +97,10 @@ export default async function Home() {
 
   return (
     <main className="flex min-h-screen flex-col container">
-      <section className="w-full pb-0 pt-12 lg:py-12 bg-secondary/20 d full-width">
+      <section className="w-full pb-0 pt-12 lg:py-12 bg-secondary/20  full-width">
         <div className="container mx-auto flex items-center gap-8 flex-col lg:flex-row">
           <div className="flex-1 flex flex-col items-center lg:items-start">
-            <h1 className="text-3xl text-center lg:text-left md:text-5xl lg:text-6xl font-bold text-foreground font-poppins">
+            <h1 className="text-h2 leading-h2 text-center lg:text-left font-bold text-foreground font-poppins">
               La <span className="animate-text bg-gradient-to-b from-primary to-secondary bg-clip-text text-transparent">clave  para una vida </span>llena de inspiración y relaciones significativas
             </h1>
 
@@ -122,7 +122,7 @@ export default async function Home() {
               }
             </div>
 
-            <div className="flex items-center flex-wrap justify-center h-44 relative full-width overflow-hidden lg:hidden">
+            <div className="flex items-center flex-wrap justify-center h-48 relative full-width overflow-hidden lg:hidden">
               {
                 images.map((image) => (
                   <Image key={image.src} src={image.src} width={180} height={260} alt="Hero Image" className={image.classNameMobile} priority placeholder="blur" blurDataURL={image.base64} />
@@ -133,11 +133,12 @@ export default async function Home() {
         </div>
       </section>
 
+      <Features />
+
       <BestSeller />
 
       <AboutUs />
 
-      <Features />
 
       <LatestPost />
 

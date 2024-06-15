@@ -11,7 +11,7 @@ export function Nav() {
         href="#"
         className="flex items-center gap-2 text-lg font-semibold mr-auto"
       >
-        <div className="text-4xl md:text-6xl font-moontime font-normal text-primary">Diario Diverso</div>
+        <div className="text-5xl md:text-6xl font-moontime font-normal text-primary">Diario Diverso</div>
       </Link>
 
       <div className="hidden lg:flex gap-6">

@@ -1,38 +1,104 @@
-import { Laptop } from "lucide-react"
-import Image from "next/image"
+import { Laptop } from "lucide-react";
+import Image from "next/image";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../ui/carousel";
+
+type Feature = {
+  title: string;
+  description: string[];
+  icon: string;
+}
+
+const FEATURES: Feature[] = [
+  {
+    title: "Mejora tu salud mental",
+    description: ["Reduce el estrés", "Aumenta tu autoconsciencia"],
+    icon: ''
+  },
+  {
+    title: "Fomenta tu creatividad",
+    description: ["Explora nuevas ideas", "Potencia tu imaginación"],
+    icon: ''
+  },
+  {
+    title: "Mejora la productividad",
+    description: ["Establecimiento de metas", "Mejor organización"],
+    icon: ''
+  },
+  {
+    title: "Fortacelece la memoria",
+    description: ["Refuerza el recuerdo", "Aumenta la atención al detalle"],
+    icon: ''
+  },
+  {
+    title: "Beneficios emocionales",
+    description: ["Procesamiento de emociones", "Aumenta la gratitud"],
+    icon: ''
+  },
+  {
+    title: "Refuerzo del compromiso",
+    description: ["Monitoreo de progresos", "Responsabilidad personal"],
+    icon: ''
+  },
+  {
+    title: "Resolución de problemas",
+    description: ["Claridad mental", "Desarrollo de estrategias"],
+    icon: ''
+  },
+  {
+    title: "Mejora tus relaciones",
+    description: ["Calidad de tiempo", "Nuevas experiencia juntos"],
+    icon: ''
+  }
+]
 
 export function Features() {
-  return <section className="full-width ">
-    <div className="container mx-auto text-center py-20">
-      <div className="text-gray-600">SERVICES</div>
-      <div className="text-h2 leading-h2 font-montserrat font-bold">Our Expertise</div>
+  return <section className="container mx-auto text-center pt-20">
+    <div className="text-h2 leading-h2 font-montserrat font-bold lowercase first-letter:capitalize">¿POR QUÉ USAR NUESTROS DIARIOS?</div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 mt-10 text-left gap-12">
+    <Carousel
+      opts={{
+        loop: true,
+        align: 'start',
+      }}
+      className="mt-8 lg:mt-20"
+    >
+      <CarouselContent className="-ml-2 md:-ml-4">
         {
-          new Array(4).fill(0).map((_, i) => {
+          FEATURES.map((feature, i) => {
             return (
-              <article
+              <CarouselItem
                 key={i}
-                className="bg-primary relative text-white p-6 flex flex-col justify-end gap-4 rounded-2xl hover:bg-accent/60 group cursor-pointer transition-all aspect-[2/3]">
-                <Image src='/bg-service.svg' width={192} height={192} alt="Service Image" className="absolute top-0 size-32 right-0 -rotate-90 transform" />
+                className="md:basis-1/2 pl-2 md:pl-4 lg:basis-1/3 xl:basis-1/4 basis-[80%]"
+              >
+                <article className="bg-primary relative text-white p-6 flex flex-col justify-end gap-4 rounded-2xl hover:bg-accent/60 group cursor-pointer transition-all aspect-[2/3] lg:aspect-[2/3] text-left">
+                  <Image src='/bg-service.svg' width={192} height={192} alt="Service Image" className="absolute top-0 size-32 right-0 -rotate-90 transform" />
 
-                <div className=" bg-white text-black size-16 rounded-full grid place-content-center group-hover:text-white group-hover:bg-black transition-all">
-                  <Laptop className="size-8" />
-                </div>
+                  <div className=" bg-white text-black size-20 rounded-full grid place-content-center group-hover:text-white group-hover:bg-black transition-all">
+                    <Laptop className="size-12" />
+                  </div>
 
-                <div className="font-montserrat text-2xl font-medium text-white">
-                  <div>Digital</div>
-                  <div>Marketing</div>
-                </div>
+                  <div className="font-montserrat text-2xl font-medium text-white">
+                    {feature.title}
+                  </div>
 
-                <div className="text-gray-100">
-                  Expand your reach and grow your business with our digital marketing services.
-                </div>
-              </article>
+                  <ul className="text-gray-100">
+                    {
+                      feature.description.map((desc, i) => (
+                        <li key={i} className="flex items-center gap-2">
+                          <span className="text-xl">•</span>
+                          <span>{desc}</span>
+                        </li>
+                      ))
+                    }
+                  </ul>
+                </article>
+              </CarouselItem>
             )
           })
         }
-      </div>
-    </div>
+      </CarouselContent>
+      <CarouselPrevious />
+      <CarouselNext />
+    </Carousel>
   </section>
 }

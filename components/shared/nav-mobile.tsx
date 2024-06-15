@@ -4,7 +4,7 @@ import { Sheet, SheetClose, SheetContent, SheetTrigger } from "../ui/sheet";
 
 export function NavMobile() {
   return <Sheet >
-    <SheetTrigger className="px-4 text-accent">
+    <SheetTrigger className="px-4 pr-0 text-accent">
       <Menu size={24} />
     </SheetTrigger>
     <SheetContent side={'left'}>
