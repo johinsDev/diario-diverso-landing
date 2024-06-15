@@ -97,7 +97,7 @@ export default async function Home() {
 
   return (
     <main className="flex min-h-screen flex-col container">
-      <section className="w-full pb-0 pt-12 lg:py-12 bg-secondary/20  full-width">
+      <section className="w-full pb-0 pt-12 lg:py-12 bg-secondary/20 overflow-hidden full-width">
         <div className="container mx-auto flex items-center gap-8 flex-col lg:flex-row">
           <div className="flex-1 flex flex-col items-center lg:items-start">
             <h1 className="text-h2 leading-h2 text-center lg:text-left font-bold text-foreground font-poppins">
@@ -122,7 +122,7 @@ export default async function Home() {
               }
             </div>
 
-            <div className="flex items-center flex-wrap justify-center h-48 relative full-width overflow-hidden lg:hidden">
+            <div className="flex items-center flex-wrap justify-center h-52 md:h-80 lg:h-52 relative full-width overflow-hidden lg:hidden">
               {
                 images.map((image) => (
                   <Image key={image.src} src={image.src} width={180} height={260} alt="Hero Image" className={image.classNameMobile} priority placeholder="blur" blurDataURL={image.base64} />
