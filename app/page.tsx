@@ -44,7 +44,7 @@ const IMAGES = [
 
 function generateSiteURL() {
   if (process.env['VERCEL_ENV'] === 'production') {
-    return 'https://www.cruisebound.com'
+    return 'https://www.diariodiverso.com'
   }
 
   if (process.env['VERCEL_ENV'] === 'preview') {
