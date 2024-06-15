@@ -6,7 +6,7 @@ import { Montserrat, Poppins } from "next/font/google";
 import localFont from 'next/font/local';
 import "./globals.css";
 
-const moonTime = localFont({ src: '../public/FontsFree-Net-MoonTime-Regular-1.ttf', variable: '--font-moontime' });
+const moonTime = localFont({ src: '../public/fonts/moontime.ttf', variable: '--font-moontime' });
 
 const poppins = Poppins({ subsets: ["latin"], weight: ['400', '500', '600'], variable: '--font-poppins' });
 
