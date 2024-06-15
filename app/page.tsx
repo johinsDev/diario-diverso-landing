@@ -92,7 +92,7 @@ export default async function Home() {
       <section className="w-full pb-0 pt-12 lg:py-12 bg-secondary/20 d full-width">
         <div className="container mx-auto flex items-center gap-8 flex-col lg:flex-row">
           <div className="flex-1 flex flex-col items-center lg:items-start">
-            <h1 className="text-3xl text-center lg:text-left md:text-5xl lg:text-6xl font-bold text-foreground">
+            <h1 className="text-3xl text-center lg:text-left md:text-5xl lg:text-6xl font-bold text-foreground font-poppins">
               La <span className="animate-text bg-gradient-to-b from-primary to-secondary bg-clip-text text-transparent">clave  para una vida </span>llena de inspiración y relaciones significativas
             </h1>
 

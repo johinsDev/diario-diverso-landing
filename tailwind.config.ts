@@ -21,7 +21,6 @@ const config = {
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
         sans: ["Inter", "sans-serif"],
-        space: ["var(--font-space)", "sans-serif"],
         moontime: ["var(--font-moontime)", "sans-serif"],
       },
       fontSize: {
