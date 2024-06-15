@@ -6,8 +6,7 @@ import { Poppins } from "next/font/google";
 import localFont from 'next/font/local';
 import "./globals.css";
 
-const MoonTime = localFont({ src: '../public/FontsFree-Net-MoonTime-Regular-1.ttf', variable: '--font-moontime' });
-
+const moonTime = localFont({ src: '../public/FontsFree-Net-MoonTime-Regular-1.ttf', variable: '--font-moontime' });
 
 const poppins = Poppins({ subsets: ["latin"], weight: ['400', '500', '600'], variable: '--font-poppins' });
 
@@ -40,7 +39,7 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
       </head>
-      <body className={cn('font-poppins overflow-x-hidden', poppins.variable, MoonTime.variable)}>
+      <body className={cn('font-poppins overflow-x-hidden', poppins.variable, moonTime.variable)}>
         <Nav />
         {children}
         <Footer />
