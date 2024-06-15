@@ -27,7 +27,19 @@ export default function Home() {
           </div>
 
           <div className="w-full lg:w-2/5 lg:block">
-            <div className="flex items-center flex-wrap justify-center h-44 relative full-width overflow-hidden">
+            <div className="items-center flex-wrap justify-center hidden lg:flex">
+              <Image src='/aventuras.jpg' width={200} height={200} alt="Hero Image" className="aspect-4/3 object-cover drop-shadow-xl transform -rotate-12 -translate-x-8 translate-y-6 cursor-pointer hover:z-10 hover:scale-105 transition-transform duration-300 ease-in-out border border-secondary/50 w-1/3" />
+
+              <Image src='/lectura.jpg' width={200} height={200} alt="Hero Image" className="aspect-4/3 object-cover drop-shadow-xl transform hover:scale-105 duration-300 ease-in-out border hover:z-10 border-secondary/50 cursor-pointer w-1/3" />
+
+              <Image src='/crecimiento.jpg' width={200} height={200} alt="Hero Image" className="aspect-4/3 object-cover drop-shadow-xl transform rotate-12 translate-x-8 translate-y-6 cursor-pointer hover:z-10 hover:scale-105 transition-transform duration-300 ease-in-out border border-secondary/50 w-1/3" />
+
+              <Image src='/habit.jpg' width={200} height={200} alt="Hero Image" className="aspect-4/3 object-cover drop-shadow-xl transform -rotate-6 translate-y-1 cursor-pointer hover:scale-105 transition-transform duration-300 ease-in-out border border-secondary/50 w-1/3 -translate-x-4" />
+
+              <Image src='/aventuras.jpg' width={200} height={200} alt="Hero Image" className="aspect-4/3 object-cover drop-shadow-xl transform rotate-6 translate-y-1 cursor-pointer translate-x-4 hover:z-10 hover:scale-105 transition-transform duration-300 ease-in-out border border-secondary/50 w-1/3" />
+            </div>
+
+            <div className="flex items-center flex-wrap justify-center h-44 relative full-width overflow-hidden lg:hidden">
               <Image src='/lectura.jpg' width={200} height={200} alt="Hero Image" className="aspect-4/3 object-cover drop-shadow-xl transform cursor-pointer hover:scale-105 transition-transform duration-300 ease-in-out border border-secondary/50 w-1/3 absolute left-1/2 top-0 -translate-x-1/2" />
 
               <Image src='/aventuras.jpg' width={200} height={200} alt="Hero Image" className="aspect-4/3 object-cover drop-shadow-xl transform cursor-pointer hover:scale-105 transition-transform duration-300 ease-in-out border border-secondary/50 w-1/3 absolute left-[20%] top-0 -rotate-[30deg] origin-bottom-right -translate-y-[12%]" />
