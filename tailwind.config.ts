@@ -22,6 +22,7 @@ const config = {
         poppins: ["Poppins", "sans-serif"],
         sans: ["Inter", "sans-serif"],
         moontime: ["var(--font-moontime)", "sans-serif"],
+        montserrat: ["var(--font-montserrat)", "sans-serif"],
       },
       fontSize: {
         h1: "clamp(3.125rem, 2.875rem + 1.25vw, 4rem)",

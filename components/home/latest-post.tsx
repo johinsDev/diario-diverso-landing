@@ -8,7 +8,7 @@ export function LatestPost() {
       <div>
         BLOG
       </div>
-      <h2 className="text-h2 leading-h2 font-space font-bold">
+      <h2 className="text-h2 leading-h2 font-montserrat font-bold">
         Ultimos Artículos
       </h2>
 

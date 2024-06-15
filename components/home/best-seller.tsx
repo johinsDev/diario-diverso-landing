@@ -10,7 +10,7 @@ export function BestSeller() {
       <div className="text-gray-600">
         BEST SELLER
       </div>
-      <div className="text-h2 leading-h2 font-space font-bold">Nuestros diarios</div>
+      <div className="text-h2 leading-h2 font-montserrat font-bold">Nuestros diarios</div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-4 mt-16 text-left gap-12">
         {

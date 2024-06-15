@@ -5,7 +5,7 @@ export function Features() {
   return <section className="full-width ">
     <div className="container mx-auto text-center py-20">
       <div className="text-gray-600">SERVICES</div>
-      <div className="text-h2 leading-h2 font-space font-bold">Our Expertise</div>
+      <div className="text-h2 leading-h2 font-montserrat font-bold">Our Expertise</div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 mt-10 text-left gap-12">
         {
@@ -20,7 +20,7 @@ export function Features() {
                   <Laptop className="size-8" />
                 </div>
 
-                <div className="font-space text-2xl font-medium text-white">
+                <div className="font-montserrat text-2xl font-medium text-white">
                   <div>Digital</div>
                   <div>Marketing</div>
                 </div>

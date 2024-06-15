@@ -11,7 +11,7 @@ export function AboutUs() {
         <div>
           ABOUT
         </div>
-        <h2 className="text-h2 leading-h2 font-space font-bold">
+        <h2 className="text-h2 leading-h2 font-montserrat font-bold">
           Your Trusted
           Digital Partner
         </h2>

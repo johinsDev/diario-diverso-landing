@@ -2,13 +2,15 @@ import { Footer } from "@/components/shared/footer";
 import { Nav } from "@/components/shared/nav";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Montserrat, Poppins } from "next/font/google";
 import localFont from 'next/font/local';
 import "./globals.css";
 
 const moonTime = localFont({ src: '../public/FontsFree-Net-MoonTime-Regular-1.ttf', variable: '--font-moontime' });
 
 const poppins = Poppins({ subsets: ["latin"], weight: ['400', '500', '600'], variable: '--font-poppins' });
+
+const montserrat = Montserrat({ subsets: ["latin"], weight: ['600', '700'], variable: '--font-montserrat' });
 
 export const metadata: Metadata = {
   title: "Diario Diverso",
@@ -39,7 +41,7 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
       </head>
-      <body className={cn('font-poppins overflow-x-hidden', poppins.variable, moonTime.variable)}>
+      <body className={cn('font-poppins overflow-x-hidden', poppins.variable, moonTime.variable, montserrat.variable)}>
         <Nav />
         {children}
         <Footer />

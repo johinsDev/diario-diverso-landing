@@ -11,7 +11,7 @@ export function Footer() {
           <div>
             <div className="flex items-center gap-2">
               <Book className="h-8 w-8 text-primary" />
-              <h3 className="text-h3 font-space font-semibold">
+              <h3 className="text-h3 font-montserrat font-semibold">
                 Diario Diverso
               </h3>
             </div>
