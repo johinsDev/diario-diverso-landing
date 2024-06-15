@@ -1,53 +1,60 @@
-import { Laptop } from "lucide-react";
 import Image from "next/image";
+import Brain from "../icons/brain";
+import HandShake from "../icons/handshake";
+import Innovation from "../icons/innovation";
+import integration from "../icons/integration";
+import Love from "../icons/love";
+import Productivity from "../icons/productivity";
+import Thinking from "../icons/thinking";
+import Together from "../icons/together";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../ui/carousel";
 
 type Feature = {
   title: string;
   description: string[];
-  icon: string;
+  icon?: React.FC<React.SVGProps<SVGSVGElement>>
 }
 
 const FEATURES: Feature[] = [
   {
     title: "Mejora tu salud mental",
     description: ["Reduce el estrés", "Aumenta tu autoconsciencia"],
-    icon: ''
+    icon: Brain
   },
   {
     title: "Fomenta tu creatividad",
     description: ["Explora nuevas ideas", "Potencia tu imaginación"],
-    icon: ''
+    icon: Innovation
   },
   {
     title: "Mejora la productividad",
     description: ["Establecimiento de metas", "Mejor organización"],
-    icon: ''
+    icon: Productivity
   },
   {
     title: "Fortacelece la memoria",
     description: ["Refuerza el recuerdo", "Aumenta la atención al detalle"],
-    icon: ''
+    icon: integration
   },
   {
     title: "Beneficios emocionales",
     description: ["Procesamiento de emociones", "Aumenta la gratitud"],
-    icon: ''
+    icon: Love
   },
   {
     title: "Refuerzo del compromiso",
     description: ["Monitoreo de progresos", "Responsabilidad personal"],
-    icon: ''
+    icon: Thinking
   },
   {
     title: "Resolución de problemas",
     description: ["Claridad mental", "Desarrollo de estrategias"],
-    icon: ''
+    icon: HandShake
   },
   {
     title: "Mejora tus relaciones",
     description: ["Calidad de tiempo", "Nuevas experiencia juntos"],
-    icon: ''
+    icon: Together
   }
 ]
 
@@ -66,6 +73,8 @@ export function Features() {
         <CarouselContent className="-ml-2 md:-ml-4">
           {
             FEATURES.map((feature, i) => {
+              const Icon = feature.icon || Brain;
+
               return (
                 <CarouselItem
                   key={i}
@@ -75,7 +84,7 @@ export function Features() {
                     <Image src='/bg-service.svg' width={192} height={192} alt="Service Image" className="absolute top-0 size-32 right-0 -rotate-90 transform" />
 
                     <div className=" bg-white text-black size-20 rounded-full grid place-content-center group-hover:text-white group-hover:bg-black transition-all">
-                      <Laptop className="size-12" />
+                      <Icon width={48} height={48} />
                     </div>
 
                     <div className="font-montserrat text-2xl font-medium text-white">
