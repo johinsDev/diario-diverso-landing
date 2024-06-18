@@ -36,13 +36,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full">
+    <html lang="en" className="min-h-full">
       <head>
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
       </head>
-      <body className={cn('font-poppins overflow-x-hidden flex flex-col h-full', poppins.variable, moonTime.variable, montserrat.variable)}>
+      <body className={cn('font-poppins overflow-x-hidden flex flex-col min-h-full', poppins.variable, moonTime.variable, montserrat.variable)}>
         <Nav />
         {children}
         <FloatingWhatsapp />
