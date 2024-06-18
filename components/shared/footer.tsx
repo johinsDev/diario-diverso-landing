@@ -65,7 +65,7 @@ export function Footer() {
         </ul>
       </div>
 
-      <div className="md:col-span-2 flex flex-col gap-8 justify-between">
+      <div className="md:col-span-2 flex flex-col gap-4 justify-between">
         <div>
           <h4 className="text-h4 font-semibold text-foreground lowercase first-letter:capitalize">
             DISFRUTA DE NUESTRA EXPERIENCIA
@@ -87,19 +87,19 @@ export function Footer() {
 
           <div className="flex items-center gap-2">
             <Link href="https://www.tiktok.com/@diario.diverso" target="_blank">
-              <Image src="/tiktok.png" width={60} height={60} alt="tiktok diario diverso" />
+              <Image src="/tiktok.png" width={48} height={48} alt="tiktok diario diverso" />
             </Link>
 
             <Link href="https://www.facebook.com/profile.php?id=61559389247644" target="_blank">
-              <Image src="/facebook.png" width={60} height={60} alt="facebook diario diverso" />
+              <Image src="/facebook.png" width={48} height={48} alt="facebook diario diverso" />
             </Link>
 
             <Link href="https://www.instagram.com/diario.diverso" target="_blank">
-              <Image src="/instagram.png" width={60} height={60} alt="instagram diario diverso" />
+              <Image src="/instagram.png" width={48} height={48} alt="instagram diario diverso" />
             </Link>
 
             <Link href="https://wa.me/message/3VYDBVF6QEELO1" target="_blank">
-              <Image src="/whatsapp.svg" width={60} height={60} alt="whastapp diario diverso" />
+              <Image src="/whatsapp.svg" width={48} height={48} alt="whastapp diario diverso" />
             </Link>
           </div>
 
