@@ -99,7 +99,7 @@ export function Footer() {
             </Link>
 
             <Link href="https://wa.me/message/3VYDBVF6QEELO1" target="_blank">
-              <Image src="/whastapp.svg" width={60} height={60} alt="whastapp diario diverso" />
+              <Image src="/whatsapp.svg" width={60} height={60} alt="whastapp diario diverso" />
             </Link>
           </div>
 

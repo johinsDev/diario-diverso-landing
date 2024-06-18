@@ -1,3 +1,4 @@
+import { FloatingWhatsapp } from "@/components/shared/floating-whatsapp";
 import { Footer } from "@/components/shared/footer";
 import { Nav } from "@/components/shared/nav";
 import { cn } from "@/lib/utils";
@@ -44,6 +45,7 @@ export default function RootLayout({
       <body className={cn('font-poppins overflow-x-hidden', poppins.variable, moonTime.variable, montserrat.variable)}>
         <Nav />
         {children}
+        <FloatingWhatsapp />
         <Footer />
       </body>
     </html>
