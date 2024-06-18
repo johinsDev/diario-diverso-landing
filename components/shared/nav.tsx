@@ -5,10 +5,10 @@ import Link from "next/link";
 const NavMobile = dynamic(() => import("./nav-mobile").then(m => m.NavMobile), { ssr: false });
 
 export function Nav() {
-  return <header className="sticky top-0 flex h-20 items-center gap-4 w-full z-50 bg-white">
+  return <header className="sticky top-0 flex h-20 items-center gap-4 w-full z-50 bg-white flex-shrink-0">
     <nav className="container mx-auto flex w-full gap-4 text-lg md:flex md:flex-row md:items-center md:gap-5 md:text-base lg:gap-12">
       <Link
-        href="#"
+        href="/"
         className="flex items-center gap-2 text-lg font-semibold mr-auto"
       >
         <div className="text-5xl md:text-6xl font-moontime font-normal text-primary">Diario Diverso</div>
@@ -16,31 +16,31 @@ export function Nav() {
 
       <div className="hidden lg:flex gap-6">
         <Link
-          href="#"
+          href="/"
           className="text-muted-foreground transition-colors hover:text-primary"
         >
           Inicio
         </Link>
         <Link
-          href="#"
+          href="/tienda"
           className="text-muted-foreground transition-colors hover:text-primary"
         >
           Tienda
         </Link>
         <Link
-          href="#"
+          href="/blog"
           className="text-muted-foreground transition-colors hover:text-primary"
         >
           Blog
         </Link>
         <Link
-          href="#"
+          href="/nosotros"
           className="text-muted-foreground transition-colors hover:text-primary"
         >
           Nosotros
         </Link>
         <Link
-          href="#"
+          href="/faq"
           className="text-muted-foreground transition-colors hover:text-primary"
         >
           FAQ

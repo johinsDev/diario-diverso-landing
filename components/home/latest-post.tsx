@@ -23,6 +23,10 @@ const POSTS = [
   },
 ]
 
+function slugify(text: string) {
+  return text.toLowerCase().replace(/ /g, '-');
+}
+
 export function LatestPost() {
   return (<section className="bg-white full-width text-center py-20 w-full flex flex-col gap-4 items-center">
     <div className="container mx-auto">
@@ -36,7 +40,9 @@ export function LatestPost() {
       <section className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
         {
           POSTS.map((post, i) => {
-            return <Link href="#" key={i} className="flex flex-col rounded-2xl overflow-hidden shadow-lg group relative hover:bg-secondary/40">
+            return <Link href={
+              `/blog/${slugify(post.title)}`
+            } key={i} className="flex flex-col rounded-2xl overflow-hidden shadow-lg group relative hover:bg-secondary/40">
               <Image src={post.image} width={512} height={240} alt="Blog" className="object-cover w-full h-60 flex-shrink-0" sizes="(min-width: 1024px) 33vw, 100vw" />
 
               <div className="px-4 py-5 z-10 absolute right-5 top-5 flex flex-col justify-between bg-white rounded-2xl">

@@ -19,7 +19,7 @@ export function BestSeller() {
           IMAGES.map((image, i) => {
             return (
               <Link
-                href="#"
+                href={'/tienda/diario-de-amistad'}
                 className="relative aspect-[2/3] min-h-96 duration-500 ease-in-out inline-block perspective-750 hover:rotate-z-0 md:min-h-full"
                 key={i}
 

@@ -5,7 +5,7 @@ import { Input } from "../ui/input";
 
 export function Footer() {
   return (
-    <footer className="pb-16 container mx-auto grid grid-cols-1 md:grid-cols-3 gap-y-8 lg:grid-cols-5 text-left">
+    <footer className="py-16 container mx-auto grid grid-cols-1 md:grid-cols-3 gap-y-8 lg:grid-cols-5 text-left">
       <Link href={'/'} className="mx-auto">
         <Image src="/logo-color.png" width={225} height={225} alt="logo" />
       </Link>
@@ -16,19 +16,19 @@ export function Footer() {
         </div>
         <ul className="space-y-1">
           <li>
-            <Link href="#" className="text-gray-500 hover:text-primary">Inicio</Link>
+            <Link href="/" className="text-gray-500 hover:text-primary">Inicio</Link>
           </li>
           <li>
-            <Link href="#" className="text-gray-500 hover:text-primary">Tienda</Link>
+            <Link href="/tienda" className="text-gray-500 hover:text-primary">Tienda</Link>
           </li>
           <li>
-            <Link href="#" className="text-gray-500 hover:text-primary">Blog</Link>
+            <Link href="/blog" className="text-gray-500 hover:text-primary">Blog</Link>
           </li>
           <li>
-            <Link href="#" className="text-gray-500 hover:text-primary">Nosotros</Link>
+            <Link href="/nosotros" className="text-gray-500 hover:text-primary">Nosotros</Link>
           </li>
           <li>
-            <Link href="#" className="text-gray-500 hover:text-primary">Preguntas frecuentes</Link>
+            <Link href="/faq" className="text-gray-500 hover:text-primary">Preguntas frecuentes</Link>
           </li>
 
           <li>
@@ -47,28 +47,28 @@ export function Footer() {
         </div>
         <ul className="space-y-1">
           <li>
-            <Link href="#" className="text-gray-500 hover:text-primary">Diario de amistad</Link>
+            <Link href="/tienda/diario-de-amistad" className="text-gray-500 hover:text-primary">Diario de amistad</Link>
           </li>
           <li>
-            <Link href="#" className="text-gray-500 hover:text-primary">Diario de parejas</Link>
+            <Link href="/tienda/diario-de-parejas" className="text-gray-500 hover:text-primary">Diario de parejas</Link>
           </li>
           <li>
-            <Link href="#" className="text-gray-500 hover:text-primary">Diario de habitos</Link>
+            <Link href="/tienda/diario-de-habitos" className="text-gray-500 hover:text-primary">Diario de habitos</Link>
           </li>
           <li>
-            <Link href="#" className="text-gray-500 hover:text-primary">Diario lector</Link>
+            <Link href="/tienda/diario-lector" className="text-gray-500 hover:text-primary">Diario lector</Link>
           </li>
           <li>
-            <Link href="#" className="text-gray-500 hover:text-primary">Diario de gratitud</Link>
+            <Link href="/tienda/diario-gratitud" className="text-gray-500 hover:text-primary">Diario de gratitud</Link>
           </li>
           <li>
-            <Link href="#" className="text-gray-500 hover:text-primary">Separadores magneticos</Link>
+            <Link href="/tienda/separadores-magneticos" className="text-gray-500 hover:text-primary">Separadores magneticos</Link>
           </li>
           <li>
-            <Link href="#" className="text-gray-500 hover:text-primary">Mini portadas </Link>
+            <Link href="/tienda/mini-portadas" className="text-gray-500 hover:text-primary">Mini portadas</Link>
           </li>
           <li>
-            <Link href="#" className="text-gray-500 hover:text-primary">Esferos en gel</Link>
+            <Link href="/tienda/esferos-de-gel" className="text-gray-500 hover:text-primary">Esferos en gel</Link>
           </li>
         </ul>
       </div>
