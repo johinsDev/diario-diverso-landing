@@ -23,7 +23,7 @@ export function LatestPost() {
                 <div className="text-primary font-semibold text-h3 leading-none mt-1">12</div>
               </div>
 
-              <div className="bg-white p-5 pt-10 text-left text-foreground group-hover:bg-secondary transition-all duration-300 relative">
+              <div className="bg-white p-5 pt-10 text-left text-foreground group-hover:bg-secondary/40 transition-all duration-300 relative">
                 <div className="uppercase bg-primary text-accent-foreground absolute -top-5 rounded h-10 p-2 px-6 py-2 text-base font-semibold transition-all duration-300">
                   General
                 </div>

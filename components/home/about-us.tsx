@@ -14,15 +14,15 @@ export function AboutUs() {
           NOSOTROS
         </h2>
 
-        <p className="text-gray-400 text-xl">
+        <p className="text-gray-600 text-xl">
           En Diario Diverso, creemos en el poder de las palabras y la constancia para transformar vidas. Nuestra misión es proporcionar herramientas inspiradoras y efectivas que te acompañen en tu viaje de mejora continua, tanto a nivel personal como en tus relaciones.
         </p>
 
-        <p className="text-gray-400 text-xl">
+        <p className="text-gray-600 text-xl">
           Ofrecemos una variedad de diarios diseñados para ayudarte a establecer y alcanzar tus metas, desarrollar hábitos positivos y fortalecer tus vínculos. Cada página está pensada para motivarte, guiarte y recordarte tu capacidad para lograr grandes cosas.
         </p>
 
-        <p className="text-gray-400 text-xl">
+        <p className="text-gray-600 text-xl">
           Nos apasiona ver cómo nuestros diarios se convierten en un aliado indispensable para nuestros usuarios, ayudándolos a convertirse en la mejor versión de sí mismos.
         </p>
 

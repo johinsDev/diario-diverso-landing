@@ -10,7 +10,7 @@ export function BestSeller() {
 
       <div className="text-h2 leading-h2 font-montserrat font-bold">Nuestros diarios</div>
 
-      <div className="text-gray-600 text-xs mt-2 lg:text-base lowercase first-letter:capitalize">
+      <div className="text-gray-600 text-sm mt-2 lg:text-base lowercase first-letter:capitalize">
         DIFERENTES PORTADAS Y COLORES PARA QUE LO PERSONALICES Y LE DES TU ESTILO
       </div>
 

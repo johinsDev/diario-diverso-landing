@@ -1,5 +1,6 @@
 import { AboutUs } from "@/components/home/about-us";
 import { BestSeller } from "@/components/home/best-seller";
+import { CallToAction } from "@/components/home/call-to-action";
 import { Features } from "@/components/home/features";
 import { LatestPost } from "@/components/home/latest-post";
 import { Button } from "@/components/ui/button";
@@ -140,7 +141,7 @@ export default async function Home() {
 
       <AboutUs />
 
-      {/* <CallToAction /> */}
+      <CallToAction />
     </main >
   );
 }
