@@ -5,6 +5,7 @@ import { Features } from "@/components/home/features";
 import { LatestPost } from "@/components/home/latest-post";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import Link from "next/link";
 
 type Image = {
   src: string;
@@ -109,7 +110,11 @@ export default async function Home() {
             </div>
 
             <div className="mt-8 flex items-center gap-4">
-              <Button size={'xxl'} >Comprar</Button>
+              <Button size={'xxl'} asChild>
+                <Link href="/tienda">
+                  Comprar
+                </Link>
+              </Button>
             </div>
           </div>
 

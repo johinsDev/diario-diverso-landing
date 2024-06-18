@@ -48,13 +48,19 @@ export function Nav() {
       </div>
 
       <div className="lg:hidden flex items-center">
-        <Button variant={"prime"} className="relative w-28" size={'xl'}>
-          <span className="absolute bg-white left-0.5 right-0.5 bottom-0.5 top-0.5 text-accent grid place-content-center rounded-full">Comprar</span>
+        <Button variant={"prime"} className="relative w-28" size={'xl'} asChild>
+          <Link href="https://wa.me/message/3VYDBVF6QEELO1" target="_blank">
+            <span className="absolute bg-white left-0.5 right-0.5 bottom-0.5 top-0.5 text-accent grid place-content-center rounded-full">Comprar</span>
+          </Link>
         </Button>
 
         <NavMobile />
       </div>
-      <Button size={'xl'} variant={"default"} className="hidden lg:flex">Comprar</Button>
+      <Button size={'xl'} variant={"default"} className="hidden lg:flex" asChild>
+        <Link href="https://wa.me/message/3VYDBVF6QEELO1" target="_blank">
+          Comprar
+        </Link>
+      </Button>
     </nav>
   </header>
 }
