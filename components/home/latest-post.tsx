@@ -12,7 +12,7 @@ export function LatestPost() {
         Ultimos Artículos
       </h2>
 
-      <section className="grid grid-cols-3 gap-8 mt-12">
+      <section className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
         {
           new Array(3).fill(0).map((_, i) => {
             return <Link href="#" key={i} className="flex flex-col rounded-2xl overflow-hidden shadow-lg group relative">
