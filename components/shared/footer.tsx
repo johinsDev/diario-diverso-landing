@@ -30,6 +30,14 @@ export function Footer() {
           <li>
             <Link href="#" className="text-gray-500 hover:text-primary">Preguntas frecuentes</Link>
           </li>
+
+          <li>
+            <Link href="/politica-privacidad.pdf" download target="_blank" className="text-gray-500 hover:text-primary">Política de privacidad</Link>
+          </li>
+
+          <li>
+            <Link href="/politica-devoluciones.pdf" download target="_blank" className="text-gray-500 hover:text-primary">Política de devolución</Link>
+          </li>
         </ul>
       </div>
 

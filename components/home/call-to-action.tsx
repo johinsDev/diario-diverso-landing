@@ -9,7 +9,7 @@ export function CallToAction() {
       <div className="relative bg-accent/20 rounded-lg px-4 md:px-16 py-12 text-left overflow-hidden flex flex-col">
         <div className="w-full md:w-3/5 lg:w-1/2">
           <h2 className="text-h2 leading-h2 text-foreground font-semibold">
-            todavia pensandolo?
+            ¿Todavía pensándolo?
           </h2>
 
           <div className="text-foreground/70 mt-4 text-xl">

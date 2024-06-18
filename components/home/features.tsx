@@ -18,7 +18,7 @@ type Feature = {
 const FEATURES: Feature[] = [
   {
     title: "Mejora tu salud mental",
-    description: ["Reduce el estrés", "Aumenta tu autoconsciencia"],
+    description: ["Reduce el estrés", "Aumenta tu autoconciencia"],
     icon: Brain
   },
   {
@@ -28,7 +28,7 @@ const FEATURES: Feature[] = [
   },
   {
     title: "Mejora la productividad",
-    description: ["Establecimiento de metas", "Mejor organización"],
+    description: ["Establce tus metas", "Mejora tu organización"],
     icon: Productivity
   },
   {
@@ -38,7 +38,7 @@ const FEATURES: Feature[] = [
   },
   {
     title: "Beneficios emocionales",
-    description: ["Procesamiento de emociones", "Aumenta la gratitud"],
+    description: ["Procesamiento de tus emociones", "Aumenta la gratitud"],
     icon: Love
   },
   {
@@ -53,7 +53,7 @@ const FEATURES: Feature[] = [
   },
   {
     title: "Mejora tus relaciones",
-    description: ["Calidad de tiempo", "Nuevas experiencia juntos"],
+    description: ["Calidad de tiempo", "Nuevas experiencias juntos"],
     icon: Together
   }
 ]
