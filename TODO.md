@@ -1,4 +1,3 @@
-whatspp float
 about us page
 faq page
 
@@ -12,3 +11,6 @@ detail productg
 detail blogg
 performacen 100
 seo sanity and static
+
+malchip
+subir el contendio real
