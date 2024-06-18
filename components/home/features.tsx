@@ -78,7 +78,7 @@ export function Features() {
               return (
                 <CarouselItem
                   key={i}
-                  className="md:basis-[45%] pl-2 md:pl-4 lg:basis-1/3 xl:basis-1/4 basis-[80%]"
+                  className="basis-[80%] pl-2 md:pl-4 md:basis-[40%] lg:basis-1/3 xl:basis-1/4"
                 >
                   <article className="bg-primary relative text-white p-6 flex flex-col justify-end gap-4 rounded-2xl hover:bg-accent/60 group cursor-pointer transition-all aspect-[2/3] text-left">
                     <Image src='/bg-service.svg' width={192} height={192} alt="Service Image" className="absolute top-0 size-32 right-0 -rotate-90 transform" />
