@@ -2,25 +2,25 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "../ui/button"
 
-const IMAGES = ['/habit.jpg', '/aventuras.jpg', '/crecimiento.jpg', '/lectura.jpg']
+const IMAGES = ['/products/lectura-azul-13.png', '/products/gratitud-verde-5.png', '/products/pareja-crema-3.png', '/products/amigos-verde-1.png', '/products/habitos-azul-11.png']
 
 export function BestSeller() {
-  return <section className="full-width">
+  return <section className="full-width bg-secondary/20">
     <div className="container mx-auto text-center py-20">
-      <div className="text-gray-600">
-        BEST SELLER
-      </div>
+
       <div className="text-h2 leading-h2 font-montserrat font-bold">Nuestros diarios</div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 mt-16 text-left gap-12">
-        {
-          new Array(4).fill(0).map((_, i) => {
-            const image = IMAGES[i % IMAGES.length]
+      <div className="text-gray-600 text-xs mt-2 lg:text-base lowercase first-letter:capitalize">
+        DIFERENTES PORTADAS Y COLORES PARA QUE LO PERSONALICES Y LE DES TU ESTILO
+      </div>
 
+      <div className="flex flex-col md:grid md:grid-cols-3 xl:grid-cols-5 items-center mt-8 lg:mt-16 text-left gap-y-12 gap-x-4 lg:gap-y-16">
+        {
+          IMAGES.map((image, i) => {
             return (
               <Link
                 href="#"
-                className="relative aspect-[2/3] duration-500 ease-in-out inline-block perspective-750 hover:rotate-z-0"
+                className="relative aspect-[2/3] min-h-96 duration-500 ease-in-out inline-block perspective-750 hover:rotate-z-0 md:min-h-full"
                 key={i}
 
               >
@@ -69,11 +69,12 @@ export function BestSeller() {
                   </div>
                   <Image
                     src={image}
-                    width={500}
-                    height={500}
+                    width={400}
+                    height={590}
                     layout='responsive'
                     alt="Service Image"
-                    className="aspect-[2/3] rounded-tr-lg rounded-br-lg"
+                    className="aspect-[2/3]"
+                    sizes="(min-width: 1280px) 20vw, (min-width: 768px) 33vw, 50vw"
                   />
                 </div>
               </Link>
@@ -83,7 +84,7 @@ export function BestSeller() {
       </div>
 
       <Button size={'xl'} className="mt-12" asChild variant='link'>
-        <Link href={'/products'}>Ver más diarios</Link>
+        <Link href={'/tienda'}>Ver tienda</Link>
       </Button>
     </div>
   </section>
