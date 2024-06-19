@@ -1,3 +1,7 @@
+import ListOfProducts from "@/components/store/categories/list-of-products";
+import { PRODUCTS } from "@/constants";
+
 export default function Page() {
-  return <h1> LIST ALL PRODUCTS</h1>;
+  return <ListOfProducts products={PRODUCTS} />
+
 }

@@ -2,6 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { Category } from "@/types";
+import { Search } from "lucide-react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 
@@ -22,7 +23,7 @@ export default function FilterCategories({ categories }: Props) {
         return (
           <Link
             key={category.id}
-            href={`/tienda/categorias/${category.slug}`}
+            href={category.slug ? `/tienda/categorias/${category.slug}` : "/tienda"}
             className={cn(
               "px-8 py-3 border border-border rounded-full hover:bg-primary hover:text-white font-medium",
               {
@@ -34,6 +35,10 @@ export default function FilterCategories({ categories }: Props) {
           </Link>
         );
       })}
+
+      <button className="ml-auto text-muted-foreground">
+        <Search size={32} />
+      </button>
     </div>
   );
 }
