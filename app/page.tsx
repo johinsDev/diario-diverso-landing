@@ -99,7 +99,11 @@ export default async function Home() {
           <div className="w-full lg:w-2/5 lg:block">
             <div className="items-center flex-wrap justify-center hidden lg:flex">
               {images.map((image) => (
-                <Link key={image.src} href={image.url} className={image.className}>
+                <Link
+                  key={image.src}
+                  href={image.url}
+                  className={image.className}
+                >
                   <Image
                     src={image.src}
                     width={180}
