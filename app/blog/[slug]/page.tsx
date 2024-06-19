@@ -1,3 +1,3 @@
 export default function ProductPage() {
-  return null
+  return null;
 }

@@ -5,8 +5,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "format": "npx prettier --write . --ignore-path .gitignore",
+    "lint": "next lint .",
+    "lint:fix": "npm run format && npm run lint -- --fix",
     "start": "next start",
-    "lint": "next lint"
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.0.5",

@@ -1,9 +1,9 @@
-'use client'
+"use client";
 
 import { convertHEXtoHSL_Updated } from "@/lib/utils";
 import { Copy } from "lucide-react";
 import { useState } from "react";
-import { SketchPicker } from 'react-color';
+import { SketchPicker } from "react-color";
 import { Button } from "../ui/button";
 
 export type TStateProperties =
@@ -144,7 +144,7 @@ const ColorSwatch = ({ storeVariable, colorVariable }: TColorSwatch) => {
   const handleChange = (eventValue: string) => {
     (document.querySelector(":root") as HTMLElement)?.style.setProperty(
       colorVariable,
-      convertHEXtoHSL_Updated(eventValue)
+      convertHEXtoHSL_Updated(eventValue),
     );
 
     setColor(eventValue);
@@ -153,25 +153,21 @@ const ColorSwatch = ({ storeVariable, colorVariable }: TColorSwatch) => {
   return (
     <div className="flex flex-col items-center justify-between px-2">
       <h1 className="text-xl capitalize font-medium">{storeVariable}</h1>
-      <SketchPicker
-        color={color}
-        onChange={(e) => handleChange(e.hex)}
-      />
+      <SketchPicker color={color} onChange={(e) => handleChange(e.hex)} />
     </div>
   );
 };
-
 
 const AsideThemeEdit = () => {
   const handleThemeCopyOnClick = () => {
     const rootStyles = getComputedStyle(document.documentElement);
 
     const variables = SwatchMap.reduce((acc, curr) => {
-
-      return { ...acc, [curr.colorVariable]: rootStyles.getPropertyValue(curr.colorVariable) };
+      return {
+        ...acc,
+        [curr.colorVariable]: rootStyles.getPropertyValue(curr.colorVariable),
+      };
     }, {});
-
-
 
     navigator.clipboard.writeText(JSON.stringify(variables, null, 2));
 

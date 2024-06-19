@@ -1,4 +1,4 @@
-import { SVGProps } from "react"
+import { SVGProps } from "react";
 const Innovation = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -21,5 +21,5 @@ const Innovation = (props: SVGProps<SVGSVGElement>) => (
     <path d="M53 89.55H41a3.48 3.48 0 0 1-3.48-3.48V77a.74.74 0 0 1 .75-.75h17.5a.74.74 0 0 1 .75.75v9A3.48 3.48 0 0 1 53 89.55ZM39 77.77v8.3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8.3Z" />
     <path d="M36.46 82.1a.75.75 0 0 1-.75-.71.76.76 0 0 1 .71-.79l20.75-1.08a.75.75 0 0 1 .07 1.5L36.5 82.1ZM36.46 86.52A.75.75 0 0 1 36.4 85l20.75-1.59a.75.75 0 0 1 .8.69.74.74 0 0 1-.69.8l-20.74 1.61ZM46.83 92.75a4 4 0 0 1-3.95-4 .75.75 0 0 1 .75-.75H50a.74.74 0 0 1 .75.75 4 4 0 0 1-3.92 4Zm-2.33-3.2a2.45 2.45 0 0 0 4.67 0Z" />
   </svg>
-)
-export default Innovation
+);
+export default Innovation;
