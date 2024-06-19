@@ -13,6 +13,7 @@ type Image = {
   className: string;
   base64?: string;
   classNameMobile?: string;
+  url?: string;
 };
 
 const IMAGES = [
@@ -22,6 +23,7 @@ const IMAGES = [
       "aspect-4/3 object-cover drop-shadow-xl transform -rotate-12 -translate-x-8 translate-y-6 cursor-pointer hover:z-10 hover:scale-105 transition-transform duration-300 ease-in-out border border-secondary/50 w-1/3",
     classNameMobile:
       "aspect-4/3 object-cover drop-shadow-xl transform cursor-pointer hover:scale-105 transition-transform duration-300 ease-in-out border border-secondary/50 w-1/3 absolute left-[20%] top-0 -rotate-[30deg] origin-bottom-right -translate-y-[12%]",
+    url: "/tienda/pajeras-azul",
   },
   {
     src: "/products/lectura-crema-1.png",
@@ -29,6 +31,7 @@ const IMAGES = [
       "aspect-4/3 object-cover drop-shadow-xl transform hover:scale-105 duration-300 ease-in-out border hover:z-10 border-secondary/50 cursor-pointer w-1/3",
     classNameMobile:
       "aspect-4/3 object-cover drop-shadow-xl transform cursor-pointer hover:scale-105 transition-transform duration-300 ease-in-out border border-secondary/50 w-1/3 absolute left-1/2 top-0 -translate-x-1/2",
+    url: "/tienda/lectura-crema",
   },
   {
     src: "/products/amigos-verde-9.png",
@@ -36,6 +39,7 @@ const IMAGES = [
       "aspect-4/3 object-cover drop-shadow-xl transform rotate-12 translate-x-8 translate-y-6 cursor-pointer hover:z-10 hover:scale-105 transition-transform duration-300 ease-in-out border border-secondary/50 w-1/3",
     classNameMobile:
       "aspect-4/3 object-cover drop-shadow-xl transform cursor-pointer hover:scale-105 transition-transform duration-300 ease-in-out border border-secondary/50 w-1/3 absolute right-[20%] top-0 rotate-[30deg] origin-bottom-left -translate-y-[12%]",
+    url: "/tienda/amigos-verde",
   },
   {
     src: "/products/habitos-verde-3.png",
@@ -43,6 +47,7 @@ const IMAGES = [
       "aspect-4/3 object-cover drop-shadow-xl transform -rotate-6 translate-y-1 cursor-pointer hover:scale-105 transition-transform duration-300 ease-in-out border border-secondary/50 w-1/3 -translate-x-4",
     classNameMobile:
       "aspect-4/3 object-cover drop-shadow-xl transform cursor-pointer hover:scale-105 transition-transform duration-300 ease-in-out border border-secondary/50 w-1/3 absolute left-[5%] top-0 -rotate-[60deg] origin-bottom-right -translate-y-[12%]",
+    url: "/tienda/habitos-verde",
   },
   {
     src: "/products/gratitud-azul-7.png",
@@ -50,6 +55,7 @@ const IMAGES = [
       "aspect-4/3 object-cover drop-shadow-xl transform rotate-6 translate-y-1 cursor-pointer translate-x-4 hover:z-10 hover:scale-105 transition-transform duration-300 ease-in-out border border-secondary/50 w-1/3",
     classNameMobile:
       "aspect-4/3 object-cover drop-shadow-xl transform cursor-pointer hover:scale-105 transition-transform duration-300 ease-in-out border border-secondary/50 w-1/3 absolute right-[5%] top-0 rotate-[60deg] origin-bottom-left -translate-y-[12%]",
+    url: "/tienda/gratitud-azul",
   },
 ];
 
@@ -93,33 +99,34 @@ export default async function Home() {
           <div className="w-full lg:w-2/5 lg:block">
             <div className="items-center flex-wrap justify-center hidden lg:flex">
               {images.map((image) => (
-                <Image
-                  key={image.src}
-                  src={image.src}
-                  width={180}
-                  height={260}
-                  alt="Hero Image"
-                  className={image.className}
-                  priority
-                  placeholder="blur"
-                  blurDataURL={image.base64}
-                />
+                <Link key={image.src} href={image.url} className={image.className}>
+                  <Image
+                    src={image.src}
+                    width={180}
+                    height={260}
+                    alt="Hero Image"
+                    priority
+                    placeholder="blur"
+                    blurDataURL={image.base64}
+                  />
+                </Link>
               ))}
             </div>
 
             <div className="flex items-center flex-wrap justify-center h-52 md:h-80 lg:h-52 relative full-width overflow-hidden lg:hidden">
               {images.map((image) => (
-                <Image
-                  key={image.src}
-                  src={image.src}
-                  width={180}
-                  height={260}
-                  alt="Hero Image"
-                  className={image.classNameMobile}
-                  priority
-                  placeholder="blur"
-                  blurDataURL={image.base64}
-                />
+                <Link key={image.src} href={image.url}>
+                  <Image
+                    src={image.src}
+                    width={180}
+                    height={260}
+                    alt="Hero Image"
+                    className={image.classNameMobile}
+                    priority
+                    placeholder="blur"
+                    blurDataURL={image.base64}
+                  />
+                </Link>
               ))}
             </div>
           </div>

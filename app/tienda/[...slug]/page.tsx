@@ -1,3 +1,5 @@
+import Maintenance from "@/components/shared/maintenance";
+
 export default function Page() {
-  return <h1>DETAIL OF PROD</h1>;
+  return <Maintenance />;
 }
