@@ -62,7 +62,7 @@ export default function FilterCategories({ categories }: Props) {
                   : "/tienda"
               }
               className={cn(
-                "px-8 py-3 border border-border rounded-full hover:bg-primary hover:text-white font-medium hidden lg:block transition-colors duration-200",
+                "px-8 py-3 border border-border rounded-full hover:bg-primary hover:text-white font-medium hidden md:block transition-colors duration-200",
                 {
                   "bg-primary text-white": isActive,
                 },
@@ -83,7 +83,7 @@ export default function FilterCategories({ categories }: Props) {
           }}
           defaultValue="all"
         >
-          <SelectTrigger className="lg:hidden flex-1">
+          <SelectTrigger className="md:hidden flex-1">
             <SelectValue placeholder="Categorías" />
           </SelectTrigger>
           <SelectContent>
