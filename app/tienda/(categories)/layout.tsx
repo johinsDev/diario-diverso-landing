@@ -1,6 +1,6 @@
 import FilterCategories from "@/components/store/categories/filter-categories";
 import { CATEGORIES } from "@/constants";
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, Suspense } from "react";
 
 export default function CategoriesLayout(props: PropsWithChildren<{}>) {
   return (
@@ -11,7 +11,9 @@ export default function CategoriesLayout(props: PropsWithChildren<{}>) {
         Consulta nuestra colección completa de productos.
       </div>
 
-      <FilterCategories categories={CATEGORIES} />
+      <Suspense>
+        <FilterCategories categories={CATEGORIES} />
+      </Suspense>
 
       {props.children}
     </main>

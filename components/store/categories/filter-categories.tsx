@@ -88,7 +88,7 @@ export default function FilterCategories({ categories }: Props) {
           </SelectTrigger>
           <SelectContent>
             {categories.map((category) => (
-              <SelectItem key={category.id} value={category.slug || "all"} >
+              <SelectItem key={category.id} value={category.slug || "all"}>
                 {category.name}
               </SelectItem>
             ))}

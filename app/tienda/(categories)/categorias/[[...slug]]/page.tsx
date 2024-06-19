@@ -1,5 +1,6 @@
 import ListOfProducts from "@/components/store/categories/list-of-products";
 import { PRODUCTS } from "@/constants";
+import { Suspense } from "react";
 
 type Props = {
   params: {
@@ -25,7 +26,9 @@ export default function Page(props: Props) {
         </div>
       )}
 
-      <ListOfProducts products={products} />
+      <Suspense>
+        <ListOfProducts products={products} />
+      </Suspense>
     </>
   );
 }
