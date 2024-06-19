@@ -49,7 +49,7 @@ export default function FilterCategories({ categories }: Props) {
     <>
       <SearchProducts />
 
-      <div className="flex items-center gap-8 mt-8 flex-wrap">
+      <div className="flex items-center gap-4 mt-8 flex-wrap">
         {categories.map((category) => {
           const isActive = category.slug === categorySlug;
 
