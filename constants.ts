@@ -19,8 +19,8 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 2,
-    name: "Diario de gratitud",
-    slug: "diario-de-gratitud",
+    name: "Diario de lectura",
+    slug: "diario-de-lectura",
     price: 100000,
     highlight: true,
     mainImage: "/products/lectura-azul-13.png",
@@ -36,7 +36,7 @@ export const PRODUCTS: Product[] = [
     category: CATEGORIES[1],
   },
   {
-    id: 3,
+    id: 4,
     name: "Kit plenitud",
     slug: "kit-plenitud",
     price: 100000,
