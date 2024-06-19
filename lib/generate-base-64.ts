@@ -14,9 +14,9 @@ const baseUrl = generateSiteURL();
 
 export async function generateBase64(url: string) {
   const base64str = await fetch(
-    `${baseUrl}/_next/image?url=${encodeURIComponent(url)}&w=16&q=10`
+    `${baseUrl}/_next/image?url=${encodeURIComponent(url)}&w=16&q=10`,
   ).then(async (res) =>
-    Buffer.from(await res.arrayBuffer()).toString("base64")
+    Buffer.from(await res.arrayBuffer()).toString("base64"),
   );
 
   const blurSvg = `
