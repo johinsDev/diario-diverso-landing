@@ -22,7 +22,6 @@ const SearchProducts = dynamic(
 );
 
 export default function FilterCategories({ categories }: Props) {
-
   const params = useParams<{ slug?: string[] }>();
 
   const router = useRouter();
@@ -37,7 +36,7 @@ export default function FilterCategories({ categories }: Props) {
     searchParams.set("search", "true");
 
     router.push(`?${searchParams.toString()}`);
-  }
+  };
 
   return (
     <>
@@ -51,7 +50,9 @@ export default function FilterCategories({ categories }: Props) {
             <Link
               key={category.id}
               href={
-                category.slug ? `/tienda/categorias/${category.slug}` : "/tienda"
+                category.slug
+                  ? `/tienda/categorias/${category.slug}`
+                  : "/tienda"
               }
               className={cn(
                 "px-8 py-3 border border-border rounded-full hover:bg-primary hover:text-white font-medium",
@@ -64,7 +65,6 @@ export default function FilterCategories({ categories }: Props) {
             </Link>
           );
         })}
-
 
         <button
           className="ml-auto text-muted-foreground"
