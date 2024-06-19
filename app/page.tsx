@@ -4,6 +4,7 @@ import { CallToAction } from "@/components/home/call-to-action";
 import { Features } from "@/components/home/features";
 import { LatestPost } from "@/components/home/latest-post";
 import { Button } from "@/components/ui/button";
+import { generateBase64 } from "@/lib/generate-base-64";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -51,46 +52,6 @@ const IMAGES = [
       "aspect-4/3 object-cover drop-shadow-xl transform cursor-pointer hover:scale-105 transition-transform duration-300 ease-in-out border border-secondary/50 w-1/3 absolute right-[5%] top-0 rotate-[60deg] origin-bottom-left -translate-y-[12%]",
   },
 ];
-
-function generateSiteURL() {
-  if (process.env["VERCEL_ENV"] === "production") {
-    return "https://www.diariodiverso.com";
-  }
-
-  if (process.env["VERCEL_ENV"] === "preview") {
-    return `https://${process.env["VERCEL_URL"]}`;
-  }
-
-  return "http://localhost:3000";
-}
-
-const baseUrl = generateSiteURL();
-
-async function generateBase64(url: string) {
-  const base64str = await fetch(
-    `${baseUrl}/_next/image?url=${encodeURIComponent(url)}&w=16&q=10`,
-  ).then(async (res) =>
-    Buffer.from(await res.arrayBuffer()).toString("base64"),
-  );
-
-  const blurSvg = `
-    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 5'>
-      <filter id='b' color-interpolation-filters='sRGB'>
-        <feGaussianBlur stdDeviation='1' />
-      </filter>
-
-      <image preserveAspectRatio='none' filter='url(#b)' x='0' y='0' height='100%' width='100%'
-      href='data:image/avif;base64,${base64str}' />
-    </svg>
-  `;
-
-  const toBase64 = (str: string) =>
-    typeof window === "undefined"
-      ? Buffer.from(str).toString("base64")
-      : window.btoa(str);
-
-  return `data:image/svg+xml;base64,${toBase64(blurSvg)}`;
-}
 
 export default async function Home() {
   const images = await Promise.all(

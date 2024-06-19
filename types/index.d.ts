@@ -12,5 +12,6 @@ export interface Product {
   highlight: boolean;
   mainImage: string;
   category: Category;
+  base64?: string;
   // variants
 }
