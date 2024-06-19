@@ -1,5 +1,12 @@
 "use client";
 
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { cn } from "@/lib/utils";
 import { Category } from "@/types";
 import { Search } from "lucide-react";
@@ -42,7 +49,7 @@ export default function FilterCategories({ categories }: Props) {
     <>
       <SearchProducts />
 
-      <div className="flex items-center gap-4 mt-8">
+      <div className="flex items-center gap-8 mt-8 flex-wrap">
         {categories.map((category) => {
           const isActive = category.slug === categorySlug;
 
@@ -55,7 +62,7 @@ export default function FilterCategories({ categories }: Props) {
                   : "/tienda"
               }
               className={cn(
-                "px-8 py-3 border border-border rounded-full hover:bg-primary hover:text-white font-medium",
+                "px-8 py-3 border border-border rounded-full hover:bg-primary hover:text-white font-medium hidden lg:block transition-colors duration-200",
                 {
                   "bg-primary text-white": isActive,
                 },
@@ -65,6 +72,28 @@ export default function FilterCategories({ categories }: Props) {
             </Link>
           );
         })}
+
+        <Select
+          onValueChange={(value) => {
+            if (value === "all") {
+              router.push("/tienda");
+            } else {
+              router.push(`/tienda/categorias/${value}`);
+            }
+          }}
+          defaultValue="all"
+        >
+          <SelectTrigger className="lg:hidden flex-1">
+            <SelectValue placeholder="Categorías" />
+          </SelectTrigger>
+          <SelectContent>
+            {categories.map((category) => (
+              <SelectItem key={category.id} value={category.slug || "all"} >
+                {category.name}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
 
         <button
           className="ml-auto text-muted-foreground"
