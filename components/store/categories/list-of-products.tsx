@@ -30,8 +30,6 @@ export default function ListOfProducts({ products }: Props) {
                 width={400}
                 height={700}
                 className="aspect-[3/4] object-contain"
-                placeholder="blur"
-                blurDataURL={product.base64}
               />
             </div>
 
