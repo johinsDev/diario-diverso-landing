@@ -68,7 +68,7 @@ export function Features() {
   return (
     <div className="full-width overflow-x-hidden">
       <div className="container mx-auto text-center py-20">
-        <div className="text-h3 leading-h3 font-montserrat font-bold lowercase first-letter:capitalize">
+        <div className="text-h2 leading-h2 font-montserrat font-bold lowercase first-letter:capitalize">
           ¿POR QUÉ USAR NUESTROS DIARIOS?
         </div>
 

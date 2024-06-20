@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { useImagesModal } from "@/app/store/images-modal";
 import {
@@ -24,7 +24,8 @@ export function ImagesModal({ images }: ImagesModalProps) {
 
   const imageIndex = images.findIndex((image) => image.src === src);
 
-  const startIndex = Math.min(imageIndex || 0, images.length - 1);
+
+  const startIndex = !!src ? Math.min(imageIndex, images.length - 1) : undefined
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && handleClose()}>
