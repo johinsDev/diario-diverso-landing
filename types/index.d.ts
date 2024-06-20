@@ -13,5 +13,14 @@ export interface Product {
   mainImage: string;
   category: Category;
   base64?: string;
+  images: Image[];
   // variants
+}
+
+interface ImageType {
+  src: string;
+  alt: string;
+  order: number;
+  principal?: boolean;
+  base64?: string;
 }

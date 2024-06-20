@@ -289,7 +289,12 @@ const CarouselIndicator = React.forwardRef<
   }, [api, onSelect]);
 
   return (
-    <button ref={ref} onClick={() => api?.scrollTo(index)} {...props} className="py-2 px-1 md:py-3 md:px-2">
+    <button
+      ref={ref}
+      onClick={() => api?.scrollTo(index)}
+      {...props}
+      className="py-2 px-1 md:py-3 md:px-2"
+    >
       <div
         className={cn(
           "size-2.5 md:size-3 rounded-full",
@@ -344,5 +349,5 @@ export {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-  type CarouselApi
+  type CarouselApi,
 };

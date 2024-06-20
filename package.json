@@ -25,7 +25,8 @@
     "react-dom": "^18",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-3d": "^1.0.6",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
     "@types/color-convert": "^2.0.3",
