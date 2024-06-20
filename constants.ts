@@ -99,3 +99,5 @@ export const PRODUCTS: Product[] = [
     ],
   },
 ];
+
+export const RELATED_PRODUCTS: Product[] = PRODUCTS.slice(1, 4);

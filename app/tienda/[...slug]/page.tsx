@@ -1,6 +1,8 @@
 import { GridImages } from "@/components/store/detail/grid-images";
+import { ProductCard } from "@/components/store/shared/product-card";
 import { Button } from "@/components/ui/button";
-import { PRODUCTS } from "@/constants";
+import { PRODUCTS, RELATED_PRODUCTS } from "@/constants";
+import { currencyFormat } from "@/lib/utils";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 
@@ -17,11 +19,7 @@ const ImagesModal = dynamic(
 export default function Page() {
   const product = PRODUCTS[0];
 
-  const price = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    maximumFractionDigits: 0,
-  }).format(product.price);
+  const price = currencyFormat(product.price);
 
   return (
     <main className="flex-1 flex flex-col container py-4 md:py-10">
@@ -100,6 +98,25 @@ export default function Page() {
         </div>
       </div>
 
+      <section className="w-3/4 mx-auto aspect-video rounded-lg overflow-hidden mt-8 md:mt-20">
+        <iframe id="player" width="640"
+          className="w-full aspect-video"
+          src="http://www.youtube.com/embed/wUhqwq8Rwoc?enablejsapi=1&origin=http://example.com"
+          frameBorder="0"></iframe>
+      </section>
+
+      <section className="mt-8 md:mt-20">
+        <h2 className="text-2xl md:text-h3 leading-h3 mb-8">
+          Productos relacionados
+        </h2>
+
+        <div className="grid  md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {RELATED_PRODUCTS.map((product) => {
+            return <ProductCard product={product} key={product.id} />;
+          })}
+        </div>
+
+      </section>
       <ImagesModal images={product.images.sort((a, b) => a.order - b.order)} />
     </main>
   );
