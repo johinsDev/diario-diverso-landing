@@ -1,5 +1,8 @@
 import ListOfProducts from "@/components/store/categories/list-of-products";
-import { loadProductsByCategory } from "@/sanity/loader/loadQuery";
+import { _generateMetadata } from "@/sanity/lib/utils";
+import { generateStaticSlugs } from "@/sanity/loader/generateStaticSlugs";
+import { loadCategoryBySlug, loadProductsByCategory } from "@/sanity/loader/loadQuery";
+import { Metadata } from "next";
 import { Suspense } from "react";
 
 type Props = {
@@ -7,6 +10,22 @@ type Props = {
     slug: string[];
   };
 };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { data: category } = await loadCategoryBySlug(params.slug.join("/"));
+
+  return _generateMetadata({
+    title: category?.seo?.title || category?.title,
+    description: category?.seo?.description || category?.description,
+    image: category?.seo?.image,
+  });
+}
+
+export async function generateStaticParams() {
+  const slugs = await generateStaticSlugs('category');
+
+  return slugs.map((slug) => [slug]);
+}
 
 export default async function Page(props: Props) {
   const category = props.params.slug?.join("/") || "";

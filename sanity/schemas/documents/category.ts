@@ -33,6 +33,12 @@ export default defineType({
       ],
       description: "Category content",
     }),
+    defineField({
+      name: "seo",
+      title: "SEO",
+      type: "seo",
+      description: "SEO settings",
+    }),
   ],
   preview: {
     select: {

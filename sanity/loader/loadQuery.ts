@@ -10,6 +10,7 @@ import {
   productByCategoryQuery,
   productsQuery,
   queryCategories,
+  queryCategoryBySlug,
 } from "../lib/queries";
 
 const serverClient = client.withConfig({
@@ -73,5 +74,13 @@ export function loadCategories() {
     queryCategories,
     {},
     { next: { tags: ["categories"] } }
+  );
+}
+
+export function loadCategoryBySlug(slug: string) {
+  return loadQuery<Category>(
+    queryCategoryBySlug,
+    { slug },
+    { next: { tags: ["categories", slug] } }
   );
 }

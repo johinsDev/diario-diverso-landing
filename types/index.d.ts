@@ -5,6 +5,8 @@ export interface Category {
   _id: string;
   title: string;
   slug: string;
+  description?: PortableTextBlock[];
+  seo?: Seo;
 }
 
 export interface Product {

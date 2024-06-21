@@ -58,5 +58,16 @@ export const queryCategories = groq`
     _id,
     title,
     "slug": slug.current,
+    seo,
+  }
+`;
+
+export const queryCategoryBySlug = groq`
+  *[_type == "category" && slug.current == $slug]{
+    ...,
+    _id,
+    title,
+    "slug": slug.current,
+    seo,
   }
 `;
