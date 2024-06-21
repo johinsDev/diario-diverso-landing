@@ -14,7 +14,7 @@ export default function SubscribeForm() {
         toast({
           title: "¡Ups!",
           description: "Ha ocurrido un error, por favor intenta de nuevo.",
-          status: "error",
+          variant: "destructive",
         })
 
         return
@@ -23,7 +23,6 @@ export default function SubscribeForm() {
       toast({
         title: "¡Gracias por subscribirte!",
         description: "Te hemos enviado un correo de confirmación.",
-        status: "success",
       })
     },
   });

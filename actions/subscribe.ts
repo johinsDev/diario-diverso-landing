@@ -9,9 +9,9 @@ export const subscribe = actionClient
   .action(async ({ parsedInput }) => {
     try {
       // 2. Retrieve Mailchimp credentials from environment variables
-      const API_KEY = "d6480ea025273a22f63ae7485c04a960-us22";
-      const API_SERVER = "us22";
-      const AUDIENCE_ID = "ca41203380";
+      const API_KEY = process.env.MAILCHIMP_API_KEY;
+      const API_SERVER = process.env.MAILCHIMP_API_SERVER;
+      const AUDIENCE_ID = process.env.MAILCHIMP_AUDIENCE_ID;
 
       // 3. Construct Mailchimp API request URL
       const url = `https://${API_SERVER}.api.mailchimp.com/3.0/lists/${AUDIENCE_ID}/members`;
