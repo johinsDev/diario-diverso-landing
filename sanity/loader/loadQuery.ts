@@ -6,7 +6,11 @@ import { draftMode } from "next/headers";
 import { client } from "@/sanity/lib/client";
 import { token } from "@/sanity/lib/token";
 import { Category, Product } from "@/types";
-import { productsQuery, queryCategories } from "../lib/queries";
+import {
+  productByCategoryQuery,
+  productsQuery,
+  queryCategories,
+} from "../lib/queries";
 
 const serverClient = client.withConfig({
   token,
@@ -52,15 +56,15 @@ export function loadProducts() {
   return loadQuery<Product[]>(
     productsQuery,
     {},
-    { next: { tags: ["products"] } },
+    { next: { tags: ["products"] } }
   );
 }
 
 export function loadProductsByCategory(categorySlug: string) {
   return loadQuery<Product[]>(
-    productsQuery,
+    productByCategoryQuery,
     { categorySlug },
-    { next: { tags: ["products", categorySlug] } },
+    { next: { tags: ["products", categorySlug] } }
   );
 }
 
@@ -68,6 +72,6 @@ export function loadCategories() {
   return loadQuery<Category[]>(
     queryCategories,
     {},
-    { next: { tags: ["categories"] } },
+    { next: { tags: ["categories"] } }
   );
 }

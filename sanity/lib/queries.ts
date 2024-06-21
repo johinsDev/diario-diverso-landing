@@ -27,7 +27,7 @@ export const productsQuery = groq`
 `;
 
 export const productByCategoryQuery = groq`
-  *[_type == "product" && $categorySlug in category[].slug.current] {
+  *[_type == "product" && $categorySlug in category[]->slug.current] {
     _id,
     title,
     "slug": slug.current,

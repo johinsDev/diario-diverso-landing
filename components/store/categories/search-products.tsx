@@ -5,11 +5,17 @@ import {
   CommandEmpty,
   CommandGroup,
   CommandInput,
+  CommandItem,
   CommandList
 } from "@/components/ui/command";
+import { Product } from "@/types";
 import { useRouter, useSearchParams } from "next/navigation";
 
-export function SearchProducts() {
+type Props = {
+  products: Product[];
+};
+
+export function SearchProducts({ products }: Props) {
   const search = useSearchParams();
 
   const router = useRouter();
@@ -27,6 +33,7 @@ export function SearchProducts() {
     router.push(`?${searchParams.toString()}`);
   };
 
+
   return (
     <CommandDialog
       open={open}
@@ -40,15 +47,15 @@ export function SearchProducts() {
         <CommandEmpty>No se encontraron productos</CommandEmpty>
 
         <CommandGroup heading="Productos">
-          {/* {PRODUCTS.map((product) => (
+          {products.map((product) => (
             <CommandItem
-              key={product.id}
+              key={product._id}
               onSelect={() => router.push(`/tienda/${product.slug}`)}
               className="cursor-pointer"
             >
-              <span>{product.name}</span>
+              <span>{product.title}</span>
             </CommandItem>
-          ))} */}
+          ))}
         </CommandGroup>
       </CommandList>
     </CommandDialog>

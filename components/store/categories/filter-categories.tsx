@@ -8,7 +8,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
-import { Category } from "@/types";
+import { Category, Product } from "@/types";
 import { Search } from "lucide-react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
@@ -16,6 +16,7 @@ import { useParams, useRouter, useSearchParams } from "next/navigation";
 
 type Props = {
   categories: Category[];
+  products: Product[];
 };
 
 const SearchProducts = dynamic(
@@ -35,7 +36,7 @@ const ALL_CATEGORY: Category = {
   _type: "category",
 };
 
-export default function FilterCategories({ categories: _categories }: Props) {
+export default function FilterCategories({ categories: _categories, products }: Props) {
   const params = useParams<{ slug?: string[] }>();
 
   const router = useRouter();
@@ -56,7 +57,7 @@ export default function FilterCategories({ categories: _categories }: Props) {
 
   return (
     <>
-      <SearchProducts />
+      <SearchProducts products={products} />
 
       <div className="flex items-center gap-4 mt-8 flex-wrap">
         {categories.map((category) => {
