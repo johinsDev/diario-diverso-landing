@@ -38,7 +38,7 @@ export function GridImages({ product }: GridImagesProps) {
   const imagesRow = images.slice(0, IMAGES_PER_ROW);
 
   return (
-    <div className="flex flex-col-reverse w-full gap-2 xl:gap-x-4 xl:flex-row xl:w-1/2">
+    <div className="flex flex-col-reverse w-full gap-2 xl:gap-x-4 xl:flex-row xl:items-start xl:w-1/2">
       <div className="flex items-center gap-2 xl:flex-col xl:w-1/4">
         {imagesRow.map((image, index) => {
           const imageUrl =

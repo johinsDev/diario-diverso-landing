@@ -29,7 +29,6 @@ export function ImagesModal({ images }: ImagesModalProps) {
     ? Math.min(imageIndex, images.length - 1)
     : undefined;
 
-  console.log("images", images);
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && handleClose()}>

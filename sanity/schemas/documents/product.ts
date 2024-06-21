@@ -67,6 +67,19 @@ export default defineType({
       type: "gallery",
       description: "Product images",
     }),
+    // related products
+    defineField({
+      name: "relatedProducts",
+      title: "Related products",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: [{ type: "product" }],
+        },
+      ],
+      description: "Related products",
+    }),
     defineField({
       name: "seo",
       title: "SEO",

@@ -34,6 +34,21 @@ export const productBySlugQuery = groq`
     price,
     description,
     highlightInHome,
+    relatedProducts[]->{
+      ...,
+      "slug": slug.current,
+      price,
+         gallery{
+        ...,
+        images[]{
+          ...,
+          asset->{
+            ...,
+            "_ref": _id,
+          },
+        },
+      },
+    },
     category[]->{
       ...,
       "slug": slug.current,

@@ -2,7 +2,6 @@ import { CustomPortableText } from "@/components/shared/custom-portable-text";
 import { GridImages } from "@/components/store/detail/grid-images";
 import { ProductCard } from "@/components/store/shared/product-card";
 import { Button } from "@/components/ui/button";
-import { RELATED_PRODUCTS } from "@/constants";
 import { currencyFormat } from "@/lib/utils";
 import { loadProductBySlug } from "@/sanity/loader/loadQuery";
 import dynamic from "next/dynamic";
@@ -46,7 +45,7 @@ export default async function Page({ params }: Props) {
       <div className="flex gap-4 flex-col xl:gap-12 xl:flex-row xl:items-stretch">
         <GridImages product={product} />
 
-        <div className="xl:w-1/2 flex flex-col justify-between">
+        <div className="xl:w-1/2 flex flex-col justify-around">
           <div >
             <h1 className="text-h3 leading-h3 uppercase  mb-4">
               {product.title}
@@ -89,17 +88,17 @@ export default async function Page({ params }: Props) {
         ></iframe>
       </section> */}
 
-      <section className="mt-8 md:mt-20">
+      {!!product.relatedProducts?.length && <section className="mt-8 md:mt-20">
         <h2 className="text-2xl md:text-h3 leading-h3 mb-8">
           Productos relacionados
         </h2>
 
         <div className="grid  md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {RELATED_PRODUCTS.map((product) => {
+          {product.relatedProducts?.map((product) => {
             return <ProductCard product={product} key={product._id} />;
           })}
         </div>
-      </section>
+      </section>}
       <ImagesModal images={product.gallery?.images ?? []} />
     </main>
   );

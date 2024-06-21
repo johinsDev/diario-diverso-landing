@@ -40,6 +40,7 @@ export interface Product {
   _key: string;
   _type: "product";
   category: Category[];
+  relatedProducts?: Product[];
 }
 
 interface ImageType {

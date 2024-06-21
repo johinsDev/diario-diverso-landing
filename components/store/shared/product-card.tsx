@@ -27,7 +27,7 @@ export function ProductCard({ product, priority }: ProductCardProps) {
             alt={mainImage?.alt || "product"}
             className="object-contain h-full"
             width={270}
-            height={220}
+            height={400}
             sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
             blurDataURL={mainImage?.asset.metadata.lqip}
             placeholder="blur"
