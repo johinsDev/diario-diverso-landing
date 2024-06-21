@@ -104,7 +104,7 @@ export const queryCategories = groq`
 `;
 
 export const queryCategoryBySlug = groq`
-  *[_type == "category" && slug.current == $slug]{
+  *[_type == "category" && slug.current == $slug][0]{
     ...,
     _id,
     title,

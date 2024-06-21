@@ -1,12 +1,10 @@
-sanity
-about us page
-faq page
-
-list blog page
+seo general tienda/home/aboutus/faq conectaselo a sanity
 mailchimp
-seo
+faq
+about us
 posthog
-sanity product/post/menu nav/ menu footer/social/highylit products/higitlist blogg
+events
+list post
+connected with sanity
 
-detail blogg
-seo sanity and static
+detail postp

@@ -25,8 +25,11 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Diario Diverso",
-  description: "Tu vida, tus colores, tu diario.",
+  title: {
+    default: "Diarios Personalizados en Colombia",
+    template: "%s | Diario Diverso",
+  },
+  description: "Descubre nuestros diarios personalizados para mejorar tu bienestar emocional y crecimiento personal. Compra en Diario Diverso y encuentra el diario perfecto para ti.",
   openGraph: {
     type: "website",
     locale: "en_US",
