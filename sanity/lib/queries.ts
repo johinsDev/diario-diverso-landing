@@ -112,3 +112,56 @@ export const queryCategoryBySlug = groq`
     seo,
   }
 `;
+
+export const queryBestSeller = groq`
+  *[_type == "bestSeller"][0]{
+    ...,
+    _id,
+    products[]->{
+      ...,
+      "slug": slug.current,
+      price,
+      gallery{
+        ...,
+        images[]{
+          ...,
+          asset->{
+            ...,
+            "_ref": _id,
+          },
+        },
+      },
+    },
+  }
+`;
+
+export const queryHeroProducts = groq`
+  *[_type == "heroProducts"][0]{
+    ...,
+    _id,
+    products[0..4]{
+      image{
+        ...,
+        asset->{
+          ...,
+          "_ref": _id,
+        },
+      },
+      product->{
+        ...,
+        "slug": slug.current,
+        price,
+        gallery{
+          ...,
+          images[]{
+            ...,
+            asset->{
+              ...,
+              "_ref": _id,
+            },
+          },
+        },
+      },
+    },
+  }
+`;

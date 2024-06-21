@@ -4,9 +4,11 @@ import { CallToAction } from "@/components/home/call-to-action";
 import { Features } from "@/components/home/features";
 import { LatestPost } from "@/components/home/latest-post";
 import { Button } from "@/components/ui/button";
-import { generateBase64 } from "@/lib/generate-base-64";
+import { resolveHref, urlForImage } from "@/sanity/lib/utils";
+import { loadHeroProducts } from "@/sanity/loader/loadQuery";
 import Image from "next/image";
 import Link from "next/link";
+import { Suspense } from "react";
 
 type Image = {
   src: string;
@@ -60,15 +62,22 @@ const IMAGES = [
 ];
 
 export default async function Home() {
-  const images = await Promise.all(
-    IMAGES.map(async (image) => {
-      const base64 = await generateBase64(image.src);
+  const { data } = await loadHeroProducts();
 
-      return {
-        ...image,
-        base64,
-      };
-    }),
+  console.log(data);
+  const images = data.products.map((product, index) => {
+    const image = product?.image || product?.product?.gallery?.images[0];
+
+    const url = urlForImage(image)?.width(300).fit('crop').url() || '';
+
+    return {
+      src: url,
+      base64: image?.asset?.metadata?.lqip,
+      className: IMAGES[index].className,
+      classNameMobile: IMAGES[index].classNameMobile,
+      url: resolveHref('product', product?.product?.slug),
+    };
+  }
   );
 
   return (
@@ -139,7 +148,9 @@ export default async function Home() {
 
       <Features />
 
-      <BestSeller />
+      <Suspense>
+        <BestSeller />
+      </Suspense>
 
       <LatestPost />
 

@@ -26,16 +26,13 @@ export function urlForOpenGraphImage(image: Image | undefined) {
   return urlForImage(image)?.width(1200).height(627).fit("crop").url();
 }
 
-export function resolveHref(
-  documentType?: string,
-  slug?: string,
-): string | undefined {
+export function resolveHref(documentType?: string, slug?: string): string {
   switch (documentType) {
     case "product":
       return `/tienda/${slug}`;
     default:
       console.warn("Invalid document type:", documentType);
-      return undefined;
+      return "/";
   }
 }
 

@@ -9,6 +9,7 @@ import { loadProductBySlug } from "@/sanity/loader/loadQuery";
 import { Metadata } from "next";
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 const ImagesModal = dynamic(
   () =>
@@ -42,9 +43,12 @@ export async function generateStaticParams() {
   return slugs.map((slug) => [slug]);
 }
 
-
 export default async function Page({ params }: Props) {
   const { data: product } = await loadProductBySlug(params.slug.join("/"));
+
+  if (!product) {
+    return notFound();
+  }
 
   const price = currencyFormat(product.price);
 
@@ -66,7 +70,7 @@ export default async function Page({ params }: Props) {
         <GridImages product={product} />
 
         <div className="xl:w-1/2 flex flex-col justify-around">
-          <div >
+          <div>
             <h1 className="text-h3 leading-h3 uppercase  mb-4">
               {product.title}
             </h1>
@@ -108,17 +112,19 @@ export default async function Page({ params }: Props) {
         ></iframe>
       </section> */}
 
-      {!!product.relatedProducts?.length && <section className="mt-8 md:mt-20">
-        <h2 className="text-2xl md:text-h3 leading-h3 mb-8">
-          Productos relacionados
-        </h2>
+      {!!product.relatedProducts?.length && (
+        <section className="mt-8 md:mt-20">
+          <h2 className="text-2xl md:text-h3 leading-h3 mb-8">
+            Productos relacionados
+          </h2>
 
-        <div className="grid  md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {product.relatedProducts?.map((product) => {
-            return <ProductCard product={product} key={product._id} />;
-          })}
-        </div>
-      </section>}
+          <div className="grid  md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {product.relatedProducts?.map((product) => {
+              return <ProductCard product={product} key={product._id} />;
+            })}
+          </div>
+        </section>
+      )}
       <ImagesModal images={product.gallery?.images ?? []} />
     </main>
   );

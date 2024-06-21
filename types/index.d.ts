@@ -56,3 +56,22 @@ export interface Seo {
   image?: Image;
   title?: string;
 }
+
+export interface BestSeller {
+  _type: "bestSeller";
+  _id: string;
+  products: Product[];
+}
+
+export interface HeroProducts {
+  _type: "heroProducts";
+  _id: string;
+  products: HomeProduct[];
+}
+
+export interface HomeProduct {
+  _type: "homeProduct";
+  _id: string;
+  image: GalleryImage;
+  product: Product;
+}

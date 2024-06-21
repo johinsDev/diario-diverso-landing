@@ -1,3 +1,5 @@
+import { resolveHref, urlForImage } from "@/sanity/lib/utils";
+import { loadBestSeller } from "@/sanity/loader/loadQuery";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "../ui/button";
@@ -10,7 +12,15 @@ const IMAGES = [
   "/products/habitos-azul-11.png",
 ];
 
-export function BestSeller() {
+export async function BestSeller() {
+  const { data } = await loadBestSeller();
+
+  const products = data?.products || [];
+
+  if (!products.length) {
+    return null;
+  }
+
   return (
     <section className="full-width bg-secondary/20">
       <div className="container mx-auto text-center py-20">
@@ -24,12 +34,20 @@ export function BestSeller() {
         </div>
 
         <div className="flex flex-col md:grid md:grid-cols-3 xl:grid-cols-5 items-center mt-8 lg:mt-16 text-left gap-y-12 gap-x-4 lg:gap-y-16">
-          {IMAGES.map((image, i) => {
+          {products.map((product, i) => {
+            const imageURL =
+              product?.gallery?.images?.[0] &&
+              urlForImage(product?.gallery?.images?.[0])
+                ?.width(400)
+                .fit("crop")
+                .auto("format")
+                .url();
+
             return (
               <Link
-                href={"/tienda/diario-de-amistad"}
+                href={resolveHref('product', product.slug)}
                 className="relative aspect-[2/3] min-h-96 duration-500 ease-in-out inline-block perspective-750 hover:rotate-z-0 md:min-h-full"
-                key={i}
+                key={product._id}
               >
                 <div className="bg-white shadow absolute aspect-[2/3] overflow-hidden w-full rounded scale-[0.99]" />
 
@@ -75,15 +93,19 @@ export function BestSeller() {
                       className="opacity-100 w-1 h-full absolute bottom-0 top-0 right-0 overflow-hidden"
                     />
                   </div>
-                  <Image
-                    src={image}
-                    width={400}
-                    height={590}
-                    layout="responsive"
-                    alt="Service Image"
-                    className="aspect-[2/3]"
-                    sizes="(min-width: 1280px) 20vw, (min-width: 768px) 33vw, 50vw"
-                  />
+                  {imageURL && (
+                    <Image
+                      src={imageURL}
+                      width={400}
+                      height={590}
+                      layout="responsive"
+                      alt="Service Image"
+                      className="aspect-[2/3]"
+                      sizes="(min-width: 1280px) 20vw, (min-width: 768px) 33vw, 50vw"
+                      placeholder="blur"
+                      blurDataURL={product?.gallery?.images?.[0]?.asset?.metadata?.lqip}
+                    />
+                  )}
                 </div>
               </Link>
             );

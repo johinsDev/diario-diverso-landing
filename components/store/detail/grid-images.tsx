@@ -83,9 +83,7 @@ export function GridImages({ product }: GridImagesProps) {
 
       <button
         className="overflow-hidden rounded-md min-h-96 xl:w-3/4"
-        onClick={() =>
-          handleOpen(selectedImage.asset._id)
-        }
+        onClick={() => handleOpen(selectedImage.asset._id)}
       >
         {selectedImage?.src && (
           <Image
