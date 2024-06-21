@@ -3,7 +3,10 @@ import { GridImages } from "@/components/store/detail/grid-images";
 import { ProductCard } from "@/components/store/shared/product-card";
 import { Button } from "@/components/ui/button";
 import { currencyFormat } from "@/lib/utils";
+import { _generateMetadata } from "@/sanity/lib/utils";
+import { generateStaticSlugs } from "@/sanity/loader/generateStaticSlugs";
 import { loadProductBySlug } from "@/sanity/loader/loadQuery";
+import { Metadata } from "next";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 
@@ -22,6 +25,23 @@ type Props = {
     slug: string[];
   };
 };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { data: product } = await loadProductBySlug(params.slug.join("/"));
+
+  return _generateMetadata({
+    title: product?.seo?.title || product?.title,
+    description: product?.seo?.description || product?.description,
+    image: product?.seo?.image || product?.gallery?.images?.[0],
+  });
+}
+
+export async function generateStaticParams() {
+  const slugs = await generateStaticSlugs("product");
+
+  return slugs.map((slug) => [slug]);
+}
+
 
 export default async function Page({ params }: Props) {
   const { data: product } = await loadProductBySlug(params.slug.join("/"));
