@@ -1,8 +1,10 @@
+import { CustomPortableText } from "@/components/shared/custom-portable-text";
 import { GridImages } from "@/components/store/detail/grid-images";
 import { ProductCard } from "@/components/store/shared/product-card";
 import { Button } from "@/components/ui/button";
-import { PRODUCTS, RELATED_PRODUCTS } from "@/constants";
+import { RELATED_PRODUCTS } from "@/constants";
 import { currencyFormat } from "@/lib/utils";
+import { loadProductBySlug } from "@/sanity/loader/loadQuery";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 
@@ -16,8 +18,14 @@ const ImagesModal = dynamic(
   },
 );
 
-export default function Page() {
-  const product = PRODUCTS[0];
+type Props = {
+  params: {
+    slug: string[];
+  };
+};
+
+export default async function Page({ params }: Props) {
+  const { data: product } = await loadProductBySlug(params.slug.join("/"));
 
   const price = currencyFormat(product.price);
 
@@ -31,7 +39,7 @@ export default function Page() {
           <Link href="/tienda">Tienda</Link>
         </li>
         <li className="text-foreground lowercase first-letter:capitalize">
-          KIT DE LECTURAS CON ESTILO
+          {product.title}
         </li>
       </ul>
 
@@ -39,42 +47,16 @@ export default function Page() {
         <GridImages product={product} />
 
         <div className="xl:w-1/2 flex flex-col justify-between">
-          <div className="xl:text-lg">
-            <h1 className="text-h3 leading-h3 uppercase first-letter:uppercase mb-4">
-              KIT DE LECTURAS CON ESTILO
+          <div >
+            <h1 className="text-h3 leading-h3 uppercase  mb-4">
+              {product.title}
             </h1>
 
-            <p className="text-muted-foreground">
-              Sumérgete en tus aventuras literarias con nuestro Kit de Lecturas
-              con Estilo. Diseñado para los amantes de los libros, este kit te
-              ofrece todo lo que necesitas para personalizar y disfrutar aún más
-              de tu pasión por la lectura
-            </p>
-
-            <div className="text-muted-foreground mt-4">
-              <strong>INCLUYE:</strong>
-              <ul className="list-disc list-inside flex flex-col gap-1 mt-2">
-                <li>
-                  Diario de Lectura: Personaliza tu diario con el diseño y color
-                  de tu elección.
-                </li>
-
-                <li>
-                  Esfero: Selecciona el color de tu esfero favorito (sujeto a
-                  disponibilidad).
-                </li>
-
-                <li>
-                  Paquete de 30 Mini Portadas: Elige las portadas de los libros
-                  que prefieras para pegar en tu diario.
-                </li>
-
-                <li>
-                  -Separador de Hojas Magnético: Opta por el diseño de separador
-                  que prefieras (sujeto a disponibilidad).
-                </li>
-              </ul>
-            </div>
+            <CustomPortableText
+              value={product.description}
+              paragraphClasses="text-muted-foreground xl:text-lg"
+              listBulletClasses="text-muted-foreground xl:text-lg"
+            />
           </div>
 
           <div>
@@ -97,7 +79,7 @@ export default function Page() {
         </div>
       </div>
 
-      <section className="w-3/4 mx-auto aspect-video rounded-lg overflow-hidden mt-8 md:mt-20">
+      {/* <section className="w-3/4 mx-auto aspect-video rounded-lg overflow-hidden mt-8 md:mt-20">
         <iframe
           id="player"
           width="640"
@@ -105,7 +87,7 @@ export default function Page() {
           src="http://www.youtube.com/embed/wUhqwq8Rwoc?enablejsapi=1&origin=http://example.com"
           frameBorder="0"
         ></iframe>
-      </section>
+      </section> */}
 
       <section className="mt-8 md:mt-20">
         <h2 className="text-2xl md:text-h3 leading-h3 mb-8">
@@ -114,11 +96,11 @@ export default function Page() {
 
         <div className="grid  md:grid-cols-2 lg:grid-cols-3 gap-4">
           {RELATED_PRODUCTS.map((product) => {
-            return <ProductCard product={product} key={product.id} />;
+            return <ProductCard product={product} key={product._id} />;
           })}
         </div>
       </section>
-      <ImagesModal images={product.images.sort((a, b) => a.order - b.order)} />
+      <ImagesModal images={product.gallery?.images ?? []} />
     </main>
   );
 }

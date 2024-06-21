@@ -1,7 +1,10 @@
 import ListOfProducts from "@/components/store/categories/list-of-products";
 import { _generateMetadata } from "@/sanity/lib/utils";
 import { generateStaticSlugs } from "@/sanity/loader/generateStaticSlugs";
-import { loadCategoryBySlug, loadProductsByCategory } from "@/sanity/loader/loadQuery";
+import {
+  loadCategoryBySlug,
+  loadProductsByCategory,
+} from "@/sanity/loader/loadQuery";
 import { Metadata } from "next";
 import { Suspense } from "react";
 
@@ -22,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export async function generateStaticParams() {
-  const slugs = await generateStaticSlugs('category');
+  const slugs = await generateStaticSlugs("category");
 
   return slugs.map((slug) => [slug]);
 }

@@ -36,7 +36,10 @@ const ALL_CATEGORY: Category = {
   _type: "category",
 };
 
-export default function FilterCategories({ categories: _categories, products }: Props) {
+export default function FilterCategories({
+  categories: _categories,
+  products,
+}: Props) {
   const params = useParams<{ slug?: string[] }>();
 
   const router = useRouter();

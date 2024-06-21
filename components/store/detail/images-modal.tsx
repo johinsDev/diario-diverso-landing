@@ -10,11 +10,12 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { ImageType } from "@/types";
+import { urlForImage } from "@/sanity/lib/utils";
+import { GalleryImage } from "@/types";
 import Image from "next/image";
 
 type ImagesModalProps = {
-  images: ImageType[];
+  images: GalleryImage[];
 };
 
 export function ImagesModal({ images }: ImagesModalProps) {
@@ -22,11 +23,13 @@ export function ImagesModal({ images }: ImagesModalProps) {
 
   const isOpen = src !== null;
 
-  const imageIndex = images.findIndex((image) => image.src === src);
+  const imageIndex = images.findIndex((image) => image.asset._id === src);
 
   const startIndex = !!src
     ? Math.min(imageIndex, images.length - 1)
     : undefined;
+
+  console.log("images", images);
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && handleClose()}>
@@ -42,17 +45,30 @@ export function ImagesModal({ images }: ImagesModalProps) {
         >
           <CarouselContent className="ml-0 rounded-lg">
             {images.map((image, index) => {
+              const imageUrl =
+                image &&
+                urlForImage(image)
+                  ?.width(1200)
+                  .fit("crop")
+                  .auto("format")
+                  .url();
+
               return (
                 <CarouselItem
-                  key={image.src + index}
-                  className="basis-full relative aspect-[3/4] max-h-[85vh] bg-transparent rounded-lg p-0 overflow-hidden"
+                  key={(image.asset._id ?? "") + index}
+                  className="basis-full relative  max-h-[85vh] bg-transparent rounded-lg p-0 overflow-hidden max-w-none"
                 >
-                  <Image
-                    src={image.src}
-                    alt="Kit Plenitud"
-                    fill
-                    className="object-contain rounded-lg"
-                  />
+                  {imageUrl && (
+                    <Image
+                      src={imageUrl}
+                      alt="Kit Plenitud"
+                      width={1200}
+                      height={900}
+                      placeholder="blur"
+                      blurDataURL={image.asset.metadata.lqip}
+                      className="object-contain rounded-lg max-w-none w-full h-full"
+                    />
+                  )}
                 </CarouselItem>
               );
             })}

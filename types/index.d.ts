@@ -1,4 +1,12 @@
-import type { Image, PortableTextBlock } from "sanity";
+import { PortableTextBlock } from "next-sanity";
+import type { Image, ImageAsset } from "sanity";
+
+export interface CustomImage {
+  alt?: string;
+  image?: Image & {
+    asset: ImageAsset;
+  };
+}
 
 export interface Category {
   _type: "category";
@@ -7,6 +15,17 @@ export interface Category {
   slug: string;
   description?: PortableTextBlock[];
   seo?: Seo;
+}
+
+type GalleryImage = CustomImage["image"] & {
+  alt?: string;
+};
+
+export type GalleryDisplay = "stacked" | "inline" | "carousel";
+export interface Gallery {
+  images: GalleryImage[];
+  display: GalleryDisplay;
+  zoom: boolean;
 }
 
 export interface Product {

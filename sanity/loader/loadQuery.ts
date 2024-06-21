@@ -8,6 +8,7 @@ import { token } from "@/sanity/lib/token";
 import { Category, Product } from "@/types";
 import {
   productByCategoryQuery,
+  productBySlugQuery,
   productsQuery,
   queryCategories,
   queryCategoryBySlug,
@@ -57,7 +58,15 @@ export function loadProducts() {
   return loadQuery<Product[]>(
     productsQuery,
     {},
-    { next: { tags: ["products"] } }
+    { next: { tags: ["products"] } },
+  );
+}
+
+export function loadProductBySlug(slug: string) {
+  return loadQuery<Product>(
+    productBySlugQuery,
+    { slug },
+    { next: { tags: ["products", slug] } },
   );
 }
 
@@ -65,7 +74,7 @@ export function loadProductsByCategory(categorySlug: string) {
   return loadQuery<Product[]>(
     productByCategoryQuery,
     { categorySlug },
-    { next: { tags: ["products", categorySlug] } }
+    { next: { tags: ["products", categorySlug] } },
   );
 }
 
@@ -73,7 +82,7 @@ export function loadCategories() {
   return loadQuery<Category[]>(
     queryCategories,
     {},
-    { next: { tags: ["categories"] } }
+    { next: { tags: ["categories"] } },
   );
 }
 
@@ -81,6 +90,6 @@ export function loadCategoryBySlug(slug: string) {
   return loadQuery<Category>(
     queryCategoryBySlug,
     { slug },
-    { next: { tags: ["categories", slug] } }
+    { next: { tags: ["categories", slug] } },
   );
 }

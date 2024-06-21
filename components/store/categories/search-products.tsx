@@ -6,7 +6,7 @@ import {
   CommandGroup,
   CommandInput,
   CommandItem,
-  CommandList
+  CommandList,
 } from "@/components/ui/command";
 import { Product } from "@/types";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -32,7 +32,6 @@ export function SearchProducts({ products }: Props) {
 
     router.push(`?${searchParams.toString()}`);
   };
-
 
   return (
     <CommandDialog

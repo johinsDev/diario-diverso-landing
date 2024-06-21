@@ -26,6 +26,32 @@ export const productsQuery = groq`
   }
 `;
 
+export const productBySlugQuery = groq`
+  *[_type == "product" && slug.current == $slug][0] {
+    _id,
+    title,
+    "slug": slug.current,
+    price,
+    description,
+    highlightInHome,
+    category[]->{
+      ...,
+      "slug": slug.current,
+    },
+    gallery{
+        ...,
+        images[]{
+          ...,
+          asset->{
+            ...,
+            "_ref": _id,
+          },
+        },
+      },
+    seo,
+  }
+`;
+
 export const productByCategoryQuery = groq`
   *[_type == "product" && $categorySlug in category[]->slug.current] {
     _id,

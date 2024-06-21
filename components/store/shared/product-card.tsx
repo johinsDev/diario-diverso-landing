@@ -16,22 +16,24 @@ export function ProductCard({ product, priority }: ProductCardProps) {
 
   const imageUrl =
     mainImage &&
-    urlForImage(mainImage)?.width(1200).fit("crop").auto("format").url();
+    urlForImage(mainImage)?.width(400).fit("crop").auto("format").url();
 
   return (
     <Link href={`/tienda/${product.slug}`} className="group">
       <div className="rounded-lg aspect-square overflow-hidden p-4 bg-muted/40 grid place-content-center py-2 transform transition-all group-hover:scale-[1.02] duration-300">
-        <Image
-          src={imageUrl}
-          alt={mainImage?.alt || "product"}
-          className="object-contain w-full aspect-square"
-          width={270}
-          height={220}
-          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-        // blurDataURL={mainImage?.asset.metadata.lqip}
-        // placeholder="blur"
-        // priority={priority}
-        />
+        {imageUrl && (
+          <Image
+            src={imageUrl}
+            alt={mainImage?.alt || "product"}
+            className="object-contain h-full"
+            width={270}
+            height={220}
+            sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+            blurDataURL={mainImage?.asset.metadata.lqip}
+            placeholder="blur"
+            priority={priority}
+          />
+        )}
       </div>
 
       <div className="flex items-center justify-between gap-2 mt-3 group-hover:text-primary group-hover:translate-y-1 transition-all duration-300">
