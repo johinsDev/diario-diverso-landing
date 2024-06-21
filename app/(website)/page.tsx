@@ -64,7 +64,6 @@ const IMAGES = [
 export default async function Home() {
   const { data } = await loadHeroProducts();
 
-  console.log(data);
   const images = data.products.map((product, index) => {
     const image = product?.image || product?.product?.gallery?.images[0];
 

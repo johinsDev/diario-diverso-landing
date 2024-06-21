@@ -1,6 +1,8 @@
 import { FloatingWhatsapp } from "@/components/shared/floating-whatsapp";
 import { Footer } from "@/components/shared/footer";
 import { Nav } from "@/components/shared/nav";
+import { CSPostHogProvider } from "@/components/shared/providers";
+import { Toaster } from "@/components/ui/toaster";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Montserrat, Poppins } from "next/font/google";
@@ -51,38 +53,41 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="min-h-full flex flex-col">
-      <head>
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/apple-touch-icon.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/favicon-16x16.png"
-        />
-      </head>
-      <body
-        className={cn(
-          "font-poppins overflow-x-hidden flex flex-col flex-1",
-          poppins.variable,
-          moonTime.variable,
-          montserrat.variable,
-        )}
-      >
-        <Nav />
-        {children}
-        <FloatingWhatsapp />
-        <Footer />
-      </body>
+      <CSPostHogProvider>
+        <head>
+          <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/apple-touch-icon.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/favicon-32x32.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/favicon-16x16.png"
+          />
+        </head>
+        <body
+          className={cn(
+            "font-poppins overflow-x-hidden flex flex-col flex-1",
+            poppins.variable,
+            moonTime.variable,
+            montserrat.variable,
+          )}
+        >
+          <Nav />
+          {children}
+          <Toaster />
+          <FloatingWhatsapp />
+          <Footer />
+        </body>
+      </CSPostHogProvider>
     </html>
   );
 }

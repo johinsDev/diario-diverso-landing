@@ -1,4 +1,3 @@
-seo general tienda/home/aboutus/faq conectaselo a sanity
 mailchimp
 faq
 about us

@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "../ui/button";
-import { Input } from "../ui/input";
+import { Suspense } from "react";
+import SubscribeForm from "./subscribe-form";
+
 
 export function Footer() {
   return (
@@ -144,20 +145,9 @@ export function Footer() {
           </div>
         </div>
 
-        <form className="flex flex-col md:flex-row md:items-center gap-2">
-          <Input
-            type="email"
-            placeholder="Correo electrónico"
-            className="flex-1 flex-shrink-0 min-h-12"
-          />
-          <Button
-            className="rounded-md w-full md:w-40 flex-shrink-0"
-            size="xl"
-            variant={"secondary"}
-          >
-            Subscribirme
-          </Button>
-        </form>
+        <Suspense>
+          <SubscribeForm />
+        </Suspense>
 
         <div className="text-center flex flex-col items-center md:items-start lg:items-center gap-2">
           <div className="text-primary text-xl font-semibold">
