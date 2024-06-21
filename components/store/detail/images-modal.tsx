@@ -1,6 +1,6 @@
 "use client";
 
-import { useImagesModal } from "@/app/store/images-modal";
+import { useImagesModal } from "@/app/(website)/store/images-modal";
 import {
   Carousel,
   CarouselContent,
@@ -24,8 +24,9 @@ export function ImagesModal({ images }: ImagesModalProps) {
 
   const imageIndex = images.findIndex((image) => image.src === src);
 
-
-  const startIndex = !!src ? Math.min(imageIndex, images.length - 1) : undefined
+  const startIndex = !!src
+    ? Math.min(imageIndex, images.length - 1)
+    : undefined;
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && handleClose()}>

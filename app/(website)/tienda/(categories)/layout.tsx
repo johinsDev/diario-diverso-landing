@@ -1,8 +1,10 @@
 import FilterCategories from "@/components/store/categories/filter-categories";
-import { CATEGORIES } from "@/constants";
+import { loadCategories } from "@/sanity/loader/loadQuery";
 import { PropsWithChildren, Suspense } from "react";
 
-export default function CategoriesLayout(props: PropsWithChildren<{}>) {
+export default async function CategoriesLayout(props: PropsWithChildren<{}>) {
+  const { data: categories } = await loadCategories();
+
   return (
     <main className="flex-1 flex flex-col container py-4 md:py-20">
       <h1 className="font-semibold">Tienda</h1>
@@ -12,7 +14,7 @@ export default function CategoriesLayout(props: PropsWithChildren<{}>) {
       </div>
 
       <Suspense>
-        <FilterCategories categories={CATEGORIES} />
+        <FilterCategories categories={categories} />
       </Suspense>
 
       {props.children}

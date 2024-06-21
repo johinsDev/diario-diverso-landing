@@ -30,19 +30,19 @@ export default function Page() {
         <li className="flex items-center after:content-[' '] after:size-1 after:bg-muted-foreground/20 after:mx-2 after:rounded-full">
           <Link href="/tienda">Tienda</Link>
         </li>
-        <li className="text-foreground lowercase first-letter:capitalize">KIT DE LECTURAS CON ESTILO</li>
+        <li className="text-foreground lowercase first-letter:capitalize">
+          KIT DE LECTURAS CON ESTILO
+        </li>
       </ul>
 
       <div className="flex gap-4 flex-col xl:gap-12 xl:flex-row xl:items-stretch">
         <GridImages product={product} />
 
         <div className="xl:w-1/2 flex flex-col justify-between">
-
           <div className="xl:text-lg">
             <h1 className="text-h3 leading-h3 uppercase first-letter:uppercase mb-4">
               KIT DE LECTURAS CON ESTILO
             </h1>
-
 
             <p className="text-muted-foreground">
               Sumérgete en tus aventuras literarias con nuestro Kit de Lecturas
@@ -52,9 +52,7 @@ export default function Page() {
             </p>
 
             <div className="text-muted-foreground mt-4">
-              <strong>
-                INCLUYE:
-              </strong>
+              <strong>INCLUYE:</strong>
               <ul className="list-disc list-inside flex flex-col gap-1 mt-2">
                 <li>
                   Diario de Lectura: Personaliza tu diario con el diseño y color
@@ -79,7 +77,6 @@ export default function Page() {
             </div>
           </div>
 
-
           <div>
             <h2 className="text-h3 my-4">{price}</h2>
 
@@ -89,7 +86,9 @@ export default function Page() {
               </Link>
             </Button>
 
-            <p className="text-center text-sm text-muted-foreground/80 mt-4">Estimate delivery times: 3-6 days (International)</p>
+            <p className="text-center text-sm text-muted-foreground/80 mt-4">
+              Estimate delivery times: 3-6 days (International)
+            </p>
             <p className="text-center text-sm text-muted-foreground/80 mt-1">
               Return within 45 days of purchase. Duties & taxes are
               non-refundable.
@@ -99,10 +98,13 @@ export default function Page() {
       </div>
 
       <section className="w-3/4 mx-auto aspect-video rounded-lg overflow-hidden mt-8 md:mt-20">
-        <iframe id="player" width="640"
+        <iframe
+          id="player"
+          width="640"
           className="w-full aspect-video"
           src="http://www.youtube.com/embed/wUhqwq8Rwoc?enablejsapi=1&origin=http://example.com"
-          frameBorder="0"></iframe>
+          frameBorder="0"
+        ></iframe>
       </section>
 
       <section className="mt-8 md:mt-20">
@@ -115,7 +117,6 @@ export default function Page() {
             return <ProductCard product={product} key={product.id} />;
           })}
         </div>
-
       </section>
       <ImagesModal images={product.images.sort((a, b) => a.order - b.order)} />
     </main>

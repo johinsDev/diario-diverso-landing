@@ -1,5 +1,5 @@
 import ListOfProducts from "@/components/store/categories/list-of-products";
-import { PRODUCTS } from "@/constants";
+import { loadProductsByCategory } from "@/sanity/loader/loadQuery";
 import { Suspense } from "react";
 
 type Props = {
@@ -11,9 +11,7 @@ type Props = {
 export default async function Page(props: Props) {
   const category = props.params.slug?.join("/") || "";
 
-  const products = category
-    ? PRODUCTS.filter((product) => product.category.slug === category)
-    : PRODUCTS;
+  const { data: products } = await loadProductsByCategory(category);
 
   return (
     <>

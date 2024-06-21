@@ -8,7 +8,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 
 const moonTime = localFont({
-  src: "../public/fonts/moontime.ttf",
+  src: "../../public/fonts/moontime.ttf",
   variable: "--font-moontime",
 });
 

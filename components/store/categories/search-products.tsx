@@ -5,10 +5,8 @@ import {
   CommandEmpty,
   CommandGroup,
   CommandInput,
-  CommandItem,
-  CommandList,
+  CommandList
 } from "@/components/ui/command";
-import { PRODUCTS } from "@/constants";
 import { useRouter, useSearchParams } from "next/navigation";
 
 export function SearchProducts() {
@@ -42,7 +40,7 @@ export function SearchProducts() {
         <CommandEmpty>No se encontraron productos</CommandEmpty>
 
         <CommandGroup heading="Productos">
-          {PRODUCTS.map((product) => (
+          {/* {PRODUCTS.map((product) => (
             <CommandItem
               key={product.id}
               onSelect={() => router.push(`/tienda/${product.slug}`)}
@@ -50,7 +48,7 @@ export function SearchProducts() {
             >
               <span>{product.name}</span>
             </CommandItem>
-          ))}
+          ))} */}
         </CommandGroup>
       </CommandList>
     </CommandDialog>

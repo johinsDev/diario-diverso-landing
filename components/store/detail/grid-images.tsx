@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { useImagesModal } from "@/app/store/images-modal";
+import { useImagesModal } from "@/app/(website)/store/images-modal";
 import { cn } from "@/lib/utils";
 import { ImageType, Product } from "@/types";
 import Image from "next/image";

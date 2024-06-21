@@ -1,20 +1,24 @@
+import type { Image, PortableTextBlock } from "sanity";
+
 export interface Category {
-  id: number;
-  name: string;
+  _type: "category";
+  _id: string;
+  title: string;
   slug: string;
 }
 
 export interface Product {
-  id: number;
-  name: string;
+  _id: string;
+  title: string;
   slug: string;
   price: number;
-  highlight: boolean;
-  mainImage: string;
-  category: Category;
-  base64?: string;
-  images: Image[];
-  // variants
+  description?: PortableTextBlock[];
+  highlightInHome?: boolean;
+  seo?: Seo;
+  gallery?: Gallery;
+  _key: string;
+  _type: "product";
+  category: Category[];
 }
 
 interface ImageType {
@@ -23,4 +27,10 @@ interface ImageType {
   order: number;
   principal?: boolean;
   base64?: string;
+}
+
+export interface Seo {
+  description?: PortableTextBlock[];
+  image?: Image;
+  title?: string;
 }

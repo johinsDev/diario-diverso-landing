@@ -28,7 +28,14 @@ const SearchProducts = dynamic(
   },
 );
 
-export default function FilterCategories({ categories }: Props) {
+const ALL_CATEGORY: Category = {
+  _id: "all",
+  title: "Todas",
+  slug: "",
+  _type: "category",
+};
+
+export default function FilterCategories({ categories: _categories }: Props) {
   const params = useParams<{ slug?: string[] }>();
 
   const router = useRouter();
@@ -45,6 +52,8 @@ export default function FilterCategories({ categories }: Props) {
     router.push(`?${searchParams.toString()}`);
   };
 
+  const categories = [ALL_CATEGORY, ..._categories];
+
   return (
     <>
       <SearchProducts />
@@ -55,7 +64,7 @@ export default function FilterCategories({ categories }: Props) {
 
           return (
             <Link
-              key={category.id}
+              key={category._id}
               href={
                 category.slug
                   ? `/tienda/categorias/${category.slug}`
@@ -68,7 +77,7 @@ export default function FilterCategories({ categories }: Props) {
                 },
               )}
             >
-              {category.name}
+              {category.title}
             </Link>
           );
         })}
@@ -88,8 +97,8 @@ export default function FilterCategories({ categories }: Props) {
           </SelectTrigger>
           <SelectContent>
             {categories.map((category) => (
-              <SelectItem key={category.id} value={category.slug || "all"}>
-                {category.name}
+              <SelectItem key={category._id} value={category.slug || "all"}>
+                {category.title}
               </SelectItem>
             ))}
           </SelectContent>
