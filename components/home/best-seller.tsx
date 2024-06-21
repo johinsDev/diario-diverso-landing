@@ -38,7 +38,7 @@ export async function BestSeller() {
             const imageURL =
               product?.gallery?.images?.[0] &&
               urlForImage(product?.gallery?.images?.[0])
-                ?.width(400)
+                ?.width(600)
                 .fit("crop")
                 .auto("format")
                 .url();
