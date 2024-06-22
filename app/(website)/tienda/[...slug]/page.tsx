@@ -34,9 +34,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return _generateMetadata({
     title: product?.seo?.title || product?.title,
     description: product?.seo?.description || product?.description,
-    image: product?.seo?.image || {
-      image: product?.gallery?.images?.[0]
-    }
+    image: product?.seo?.image || product?.gallery?.images?.[0],
   });
 }
 

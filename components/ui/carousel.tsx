@@ -336,6 +336,10 @@ const CarouselIndicators = React.forwardRef<
     api.on("reInit", onInit);
   }, [api, onInit]);
 
+  if (scrollSnaps.length <= 1) {
+    return null;
+  }
+
   return (
     <div
       ref={ref}

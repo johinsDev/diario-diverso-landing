@@ -39,10 +39,24 @@ export function resolveHref(documentType?: string, slug?: string): string {
 export function _generateMetadata(seo?: Seo): Metadata {
   const ogImage = urlForOpenGraphImage(seo?.image);
 
+  console.log("ogImage", ogImage);
+
   return flush({
     title: seo?.title ? capitalize(seo?.title) : undefined,
     description: seo?.description ? toPlainText(seo?.description) : undefined,
-    image: ogImage ? { url: ogImage } : undefined,
+    openGraph: {
+      type: "website",
+      locale: "es_CO",
+      site_name: "Diario Diverso",
+      images: ogImage
+        ? [
+            {
+              url: ogImage,
+              alt: seo?.title,
+            },
+          ]
+        : undefined,
+    },
   });
 }
 
@@ -51,7 +65,7 @@ export const sleep = (ms: number) =>
 
 export const extractYoutubeId = (url: string) => {
   const match = url.match(
-    /^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/,
+    /^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/
   );
 
   return match ? match[1] : undefined;

@@ -41,7 +41,7 @@ export function ImagesModal({ images }: ImagesModalProps) {
             startIndex,
           }}
         >
-          <CarouselContent className="ml-0 rounded-lg">
+          <CarouselContent className="ml-0 rounded-none">
             {images.map((image, index) => {
               const imageUrl =
                 image &&
@@ -54,17 +54,18 @@ export function ImagesModal({ images }: ImagesModalProps) {
               return (
                 <CarouselItem
                   key={(image.asset._id ?? "") + index}
-                  className="basis-full relative  max-h-[85vh] bg-transparent rounded-lg p-0 overflow-hidden max-w-none"
+                  className="basis-full relative h-[85vh] bg-transparent p-0 overflow-hidden max-w-none"
                 >
                   {imageUrl && (
                     <Image
                       src={imageUrl}
-                      alt="Kit Plenitud"
+                      alt={image.alt || "product"}
                       width={1200}
                       height={900}
                       placeholder="blur"
                       blurDataURL={image.asset.metadata.lqip}
-                      className="object-contain rounded-lg max-w-none w-full h-full"
+                      className="object-contain  max-w-none w-full h-full"
+                      priority={index <= 4}
                     />
                   )}
                 </CarouselItem>
