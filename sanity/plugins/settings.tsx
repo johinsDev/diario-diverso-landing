@@ -2,6 +2,8 @@
  * This plugin contains all the logic for setting up the singletons
  */
 
+import { orderableDocumentListDeskItem } from "@sanity/orderable-document-list";
+import { PaintBucket } from "lucide-react";
 import { type DocumentDefinition } from "sanity";
 import { type StructureResolver } from "sanity/structure";
 
@@ -37,7 +39,7 @@ export const singletonPlugin = (types: string[]) => {
 export const pageStructure = (
   typeDefArray: DocumentDefinition[],
 ): StructureResolver => {
-  return (S) => {
+  return (S, context) => {
     // Goes through all of the singletons that were provided and translates them into something the
     // Desktool can understand
     const singletonItems = typeDefArray.map((typeDef) => {
@@ -53,13 +55,22 @@ export const pageStructure = (
     });
 
     // The default root list items (except custom ones)
-    const defaultListItems = S.documentTypeListItems().filter(
-      (listItem) =>
-        !typeDefArray.find((singleton) => singleton.name === listItem.getId()),
-    );
+    const defaultListItems = S.documentTypeListItems()
+      .filter(
+        (listItem) =>
+          !typeDefArray.find(
+            (singleton) => singleton.name === listItem.getId(),
+          ),
+      )
+      .filter((listItem) => listItem.getId() !== "category");
 
     return S.list()
       .title("Content")
-      .items([...singletonItems, S.divider(), ...defaultListItems]);
+      .items([
+        ...singletonItems,
+        S.divider(),
+        ...defaultListItems,
+        orderableDocumentListDeskItem({ type: "category", S, context, title: "Categories", icon: PaintBucket }),
+      ]);
   };
 };

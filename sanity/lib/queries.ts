@@ -94,7 +94,7 @@ export const productByCategoryQuery = groq`
 `;
 
 export const queryCategories = groq`
-  *[_type == "category"]{
+  *[_type == "category"]|order(orderRank){
     ...,
     _id,
     title,

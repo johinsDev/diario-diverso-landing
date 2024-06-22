@@ -35,15 +35,12 @@ export async function BestSeller() {
 
         <div className="flex flex-col md:grid md:grid-cols-3 xl:grid-cols-5 items-center mt-8 lg:mt-16 text-left gap-y-12 gap-x-4 lg:gap-y-16">
           {products.map((product, i) => {
-            const image = product?.image || product?.product?.gallery?.images?.[0];
+            const image =
+              product?.image || product?.product?.gallery?.images?.[0];
 
             const imageURL =
               image &&
-              urlForImage(image)
-                ?.width(600)
-                .fit("crop")
-                .auto("format")
-                .url();
+              urlForImage(image)?.width(600).fit("crop").auto("format").url();
 
             return (
               <Link
@@ -105,9 +102,7 @@ export async function BestSeller() {
                       className="aspect-[2/3]"
                       sizes="(min-width: 1280px) 20vw, (min-width: 768px) 33vw, 50vw"
                       placeholder="blur"
-                      blurDataURL={
-                        image?.asset?.metadata?.lqip
-                      }
+                      blurDataURL={image?.asset?.metadata?.lqip}
                     />
                   )}
                 </div>
