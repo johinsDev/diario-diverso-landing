@@ -39,7 +39,7 @@ export function GridImages({ product }: GridImagesProps) {
 
   return (
     <div className="flex flex-col-reverse w-full gap-2 xl:gap-x-4 xl:flex-row xl:items-start xl:w-1/2">
-      <div className="flex items-center gap-2 xl:flex-col xl:w-1/4">
+      <div className="flex items-center gap-2 xl:flex-col xl:w-1/5">
         {imagesRow.map((image, index) => {
           const imageUrl =
             image &&
@@ -84,14 +84,14 @@ export function GridImages({ product }: GridImagesProps) {
       </div>
 
       <button
-        className="overflow-hidden rounded-md min-h-96 xl:w-3/4"
+        className="overflow-hidden min-h-96 aspect-[3/4] xl:w-4/5"
         onClick={() => handleOpen(selectedImage.asset._id)}
       >
         {selectedImage?.src && (
           <Image
             src={selectedImage?.src}
             alt="Kit Plenitud"
-            className="h-full object-contain"
+            className="h-full object-contain object-top"
             width={500}
             height={700}
             priority

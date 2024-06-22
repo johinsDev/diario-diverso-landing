@@ -83,7 +83,7 @@ export default async function Page({ params }: Props) {
           </div>
 
           <div>
-            <h2 className="text-h3 my-4">{price}</h2>
+            <h2 className="text-h3 my-4 md:mt-12">{price}</h2>
 
             <Button className="w-full" size={"xl"} variant={"accent"} asChild>
               <Link target="_blank" href="https://wa.me/message/3VYDBVF6QEELO1">
@@ -92,11 +92,10 @@ export default async function Page({ params }: Props) {
             </Button>
 
             <p className="text-center text-sm text-muted-foreground/80 mt-4">
-              Estimate delivery times: 3-6 days (International)
+              Tiempo de entrega: 3-5 días hábiles.
             </p>
             <p className="text-center text-sm text-muted-foreground/80 mt-1">
-              Return within 45 days of purchase. Duties & taxes are
-              non-refundable.
+              Devolución dentro de los 45 días de la compra.
             </p>
           </div>
         </div>
