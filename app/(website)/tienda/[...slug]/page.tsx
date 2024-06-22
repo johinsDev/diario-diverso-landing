@@ -72,7 +72,7 @@ export default async function Page({ params }: Props) {
       <div className="flex gap-4 flex-col xl:gap-12 xl:flex-row xl:items-stretch">
         <GridImages product={product} />
 
-        <div className="xl:w-1/2 flex flex-col justify-around">
+        <div className="xl:w-1/2 flex flex-col">
           <div>
             <h1 className="text-h3 leading-h3 uppercase  mb-4">
               {product.title}
