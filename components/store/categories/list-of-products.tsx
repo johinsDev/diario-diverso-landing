@@ -7,7 +7,7 @@ type Props = {
 
 export default function ListOfProducts({ products }: Props) {
   return (
-    <div className="mt-8 gap-8 grid md:grid-cols-2 lg:grid-cols-3">
+    <div className="mt-8 gap-8 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {products.map((product, index) => {
         return (
           <ProductCard

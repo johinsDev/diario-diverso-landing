@@ -208,6 +208,10 @@ const CarouselPrevious = React.forwardRef<
   ) => {
     const { orientation, scrollPrev, canScrollPrev } = useCarousel();
 
+    if (!canScrollPrev) {
+      return null;
+    }
+
     return (
       <Button
         ref={ref}
@@ -242,6 +246,11 @@ const CarouselNext = React.forwardRef<HTMLButtonElement, CarouselNextProps>(
     ref,
   ) => {
     const { orientation, scrollNext, canScrollNext } = useCarousel();
+
+
+    if (!canScrollNext) {
+      return null;
+    }
 
     return (
       <Button
@@ -349,5 +358,5 @@ export {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-  type CarouselApi,
+  type CarouselApi
 };

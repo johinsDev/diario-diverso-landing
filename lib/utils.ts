@@ -12,10 +12,14 @@ export function convertHEXtoHSL_Updated(hex: string) {
 }
 
 export function currencyFormat(price: number) {
-  return new Intl.NumberFormat("es-ES", {
+  const result = new Intl.NumberFormat("es-ES", {
     style: "currency",
     currency: "COP",
     maximumFractionDigits: 0,
     currencyDisplay: "narrowSymbol",
   }).format(price);
+
+  return (
+    result.substring(result.length - 1) + result.substring(0, result.length - 1)
+  );
 }

@@ -2,6 +2,7 @@ import { CustomPortableText } from "@/components/shared/custom-portable-text";
 import { GridImages } from "@/components/store/detail/grid-images";
 import { ProductCard } from "@/components/store/shared/product-card";
 import { Button } from "@/components/ui/button";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { currencyFormat } from "@/lib/utils";
 import { _generateMetadata } from "@/sanity/lib/utils";
 import { generateStaticSlugs } from "@/sanity/loader/generateStaticSlugs";
@@ -117,11 +118,29 @@ export default async function Page({ params }: Props) {
             Productos relacionados
           </h2>
 
-          <div className="grid  md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {product.relatedProducts?.map((product) => {
-              return <ProductCard product={product} key={product._id} />;
-            })}
-          </div>
+          <Carousel
+            opts={{
+              loop: true,
+              align: "start",
+            }}
+          >
+            <CarouselContent className="-ml-4">
+              {product.relatedProducts.map((product, i) => {
+                return (
+                  <CarouselItem
+                    key={i}
+                    className="basis-full pl-4 md:basis-1/2 lg:basis-1/3 xl:basis-1/4"
+                  >
+                    <ProductCard product={product} key={product._id} />
+                  </CarouselItem>
+                )
+              })}
+            </CarouselContent>
+            <div className="mt-4 w-full flex justify-end  gap-4">
+              <CarouselPrevious className="static bg-muted-foreground/90 size-10 cursor-pointer hover:bg-muted-foreground/70" classNameIcon="text-white size-8" />
+              <CarouselNext className="static bg-muted-foreground/90 size-10 cursor-pointer hover:bg-muted-foreground/70" classNameIcon="text-white size-8" />
+            </div>
+          </Carousel>
         </section>
       )}
       <ImagesModal images={product.gallery?.images ?? []} />
