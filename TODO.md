@@ -2,7 +2,6 @@ BUGS
 
 - Revisar select en mobile de categorias
 - Algunas imagenes no aparecenm ? muy pesadas
-- saltos de imagenes en el detalle producto
 - Mejor la carga blur de las imagenes
 - aparece el logo de diario diverso en cada producto
 
