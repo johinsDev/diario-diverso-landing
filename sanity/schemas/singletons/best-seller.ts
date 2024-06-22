@@ -13,7 +13,7 @@ export default defineType({
       name: "products",
       title: "Products",
       type: "array",
-      of: [defineArrayMember({ type: "reference", to: [{ type: "product" }] })],
+      of: [defineArrayMember({ type: "homeProduct" })],
     }),
   ],
   preview: {

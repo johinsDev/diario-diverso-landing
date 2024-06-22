@@ -3,7 +3,6 @@ import Link from "next/link";
 import { Suspense } from "react";
 import SubscribeForm from "./subscribe-form";
 
-
 export function Footer() {
   return (
     <footer className="py-16 container mx-auto grid grid-cols-1 md:grid-cols-3 gap-y-8 lg:grid-cols-5 text-left">

@@ -67,17 +67,16 @@ export default async function Home() {
   const images = data.products.map((product, index) => {
     const image = product?.image || product?.product?.gallery?.images[0];
 
-    const url = urlForImage(image)?.width(300).fit('crop').url() || '';
+    const url = urlForImage(image)?.width(300).fit("crop").url() || "";
 
     return {
       src: url,
       base64: image?.asset?.metadata?.lqip,
       className: IMAGES[index].className,
       classNameMobile: IMAGES[index].classNameMobile,
-      url: resolveHref('product', product?.product?.slug),
+      url: resolveHref("product", product?.product?.slug),
     };
-  }
-  );
+  });
 
   return (
     <main className="flex min-h-screen flex-col container">

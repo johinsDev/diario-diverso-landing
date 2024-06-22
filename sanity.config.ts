@@ -23,6 +23,7 @@ import heroProducts from "./sanity/schemas/singletons/hero-products";
 
 const title =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE ||
+  process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE ||
   "Next.js Personal Website with Sanity.io";
 
 export default defineConfig({

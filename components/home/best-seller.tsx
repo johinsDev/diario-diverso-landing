@@ -35,9 +35,11 @@ export async function BestSeller() {
 
         <div className="flex flex-col md:grid md:grid-cols-3 xl:grid-cols-5 items-center mt-8 lg:mt-16 text-left gap-y-12 gap-x-4 lg:gap-y-16">
           {products.map((product, i) => {
+            const image = product?.image || product?.product?.gallery?.images?.[0];
+
             const imageURL =
-              product?.gallery?.images?.[0] &&
-              urlForImage(product?.gallery?.images?.[0])
+              image &&
+              urlForImage(image)
                 ?.width(600)
                 .fit("crop")
                 .auto("format")
@@ -45,7 +47,7 @@ export async function BestSeller() {
 
             return (
               <Link
-                href={resolveHref('product', product.slug)}
+                href={resolveHref("product", product?.product?.slug)}
                 className="relative aspect-[2/3] min-h-96 duration-500 ease-in-out inline-block perspective-750 hover:rotate-z-0 md:min-h-full"
                 key={product._id}
               >
@@ -103,7 +105,9 @@ export async function BestSeller() {
                       className="aspect-[2/3]"
                       sizes="(min-width: 1280px) 20vw, (min-width: 768px) 33vw, 50vw"
                       placeholder="blur"
-                      blurDataURL={product?.gallery?.images?.[0]?.asset?.metadata?.lqip}
+                      blurDataURL={
+                        image?.asset?.metadata?.lqip
+                      }
                     />
                   )}
                 </div>

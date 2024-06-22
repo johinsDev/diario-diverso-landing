@@ -4,8 +4,9 @@ import { Metadata } from "next";
 import { Suspense } from "react";
 
 export const metadata: Metadata = {
-  title: 'Tienda',
-  description: 'Descubre nuestros productos y encuentra el que mejor se adapte a tus necesidades.',
+  title: "Tienda",
+  description:
+    "Descubre nuestros productos y encuentra el que mejor se adapte a tus necesidades.",
 };
 
 export default async function Page() {

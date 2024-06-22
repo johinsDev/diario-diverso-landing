@@ -60,7 +60,7 @@ export interface Seo {
 export interface BestSeller {
   _type: "bestSeller";
   _id: string;
-  products: Product[];
+  products: HomeProduct[];
 }
 
 export interface HeroProducts {

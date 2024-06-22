@@ -31,7 +31,8 @@ export const metadata: Metadata = {
     default: "Diarios Personalizados en Colombia",
     template: "%s | Diario Diverso",
   },
-  description: "Descubre nuestros diarios personalizados para mejorar tu bienestar emocional y crecimiento personal. Compra en Diario Diverso y encuentra el diario perfecto para ti.",
+  description:
+    "Descubre nuestros diarios personalizados para mejorar tu bienestar emocional y crecimiento personal. Compra en Diario Diverso y encuentra el diario perfecto para ti.",
   openGraph: {
     type: "website",
     locale: "en_US",

@@ -117,17 +117,26 @@ export const queryBestSeller = groq`
   *[_type == "bestSeller"][0]{
     ...,
     _id,
-    products[]->{
-      ...,
-      "slug": slug.current,
-      price,
-      gallery{
+    products[0..4]{
+      image{
         ...,
-        images[]{
+        asset->{
           ...,
-          asset->{
+          "_ref": _id,
+        },
+      },
+      product->{
+        ...,
+        "slug": slug.current,
+        price,
+        gallery{
+          ...,
+          images[]{
             ...,
-            "_ref": _id,
+            asset->{
+              ...,
+              "_ref": _id,
+            },
           },
         },
       },

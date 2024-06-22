@@ -60,7 +60,7 @@ export function loadProducts() {
   return loadQuery<Product[]>(
     productsQuery,
     {},
-    { next: { tags: ["products"] } }
+    { next: { tags: ["products"] } },
   );
 }
 
@@ -68,7 +68,7 @@ export function loadProductBySlug(slug: string) {
   return loadQuery<Product>(
     productBySlugQuery,
     { slug },
-    { next: { tags: ["products", slug] } }
+    { next: { tags: ["products", slug] } },
   );
 }
 
@@ -76,7 +76,7 @@ export function loadProductsByCategory(categorySlug: string) {
   return loadQuery<Product[]>(
     productByCategoryQuery,
     { categorySlug },
-    { next: { tags: ["products", categorySlug] } }
+    { next: { tags: ["products", categorySlug] } },
   );
 }
 
@@ -84,7 +84,7 @@ export function loadCategories() {
   return loadQuery<Category[]>(
     queryCategories,
     {},
-    { next: { tags: ["categories"] } }
+    { next: { tags: ["categories"] } },
   );
 }
 
@@ -92,7 +92,7 @@ export function loadCategoryBySlug(slug: string) {
   return loadQuery<Category>(
     queryCategoryBySlug,
     { slug },
-    { next: { tags: ["categories", slug] } }
+    { next: { tags: ["categories", slug] } },
   );
 }
 
@@ -100,7 +100,7 @@ export function loadBestSeller() {
   return loadQuery<BestSeller>(
     queryBestSeller,
     { categorySlug: "best-seller" },
-    { next: { tags: ["products", "best-seller"] } }
+    { next: { tags: ["products", "best-seller"] } },
   );
 }
 
@@ -108,6 +108,6 @@ export function loadHeroProducts() {
   return loadQuery<HeroProducts>(
     queryHeroProducts,
     {},
-    { next: { tags: ["products", "hero-products"] } }
+    { next: { tags: ["products", "hero-products"] } },
   );
 }
