@@ -1,13 +1,10 @@
 BUGS
 
 - Revisar select en mobile de categorias
-- Algunas imagenes no aparecenm ? muy pesadas
-- Mejor la carga blur de las imagenes
 
   FEATURES
 
 - productos del footer escoger (kits, otros, diarios)
-- productos relacionados carousel
 - bajar pesos a tu experiencia footer
 - faq
 - about us

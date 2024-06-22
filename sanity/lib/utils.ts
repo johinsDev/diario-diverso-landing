@@ -23,7 +23,7 @@ export const urlForImage = (source: Image | undefined) => {
 };
 
 export function urlForOpenGraphImage(image: Image | undefined) {
-  return urlForImage(image)?.width(1200).height(627).fit("crop").url();
+  return urlForImage(image)?.height(627).fit("crop").url();
 }
 
 export function resolveHref(documentType?: string, slug?: string): string {
