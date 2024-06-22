@@ -3,7 +3,6 @@ BUGS
 - Revisar select en mobile de categorias
 - Algunas imagenes no aparecenm ? muy pesadas
 - Mejor la carga blur de las imagenes
-- aparece el logo de diario diverso en cada producto
 
   FEATURES
 
@@ -20,3 +19,4 @@ BUGS
 - cargar mas rapido imagenes del carousel
 - zoom en las imagenes
 - subir performance
+- sitemap

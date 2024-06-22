@@ -39,7 +39,7 @@ export function GridImages({ product }: GridImagesProps) {
 
   return (
     <div className="flex flex-col-reverse w-full gap-2 xl:gap-x-4 xl:flex-row xl:items-start xl:w-1/2">
-      <div className="flex items-center gap-2 xl:flex-col xl:w-1/5">
+      <div className="flex items-center gap-2 justify-center xl:flex-col xl:w-1/5">
         {imagesRow.map((image, index) => {
           const imageUrl =
             image &&
@@ -49,7 +49,7 @@ export function GridImages({ product }: GridImagesProps) {
             <div
               key={image.asset._id + index}
               className={cn(
-                "aspect-[3/4] hover:ring-2 hover:ring-accent ring-offset-2 py-1 overflow-hidden relative",
+                "aspect-[3/4] hover:ring-2 hover:ring-accent ring-offset-2 py-1 overflow-hidden relative max-h-44",
               )}
               onMouseEnter={() => setSelectedImage({ ...image, src: imageUrl })}
             >
@@ -84,7 +84,7 @@ export function GridImages({ product }: GridImagesProps) {
       </div>
 
       <button
-        className="overflow-hidden min-h-96 aspect-[3/4] xl:w-4/5"
+        className="overflow-hidden max-h-96 aspect-[3/4] flex justify-center xl:w-4/5 xl:max-h-none"
         onClick={() => handleOpen(selectedImage.asset._id)}
       >
         {selectedImage?.src && (

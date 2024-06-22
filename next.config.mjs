@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
+    loader: "custom",
+    loaderFile: "./lib/sanity-loader.js",
     remotePatterns: [
       { hostname: "cdn.sanity.io" },
       { hostname: "source.unsplash.com" },
