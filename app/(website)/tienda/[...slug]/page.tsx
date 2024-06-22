@@ -92,12 +92,12 @@ export default async function Page({ params }: Props) {
               </Link>
             </Button>
 
-            <p className="text-center text-sm text-muted-foreground/80 mt-4">
+            {/* <p className="text-center text-sm text-muted-foreground/80 mt-4">
               Tiempo de entrega: 3-5 días hábiles.
             </p>
             <p className="text-center text-sm text-muted-foreground/80 mt-1">
               Devolución dentro de los 45 días de la compra.
-            </p>
+            </p> */}
           </div>
         </div>
       </div>

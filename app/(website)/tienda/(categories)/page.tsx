@@ -14,7 +14,7 @@ export default async function Page() {
 
   return (
     <Suspense>
-      <ListOfProducts products={products} />;
+      <ListOfProducts products={products} />
     </Suspense>
   );
 }
