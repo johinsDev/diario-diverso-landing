@@ -49,7 +49,7 @@ export function GridImages({ product }: GridImagesProps) {
             <div
               key={image.asset._id + index}
               className={cn(
-                "bg-white aspect-square rounded-md border border-primary/40 hover:ring-2 hover:ring-accent ring-offset-2 py-1 overflow-hidden relative",
+                "aspect-[3/4] hover:ring-2 hover:ring-accent ring-offset-2 py-1 overflow-hidden relative",
               )}
               onMouseEnter={() => setSelectedImage({ ...image, src: imageUrl })}
             >
@@ -57,11 +57,13 @@ export function GridImages({ product }: GridImagesProps) {
                 <Image
                   src={imageUrl}
                   alt={image.alt || "product"}
-                  className="object-contain rounded-md h-full transform hover:scale-105 transition-all duration-300"
+                  className="object-contain rounded-md h-full w-full transform hover:scale-105 transition-all duration-300"
                   width={300}
                   height={220}
                   priority
-                  sizes="25vw"
+                  sizes="(min-width: 1280px) 300px, 25vw"
+                  placeholder="blur"
+                  blurDataURL={image.asset.metadata.lqip}
                 />
               )}
 
@@ -89,7 +91,7 @@ export function GridImages({ product }: GridImagesProps) {
           <Image
             src={selectedImage?.src}
             alt="Kit Plenitud"
-            className="h-full rounded-md object-contain"
+            className="h-full object-contain"
             width={500}
             height={700}
             priority
