@@ -39,8 +39,6 @@ export function resolveHref(documentType?: string, slug?: string): string {
 export function _generateMetadata(seo?: Seo): Metadata {
   const ogImage = urlForOpenGraphImage(seo?.image);
 
-  console.log("ogImage", ogImage);
-
   return flush({
     title: seo?.title ? capitalize(seo?.title) : undefined,
     description: seo?.description ? toPlainText(seo?.description) : undefined,
