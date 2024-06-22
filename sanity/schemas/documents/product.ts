@@ -1,5 +1,6 @@
 // define a schema for product with a title, price, description as portable text, hightligt, and image gallery
 
+import { orderRankField } from "@sanity/orderable-document-list";
 import { defineField, defineType } from "sanity";
 
 export default defineType({
@@ -7,6 +8,7 @@ export default defineType({
   title: "Product",
   type: "document",
   fields: [
+    orderRankField({ type: "product" }),
     defineField({
       name: "title",
       title: "Title",

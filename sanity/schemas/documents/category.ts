@@ -7,7 +7,6 @@ export default defineType({
   type: "document",
   fields: [
     orderRankField({ type: "category" }),
-
     defineField({
       name: "title",
       title: "Title",

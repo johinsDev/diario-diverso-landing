@@ -75,7 +75,7 @@ export default function FilterCategories({
                   : "/tienda"
               }
               className={cn(
-                "px-8 py-3 border border-border rounded-full hover:bg-primary hover:text-white font-medium hidden md:block transition-colors duration-200",
+                "px-8 py-3 border border-border rounded-full hover:bg-primary hover:text-white font-medium hidden md:block transition-colors duration-200 lowercase first-letter:capitalize",
                 {
                   "bg-primary text-white": isActive,
                 },

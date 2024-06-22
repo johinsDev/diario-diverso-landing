@@ -8,10 +8,10 @@ export default async function CategoriesLayout(props: PropsWithChildren<{}>) {
   const { data: products } = await loadProducts();
 
   return (
-    <main className="flex-1 flex flex-col container py-4 md:py-20">
-      <h1 className="font-semibold">Tienda</h1>
+    <main className="flex-1 flex flex-col container py-4 md:py-10">
+      <h1 className="font-semibold text-center">Nuestros productos</h1>
 
-      <div className="mt-2 text-muted-foreground text-xl">
+      <div className="mt-2 text-muted-foreground text-xl text-center">
         Consulta nuestra colección completa de productos.
       </div>
 

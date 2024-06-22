@@ -3,7 +3,7 @@
  */
 
 import { orderableDocumentListDeskItem } from "@sanity/orderable-document-list";
-import { PaintBucket } from "lucide-react";
+import { Box, PaintBucket } from "lucide-react";
 import { type DocumentDefinition } from "sanity";
 import { type StructureResolver } from "sanity/structure";
 
@@ -62,7 +62,8 @@ export const pageStructure = (
             (singleton) => singleton.name === listItem.getId(),
           ),
       )
-      .filter((listItem) => listItem.getId() !== "category");
+      .filter((listItem) => listItem.getId() !== "category")
+      .filter((listItem) => listItem.getId() !== "product");
 
     return S.list()
       .title("Content")
@@ -70,6 +71,7 @@ export const pageStructure = (
         ...singletonItems,
         S.divider(),
         ...defaultListItems,
+        orderableDocumentListDeskItem({ type: "product", S, context, title: "Products", icon: Box }),
         orderableDocumentListDeskItem({ type: "category", S, context, title: "Categories", icon: PaintBucket }),
       ]);
   };

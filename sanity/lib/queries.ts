@@ -1,7 +1,7 @@
 import { groq } from "next-sanity";
 
 export const productsQuery = groq`
-  *[_type == "product"] {
+  *[_type == "product"]|order(orderRank) {
     _id,
     title,
     "slug": slug.current,
@@ -68,7 +68,7 @@ export const productBySlugQuery = groq`
 `;
 
 export const productByCategoryQuery = groq`
-  *[_type == "product" && $categorySlug in category[]->slug.current] {
+  *[_type == "product" && $categorySlug in category[]->slug.current]|order(price asc) {
     _id,
     title,
     "slug": slug.current,
