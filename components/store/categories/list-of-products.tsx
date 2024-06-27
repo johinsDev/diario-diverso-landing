@@ -15,7 +15,7 @@ export default function ListOfProducts({ products }: Props) {
             key={product._id}
             priority={index < 6}
           />
-        )
+        );
       })}
     </div>
   );

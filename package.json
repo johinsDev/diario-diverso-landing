@@ -29,6 +29,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
+    "embla-carousel-auto-height": "^8.1.5",
     "embla-carousel-react": "^8.1.5",
     "just-capitalize": "^3.2.0",
     "just-flush": "^2.3.0",

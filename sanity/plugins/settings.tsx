@@ -71,8 +71,20 @@ export const pageStructure = (
         ...singletonItems,
         S.divider(),
         ...defaultListItems,
-        orderableDocumentListDeskItem({ type: "product", S, context, title: "Products", icon: Box }),
-        orderableDocumentListDeskItem({ type: "category", S, context, title: "Categories", icon: PaintBucket }),
+        orderableDocumentListDeskItem({
+          type: "product",
+          S,
+          context,
+          title: "Products",
+          icon: Box,
+        }),
+        orderableDocumentListDeskItem({
+          type: "category",
+          S,
+          context,
+          title: "Categories",
+          icon: PaintBucket,
+        }),
       ]);
   };
 };

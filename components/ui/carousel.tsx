@@ -43,7 +43,7 @@ function useCarousel() {
 }
 
 const Carousel = React.forwardRef<
-  HTMLDivElement,
+  CarouselApi,
   React.HTMLAttributes<HTMLDivElement> & CarouselProps
 >(
   (
@@ -120,6 +120,8 @@ const Carousel = React.forwardRef<
       };
     }, [api, onSelect]);
 
+    React.useImperativeHandle(ref, () => api, [api]);
+
     return (
       <CarouselContext.Provider
         value={{
@@ -135,9 +137,8 @@ const Carousel = React.forwardRef<
         }}
       >
         <div
-          ref={ref}
           onKeyDownCapture={handleKeyDown}
-          className={cn("relative", className)}
+          className={cn(className)}
           role="region"
           aria-roledescription="carousel"
           {...props}
@@ -246,7 +247,6 @@ const CarouselNext = React.forwardRef<HTMLButtonElement, CarouselNextProps>(
     ref,
   ) => {
     const { orientation, scrollNext, canScrollNext } = useCarousel();
-
 
     if (!canScrollNext) {
       return null;
@@ -362,5 +362,5 @@ export {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-  type CarouselApi
+  type CarouselApi,
 };
