@@ -13,9 +13,9 @@ import { urlForImage } from "@/sanity/lib/utils";
 import { GalleryImage } from "@/types";
 import { DialogContent } from "@radix-ui/react-dialog";
 import AutoHeight from "embla-carousel-auto-height";
-import { ArrowLeft, XIcon } from "lucide-react";
+import { ArrowLeft, ChevronLeft, ChevronRight, XIcon } from "lucide-react";
 import Image from "next/image";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 type ImagesModalProps = {
   images: GalleryImage[];
@@ -27,40 +27,45 @@ type DotsProps = {
 
 function Dots({ api }: DotsProps) {
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
+  const [selectedIndex, setSelectedIndex] = useState<number>(0);
 
   const onInit = useCallback((api: CarouselApi) => {
     setScrollSnaps(api?.scrollSnapList() ?? []);
   }, []);
 
+  const onSelect = useCallback((api: CarouselApi) => {
+    setSelectedIndex(api?.selectedScrollSnap() ?? 0);
+  }, []);
+
   useEffect(() => {
     if (!api) return;
 
-    onInit(api);
-    api.on("reInit", onInit);
-  }, [api, onInit]);
+    api?.on("reInit", onInit);
+    api?.on("init", onInit);
+    api?.on("select", onSelect);
+  }, [api, onInit, onSelect]);
 
   if (scrollSnaps.length <= 1) {
     return null;
   }
 
   return (
-    <div className="flex z-[90] w-full bg-black/20 rounded-lg px-2 fixed bottom-12 left-1/2 transform translate-x-[-50%] translate-y-[-50%] right-1/2 pointer-events-auto">
+    <div className="flex z-50 w-fit lg:hidden bg-black/20 rounded-lg px-2 fixed bottom-12 left-1/2 transform translate-x-[-50%] translate-y-[-50%] right-1/2 pointer-events-auto">
       {scrollSnaps.map((_, index) => {
-        const isSelected = api?.selectedScrollSnap() === index;
+        const isSelected = selectedIndex === index;
 
         return (
           <button
             key={index}
             onClick={(e) => {
-              e.stopPropagation()
-              e.preventDefault()
-              api?.scrollTo(index)
+              e.stopPropagation();
+              api?.scrollTo(index);
             }}
             className="py-2 px-1 md:py-3 md:px-2"
           >
             <div
               className={cn(
-                "size-2.5 md:size-3 rounded-full",
+                "size-2.5 md:size-3 rounded-full  transition-all duration-500",
                 isSelected ? "bg-white" : "bg-white/50",
               )}
             />
@@ -68,6 +73,76 @@ function Dots({ api }: DotsProps) {
         );
       })}
     </div>
+  );
+}
+
+type CountProps = {
+  api: CarouselApi | null;
+};
+
+export function Count({ api }: CountProps) {
+  const [total, setTotal] = useState<number>(0);
+
+  const [selectedIndex, setSelectedIndex] = useState<number>(0);
+
+  const onInit = useCallback((api: CarouselApi) => {
+    setTotal((api?.scrollSnapList() ?? []).length);
+    setSelectedIndex(api?.selectedScrollSnap() ?? 0);
+  }, []);
+
+  const onSelect = useCallback((api: CarouselApi) => {
+    setSelectedIndex(api?.selectedScrollSnap() ?? 0);
+  }, []);
+
+  useEffect(() => {
+    if (!api) return;
+
+    api?.on("reInit", onInit);
+    api?.on("init", onInit);
+    api?.on("select", onSelect);
+  }, [api, onInit, onSelect]);
+
+  return (
+    <div className="text-white text-sm font-medium bg-foreground/50 rounded-full py-0.5 px-2 cursor-pointer">
+      {selectedIndex + 1} / {total}
+    </div>
+  );
+}
+
+type ArrowLeftCarouselProps = {
+  api: CarouselApi | null;
+};
+
+export function ArrowLeftCarousel({ api }: ArrowLeftCarouselProps) {
+  return (
+    <button
+      className="fixed left-4 transform -translate-y-1/2 top-1/2 z-50  place-content-center p-2 bg-foreground/40 pointer-events-auto hidden lg:grid"
+      onClick={(e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        api?.scrollPrev();
+      }}
+    >
+      <ChevronLeft className="size-10 text-white" />
+    </button>
+  );
+}
+
+type ArrowRightCarouselProps = {
+  api: CarouselApi | null;
+};
+
+export function ArrowRightCarousel({ api }: ArrowRightCarouselProps) {
+  return (
+    <button
+      className="fixed right-4 transform -translate-y-1/2 top-1/2 z-50  place-content-center p-2 bg-foreground/40 pointer-events-auto hidden lg:grid"
+      onClick={(e) => {
+        e.stopPropagation();
+        api?.scrollNext();
+      }}
+    >
+      <ChevronRight className="size-10 text-white" />
+    </button>
   );
 }
 
@@ -80,16 +155,18 @@ export function ImagesModal({ images }: ImagesModalProps) {
 
   const startIndex = !!src ? Math.min(imageIndex, images.length - 1) : -1;
 
-  const refCarousel = useRef<CarouselApi>(null);
+  const [carousel, setCarousel] = useState<CarouselApi | null>(null);
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && handleClose()}>
       <DialogPortal>
-        <div className="fixed top-4 w-full px-4 z-[99] flex items-center justify-between lg:flex-row-reverse pointer-events-auto">
-          <button className="lg:hidden" onClick={() => {
-            console.log('CLICk')
-            handleClose()
-          }}>
+        <div className="fixed top-4 w-full px-4 z-50 flex items-center justify-between lg:flex-row-reverse pointer-events-auto">
+          <button
+            className="lg:hidden"
+            onClick={() => {
+              handleClose();
+            }}
+          >
             <ArrowLeft className="size-8 text-white" />
           </button>
 
@@ -100,37 +177,39 @@ export function ImagesModal({ images }: ImagesModalProps) {
             <XIcon className="size-10 text-white" />
           </button>
 
-          <div className="text-white text-sm font-medium bg-foreground/50 rounded-full py-0.5 px-2 cursor-pointer">
-            1 / {images.length}
-          </div>
+          <Count api={carousel} />
         </div>
-        <DialogOverlay />
+        <DialogOverlay onClick={() => handleClose()} />
 
-        {/* <Dots api={refCarousel.current} /> */}
+        <Dots api={carousel} />
+
+        <ArrowLeftCarousel api={carousel} />
+
+        <ArrowRightCarousel api={carousel} />
 
         <DialogContent
           onKeyDownCapture={(event) => {
             if (event.key === "ArrowLeft") {
               event.preventDefault();
-              refCarousel.current?.scrollNext();
+              carousel?.scrollNext();
             } else if (event.key === "ArrowRight") {
               event.preventDefault();
-              refCarousel.current?.scrollPrev();
+              carousel?.scrollPrev();
             }
           }}
-
+          onInteractOutside={(e) => e.preventDefault()}
           className={cn(
             "fixed left-[50%] top-[50%] z-50 grid translate-x-[-50%] translate-y-[-50%] bg-transparent duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 w-full md:max-w-xl",
           )}
         >
           <Carousel
-            ref={refCarousel}
             opts={{
               loop: true,
               startIndex,
             }}
-            className="m-auto max-w-[90vw] md:max-w-xl w-full"
+            className="m-auto max-w-xl w-full"
             plugins={[AutoHeight()]}
+            setApi={setCarousel}
           >
             <CarouselContent className="rounded-none backface-hidden touch-pinch-zoom touch-pan-y items-start">
               {images.map((image, index) => {
@@ -164,22 +243,6 @@ export function ImagesModal({ images }: ImagesModalProps) {
             </CarouselContent>
           </Carousel>
         </DialogContent>
-        {/* <DialogPrimitive.Content
-      ref={ref}
-      className={cn(
-        "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 rounded-lg",
-        className,
-      )}
-      {...props}
-    >
-      {children}
-      {withClose && (
-        <DialogPrimitive.Close className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
-          <X className="h-6 w-6" />
-          <span className="sr-only">Close</span>
-        </DialogPrimitive.Close>
-      )}
-    </DialogPrimitive.Content> */}
       </DialogPortal>
     </Dialog>
   );

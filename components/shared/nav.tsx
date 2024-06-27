@@ -9,7 +9,7 @@ const NavMobile = dynamic(
 
 export function Nav() {
   return (
-    <header className="sticky top-0 flex h-20 items-center gap-4 w-full z-50 bg-white flex-shrink-0">
+    <header className="sticky top-0 flex h-20 items-center gap-4 w-full z-40 bg-white flex-shrink-0">
       <nav className="container mx-auto flex w-full gap-4 text-lg md:flex md:flex-row md:items-center md:gap-5 md:text-base lg:gap-12">
         <Link
           href="/"
