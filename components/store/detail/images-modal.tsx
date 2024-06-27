@@ -13,12 +13,63 @@ import { urlForImage } from "@/sanity/lib/utils";
 import { GalleryImage } from "@/types";
 import { DialogContent } from "@radix-ui/react-dialog";
 import AutoHeight from "embla-carousel-auto-height";
+import { ArrowLeft, XIcon } from "lucide-react";
 import Image from "next/image";
-import { useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 type ImagesModalProps = {
   images: GalleryImage[];
 };
+
+type DotsProps = {
+  api: CarouselApi | null;
+};
+
+function Dots({ api }: DotsProps) {
+  const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
+
+  const onInit = useCallback((api: CarouselApi) => {
+    setScrollSnaps(api?.scrollSnapList() ?? []);
+  }, []);
+
+  useEffect(() => {
+    if (!api) return;
+
+    onInit(api);
+    api.on("reInit", onInit);
+  }, [api, onInit]);
+
+  if (scrollSnaps.length <= 1) {
+    return null;
+  }
+
+  return (
+    <div className="flex z-[90] w-full bg-black/20 rounded-lg px-2 fixed bottom-12 left-1/2 transform translate-x-[-50%] translate-y-[-50%] right-1/2 pointer-events-auto">
+      {scrollSnaps.map((_, index) => {
+        const isSelected = api?.selectedScrollSnap() === index;
+
+        return (
+          <button
+            key={index}
+            onClick={(e) => {
+              e.stopPropagation()
+              e.preventDefault()
+              api?.scrollTo(index)
+            }}
+            className="py-2 px-1 md:py-3 md:px-2"
+          >
+            <div
+              className={cn(
+                "size-2.5 md:size-3 rounded-full",
+                isSelected ? "bg-white" : "bg-white/50",
+              )}
+            />
+          </button>
+        );
+      })}
+    </div>
+  );
+}
 
 export function ImagesModal({ images }: ImagesModalProps) {
   const { handleClose, src } = useImagesModal();
@@ -34,7 +85,29 @@ export function ImagesModal({ images }: ImagesModalProps) {
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && handleClose()}>
       <DialogPortal>
+        <div className="fixed top-4 w-full px-4 z-[99] flex items-center justify-between lg:flex-row-reverse pointer-events-auto">
+          <button className="lg:hidden" onClick={() => {
+            console.log('CLICk')
+            handleClose()
+          }}>
+            <ArrowLeft className="size-8 text-white" />
+          </button>
+
+          <button
+            className="hidden lg:block bg-foreground/60"
+            onClick={() => handleClose()}
+          >
+            <XIcon className="size-10 text-white" />
+          </button>
+
+          <div className="text-white text-sm font-medium bg-foreground/50 rounded-full py-0.5 px-2 cursor-pointer">
+            1 / {images.length}
+          </div>
+        </div>
         <DialogOverlay />
+
+        {/* <Dots api={refCarousel.current} /> */}
+
         <DialogContent
           onKeyDownCapture={(event) => {
             if (event.key === "ArrowLeft") {
@@ -45,6 +118,7 @@ export function ImagesModal({ images }: ImagesModalProps) {
               refCarousel.current?.scrollPrev();
             }
           }}
+
           className={cn(
             "fixed left-[50%] top-[50%] z-50 grid translate-x-[-50%] translate-y-[-50%] bg-transparent duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 w-full md:max-w-xl",
           )}
@@ -81,7 +155,7 @@ export function ImagesModal({ images }: ImagesModalProps) {
                       height={900}
                       placeholder="blur"
                       blurDataURL={image.asset.metadata.lqip}
-                      className="object-contain h-full max-h-[90vh]"
+                      className="object-contain h-full max-h-[70vh]"
                       priority={index <= 4}
                     />
                   </CarouselItem>
