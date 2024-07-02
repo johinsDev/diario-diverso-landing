@@ -174,3 +174,25 @@ export const queryHeroProducts = groq`
     },
   }
 `;
+
+export const latestPostsQuery = groq`
+  *[_type == "post"]|order(date desc) {
+    _id,
+    title,
+    "slug": slug.current,
+    date,
+    image{
+      ...,
+      asset->{
+        ...,
+        "_ref": _id,
+      },
+    },
+    content,
+    category->{
+      ...,
+      "slug": slug.current,
+    },
+    seo,
+  }
+`;

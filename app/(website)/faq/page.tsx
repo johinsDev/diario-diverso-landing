@@ -48,10 +48,10 @@ export default function FAQPage() {
       <Accordion type="multiple">
         {QUESTIONS.map((question, index) => (
           <AccordionItem key={index} value={question.title}>
-            <AccordionTrigger className="text-xl font-semibold">
+            <AccordionTrigger className="text-left lg:text-xl font-semibold">
               {question.title}
             </AccordionTrigger>
-            <AccordionContent className="text-gray-600 mt-2 text-lg">
+            <AccordionContent className="text-gray-600 mt-2 lg:text-lg">
               {question.content}
             </AccordionContent>
           </AccordionItem>

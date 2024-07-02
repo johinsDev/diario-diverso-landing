@@ -14,6 +14,8 @@ import * as resolve from "@/sanity/plugins/resolve";
 import { pageStructure, singletonPlugin } from "@/sanity/plugins/settings";
 import { colorInput } from "@sanity/color-input";
 import category from "./sanity/schemas/documents/category";
+import categoryPost from "./sanity/schemas/documents/category-post";
+import post from "./sanity/schemas/documents/post";
 import product from "./sanity/schemas/documents/product";
 import gallery from "./sanity/schemas/objects/gallery";
 import homeProduct from "./sanity/schemas/objects/home-product";
@@ -40,6 +42,8 @@ export default defineConfig({
       // Documents
       product,
       category,
+      categoryPost,
+      post,
       // Objects
       gallery,
       seo,

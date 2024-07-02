@@ -75,3 +75,25 @@ export interface HomeProduct {
   image: GalleryImage;
   product: Product;
 }
+
+export interface CategoryPost {
+  id: string;
+  _type: "categoryPost";
+  title: string;
+  image?: CustomImage;
+  slug: string;
+  description?: PortableTextBlock[];
+  seo?: Seo;
+}
+
+export interface PostDocument {
+  _id: string;
+  _type: "post";
+  category: CategoryPost;
+  date: string;
+  title: string;
+  image?: CustomImage["image"];
+  slug: string;
+  seo?: Seo;
+  content?: PortableTextBlock[];
+}

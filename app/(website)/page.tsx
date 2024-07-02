@@ -150,7 +150,9 @@ export default async function Home() {
         <BestSeller />
       </Suspense>
 
-      <LatestPost />
+      <Suspense>
+        <LatestPost />
+      </Suspense>
 
       <AboutUs />
 
