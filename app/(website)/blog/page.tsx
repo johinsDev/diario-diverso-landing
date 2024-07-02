@@ -2,22 +2,34 @@ import { Categories } from "@/components/blog/categories";
 import { GridPosts } from "@/components/blog/grid-posts";
 import { Post } from "@/components/shared/post";
 import { loadPosts } from "@/sanity/loader/loadQuery";
+import Image from "next/image";
 
 export default async function StorePage() {
   const { data } = await loadPosts();
 
   return (
-    <main className="flex-1 flex flex-col container py-4 md:py-10">
-      <section className="bg-accent p-4 md:p-12 full-width">
-        <div className="container">
+    <main className="flex-1 flex flex-col container pb-4 md:pb-10">
+      <section className="bg-accent full-width">
+        <div className="container relative p-4 md:p-12">
           <h1 className="text-4xl text-white font-bold mb-2 leading-tight capitalize">
             <span className="block">Explora nuestros </span>
             <span className="block">Ultimos articulos</span>
           </h1>
+
+          <div className="absolute top-0 right-0 bottom-0 hidden lg:block lg:w-1/2">
+            <Image
+              src="/bg-blog-3.png"
+              className="object-cover object-top"
+              alt="Hero Image"
+              fill
+            />
+          </div>
         </div>
+
+
       </section>
 
-      <section className="w-full flex items-start gap-10 mt-8 lg:mt-16">
+      <section className="w-full flex items-start gap-12 mt-8 lg:mt-16">
         <div className="w-1/4 hidden lg:block">
           <div className="bg-muted p-4 rounded-md">
             <div className="flex gap-2 items-center">

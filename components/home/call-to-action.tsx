@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "../ui/button";
 
 export function CallToAction() {
@@ -18,8 +19,10 @@ export function CallToAction() {
               transforma tu vida!
             </div>
 
-            <Button className="mt-8 px-12 font-semibold" variant={"black"}>
-              Adquirir mi diario
+            <Button className="mt-8 px-12 font-semibold" variant={"black"} asChild>
+              <Link href={"/tienda"} >
+                Adquirir mi diario
+              </Link>
             </Button>
           </div>
 
