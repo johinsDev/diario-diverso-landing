@@ -1,6 +1,5 @@
 import { Categories } from "@/components/blog/categories";
 import { GridPosts } from "@/components/blog/grid-posts";
-import { Post } from "@/components/shared/post";
 import { loadPosts } from "@/sanity/loader/loadQuery";
 import Image from "next/image";
 
@@ -15,10 +14,9 @@ export default async function StorePage() {
   return (
     <main className="flex-1 flex flex-col container pb-4 md:pb-10">
       <section className="bg-accent full-width">
-        <div className="container relative p-4 md:p-12">
+        <div className="container relative p-4 md:p-20">
           <h1 className="text-4xl text-white font-bold mb-2 leading-tight capitalize">
-            <span className="block">Explora nuestros </span>
-            <span className="block">Ultimos articulos</span>
+            Blog diario diverso
           </h1>
 
           <div className="absolute top-0 right-0 bottom-0 hidden lg:block lg:w-1/2">
@@ -45,7 +43,7 @@ export default async function StorePage() {
             <Categories posts={data} />
           </div>
 
-          <div className="mt-8">
+          {/* <div className="mt-8">
             <div className="flex gap-2 items-center">
               <div className="bg-primary w-8 rounded-md h-1" />
               <div className="text-2xl font-bold capitalize">
@@ -62,7 +60,7 @@ export default async function StorePage() {
                 />
               ))}
             </div>
-          </div>
+          </div> */}
         </div>
 
         <GridPosts posts={data} />
