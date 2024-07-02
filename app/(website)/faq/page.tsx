@@ -13,6 +13,31 @@ export const metadata: Metadata = {
 
 const QUESTIONS = [
   {
+    title: "¿Puedo personalizar el diseño de mi diario?",
+    content:
+      "¡Sí! Puedes elegir el color y el diseño de tu diario dentro de nuestro catálogo al momento de la compra. Queremos que cada diario refleje tu estilo personal.",
+  },
+  {
+    title: "¿Cómo realizo una compra?",
+    content:
+      "Todas las compras se realizan a través de nuestros asesores por WhatsApp. Ellos te guiarán en cada paso del proceso para asegurarte una experiencia de compra personalizada y satisfactoria.",
+  },
+  {
+    title: "¿Cuál es la política de devoluciones?",
+    content:
+      "No aceptamos devoluciones. Asegúrate de revisar bien tus elecciones antes de finalizar tu compra. Si tienes alguna duda, nuestros asesores están aquí para ayudarte.",
+  },
+  {
+    title: "¿Cuánto tiempo tardará en llegar mi pedido?",
+    content:
+      "El tiempo de entrega varía según tu ubicación. Una vez realizado el pedido, te proporcionaremos un estimado de tiempo de entrega. Generalmente, los pedidos se entregan dentro de 5 a 7 días hábiles.",
+  },
+  {
+    title: "¿Qué opciones de pago aceptan?",
+    content:
+      "Aceptamos pagos mediante transferencia bancaria y algunos servicios de pago móvil. Consulta con tu asesor para más detalles.",
+  },
+  {
     title: "¿Puedo hacer un seguimiento de mi pedido?",
     content:
       "Sí, una vez que tu pedido haya sido enviado, te proporcionaremos un número de seguimiento para que puedas monitorear el estado de tu entrega.",
