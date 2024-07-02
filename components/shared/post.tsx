@@ -7,6 +7,7 @@ import { HtmlHTMLAttributes } from "react";
 
 type PostProps = {
   post: PostDocument;
+  index?: number;
 } & HtmlHTMLAttributes<HTMLAnchorElement>;
 
 function getMonth(date: string) {
@@ -32,10 +33,18 @@ function getDay(date: string) {
   return new Date(date).getDate();
 }
 
-export function Post({ post, className, ...props }: PostProps) {
+const COLOR_CATEGORY: Record<string, string> = {
+  "0": "bg-primary",
+  "1": "bg-secondary",
+  "2": "bg-accent",
+};
+
+export function Post({ post, className, index = 0, ...props }: PostProps) {
   const image =
     post.image &&
     urlForImage(post.image)?.width(512).fit("crop").auto("format").url();
+
+  const categoryColor = COLOR_CATEGORY[index % 3];
 
   return (
     <Link
@@ -65,7 +74,7 @@ export function Post({ post, className, ...props }: PostProps) {
       </div>
 
       <div className="p-5 pt-10 text-left text-foreground transition-all duration-300 relative flex-1 flex flex-col justify-between">
-        <div className="uppercase bg-primary text-accent-foreground absolute -top-5 rounded h-10 p-2 px-6 py-2 text-base font-semibold transition-all duration-300">
+        <div className={cn("uppercase bg-primary text-accent-foreground absolute -top-5 rounded h-10 p-2 px-6 py-2 text-base font-semibold transition-all duration-300", categoryColor)}>
           {post.category.title}
         </div>
 
