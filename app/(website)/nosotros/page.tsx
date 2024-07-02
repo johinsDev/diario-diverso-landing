@@ -9,12 +9,10 @@ export const metadata: Metadata = {
 export default function AboutUsPage() {
   return (
     <main className="flex-1 flex flex-col container py-4 md:py-10">
-      <h1 className="text-4xl font-bold mb-2">Nosotros</h1>
-
-      <h2 className="text-xl text-gray-600 mb-8">
+      <h1 className="text-xl text-center font-semibold text-gray-600 mb-8">
         En Diario Diverso, creemos que cada persona tiene una historia única que
         merece ser contada, explorada y celebrada.
-      </h2>
+      </h1>
 
       <Image
         src="/about-us.png"
