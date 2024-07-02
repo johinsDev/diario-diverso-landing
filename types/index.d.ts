@@ -77,7 +77,7 @@ export interface HomeProduct {
 }
 
 export interface CategoryPost {
-  id: string;
+  _id: string;
   _type: "categoryPost";
   title: string;
   image?: CustomImage;

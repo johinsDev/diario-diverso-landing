@@ -34,7 +34,6 @@ function slugify(text: string) {
 export async function LatestPost() {
   const { data } = await loadLastPosts();
 
-
   return (
     <section className="bg-white full-width text-center py-20 w-full flex flex-col gap-4 items-center">
       <div className="container mx-auto">
@@ -45,9 +44,7 @@ export async function LatestPost() {
 
         <section className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
           {data.map((post, i) => {
-            return (
-              <Post post={post} key={i} />
-            );
+            return <Post post={post} key={i} />;
           })}
         </section>
 
