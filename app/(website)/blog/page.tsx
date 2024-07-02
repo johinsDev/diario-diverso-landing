@@ -4,6 +4,11 @@ import { Post } from "@/components/shared/post";
 import { loadPosts } from "@/sanity/loader/loadQuery";
 import Image from "next/image";
 
+export const metadata = {
+  title: "Blog",
+  description: "Explora nuestros ultimos articulos.",
+};
+
 export default async function StorePage() {
   const { data } = await loadPosts();
 
