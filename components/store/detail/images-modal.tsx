@@ -7,6 +7,8 @@ import { urlForImage } from "@/sanity/lib/utils";
 import { GalleryImage } from "@/types";
 import { DialogContent } from "@radix-ui/react-dialog";
 import { MotionConfig, motion } from "framer-motion";
+import 'keen-slider/keen-slider.min.css';
+import { useKeenSlider } from 'keen-slider/react'; // import from 'keen-slider/react.es' for to get an ES module
 import { ArrowLeft, ChevronLeft, ChevronRight, XIcon } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
@@ -37,6 +39,18 @@ export function ImagesModal({ images }: ImagesModalProps) {
   const handlePrev = () => {
     setIndex((prev) => (prev - 1 + images.length) % images.length);
   }
+
+  const [sliderRef, instanceRef] = useKeenSlider(
+    {
+      loop: true,
+      slideChanged() {
+        console.log('slide changed')
+      },
+    },
+    [
+      // add plugins here
+    ]
+  )
 
   return (
     <MotionConfig transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}>
@@ -123,10 +137,9 @@ export function ImagesModal({ images }: ImagesModalProps) {
                 );
               })}
             </div>
-
-            <div className="w-full h-full overflow-hidden relative grid place-content-center">
+            <div ref={sliderRef} className="keen-slider w-full h-full">
               {
-                [...images, ...images]
+                images
                   .map((image, i) => {
                     const imageUrl =
                       image &&
@@ -139,24 +152,10 @@ export function ImagesModal({ images }: ImagesModalProps) {
                     if (!imageUrl) return null;
 
                     return (
-                      <motion.div key={image.asset._id + i}
+                      <div key={image.asset._id + i}
 
-                        className="absolute inset-0 overflow-hidden flex items-center justify-center"
-                        animate={{ x: i === index ? 0 : i < index ? "-100%" : "100%" }}
-                        transition={{
-                          x: { type: "spring", stiffness: 300, damping: 30 },
-                          opacity: { duration: 0.2 }
-                        }}
-                        drag="x"
-                        dragConstraints={{ left: 0, right: 0 }}
-                        dragElastic={1}
-                        onDragEnd={(event, info) => {
-                          if (info.offset.x > 100) {
-                            handlePrev();
-                          } else if (info.offset.x < -100) {
-                            handleNext();
-                          }
-                        }}
+                        className="keen-slider__slide"
+
                       >
                         <ImageMotion
                           src={imageUrl}
@@ -169,11 +168,12 @@ export function ImagesModal({ images }: ImagesModalProps) {
                           placeholder="blur"
                           blurDataURL={image.asset.metadata.lqip}
                         />
-                      </motion.div>
+                      </div>
                     )
                   })}
-
             </div>
+
+
 
           </DialogContent>
         </DialogPortal>

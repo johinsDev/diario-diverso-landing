@@ -36,6 +36,7 @@
     "framer-motion": "^11.2.12",
     "just-capitalize": "^3.2.0",
     "just-flush": "^2.3.0",
+    "keen-slider": "^6.8.6",
     "lucide-react": "^0.379.0",
     "next": "14.2.3",
     "next-safe-action": "^7.1.0",
