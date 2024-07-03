@@ -28,8 +28,6 @@ export default async function StorePage() {
             />
           </div>
         </div>
-
-
       </section>
 
       <section className="w-full flex items-start gap-12 mt-8 lg:mt-16">

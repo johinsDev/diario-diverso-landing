@@ -19,10 +19,12 @@ export function CallToAction() {
               transforma tu vida!
             </div>
 
-            <Button className="mt-8 px-12 font-semibold" variant={"black"} asChild>
-              <Link href={"/tienda"} >
-                Adquirir mi diario
-              </Link>
+            <Button
+              className="mt-8 px-12 font-semibold"
+              variant={"black"}
+              asChild
+            >
+              <Link href={"/tienda"}>Adquirir mi diario</Link>
             </Button>
           </div>
 

@@ -6,9 +6,9 @@ import { cn } from "@/lib/utils";
 import { urlForImage } from "@/sanity/lib/utils";
 import { GalleryImage } from "@/types";
 import { DialogContent } from "@radix-ui/react-dialog";
-import { MotionConfig, motion } from "framer-motion";
-import 'keen-slider/keen-slider.min.css';
-import { useKeenSlider } from 'keen-slider/react'; // import from 'keen-slider/react.es' for to get an ES module
+import { MotionConfig } from "framer-motion";
+import "keen-slider/keen-slider.min.css";
+import { useKeenSlider } from "keen-slider/react"; // import from 'keen-slider/react.es' for to get an ES module
 import { ArrowLeft, ChevronLeft, ChevronRight, XIcon } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
@@ -17,8 +17,6 @@ type ImagesModalProps = {
   images: GalleryImage[];
 };
 
-const ImageMotion = motion(Image);
-
 export function ImagesModal({ images }: ImagesModalProps) {
   const { handleClose, src } = useImagesModal();
 
@@ -26,31 +24,23 @@ export function ImagesModal({ images }: ImagesModalProps) {
 
   const imageIndex = images.findIndex((image) => image.asset._id === src);
 
-  // intiial index keep all in the same zustand state to fix the issue
-  // clone data to create a loop
-  // drag and drop to change the order of the images
+  const [currentSlide, setCurrentSlide] = useState(0);
 
-  const [index, setIndex] = useState(0);
+  const [sliderRef, instanceRef] = useKeenSlider({
+    loop: true,
+    initial: imageIndex,
+    slideChanged(slider) {
+      setCurrentSlide(slider.track.details.rel);
+    },
+  });
 
   const handleNext = () => {
-    setIndex((prev) => (prev + 1) % images.length);
-  }
+    instanceRef.current?.next();
+  };
 
   const handlePrev = () => {
-    setIndex((prev) => (prev - 1 + images.length) % images.length);
-  }
-
-  const [sliderRef, instanceRef] = useKeenSlider(
-    {
-      loop: true,
-      slideChanged() {
-        console.log('slide changed')
-      },
-    },
-    [
-      // add plugins here
-    ]
-  )
+    instanceRef.current?.prev();
+  };
 
   return (
     <MotionConfig transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}>
@@ -74,13 +64,11 @@ export function ImagesModal({ images }: ImagesModalProps) {
             </button>
 
             <div className="text-white text-sm font-medium bg-foreground/50 rounded-full py-0.5 px-2 cursor-pointer">
-              {index + 1} / {images.length}
+              {currentSlide + 1} / {images.length}
             </div>
           </div>
 
           <DialogOverlay onClick={() => handleClose()} />
-
-
 
           <button
             className="fixed left-4 transform -translate-y-1/2 top-1/2 z-50  place-content-center p-2 bg-foreground/40 pointer-events-auto hidden lg:grid"
@@ -117,13 +105,13 @@ export function ImagesModal({ images }: ImagesModalProps) {
           >
             <div className="flex z-50 w-fit lg:hidden bg-black/20 rounded-lg px-2 fixed left-1/2 transform translate-x-[-50%] right-1/2 pointer-events-auto -bottom-9">
               {images.map((_, i) => {
-                const isSelected = index === i;
+                const isSelected = i === currentSlide;
 
                 return (
                   <button
                     key={i}
-                    onClick={(e) => {
-                      setIndex(i);
+                    onClick={() => {
+                      instanceRef.current?.moveToIdx(i);
                     }}
                     className="py-2 px-1 md:py-3 md:px-2"
                   >
@@ -138,43 +126,34 @@ export function ImagesModal({ images }: ImagesModalProps) {
               })}
             </div>
             <div ref={sliderRef} className="keen-slider w-full h-full">
-              {
-                images
-                  .map((image, i) => {
-                    const imageUrl =
-                      image &&
-                      urlForImage(image)
-                        ?.width(1200)
-                        .fit("crop")
-                        .format("webp")
-                        .url();
+              {images.map((image, i) => {
+                const imageUrl =
+                  image &&
+                  urlForImage(image)
+                    ?.width(1200)
+                    .fit("crop")
+                    .format("webp")
+                    .url();
 
-                    if (!imageUrl) return null;
+                if (!imageUrl) return null;
 
-                    return (
-                      <div key={image.asset._id + i}
-
-                        className="keen-slider__slide"
-
-                      >
-                        <ImageMotion
-                          src={imageUrl}
-                          alt={image.alt || "product"}
-                          className="object-contain h-full w-full"
-                          width={500}
-                          height={700}
-                          priority
-                          sizes="(min-width: 1280px) 500px, 25vw"
-                          placeholder="blur"
-                          blurDataURL={image.asset.metadata.lqip}
-                        />
-                      </div>
-                    )
-                  })}
+                return (
+                  <div key={image.asset._id + i} className="keen-slider__slide">
+                    <Image
+                      src={imageUrl}
+                      alt={image.alt || "product"}
+                      className="object-contain h-full w-full"
+                      width={500}
+                      height={700}
+                      priority
+                      sizes="(min-width: 1280px) 500px, 25vw"
+                      placeholder="blur"
+                      blurDataURL={image.asset.metadata.lqip}
+                    />
+                  </div>
+                );
+              })}
             </div>
-
-
-
           </DialogContent>
         </DialogPortal>
       </Dialog>

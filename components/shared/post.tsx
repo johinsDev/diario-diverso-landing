@@ -67,14 +67,21 @@ export function Post({ post, className, index = 0, ...props }: PostProps) {
       />
 
       <div className="px-4 py-5 z-10 absolute right-5 top-5 flex flex-col justify-between bg-white rounded-2xl">
-        <div className="text-base font-semibold text-center">{getMonth(post.date)}</div>
+        <div className="text-base font-semibold text-center">
+          {getMonth(post.date)}
+        </div>
         <div className="text-primary font-semibold text-h3 leading-none mt-1">
           {getDay(post.date)}
         </div>
       </div>
 
       <div className="p-5 pt-10 text-left text-foreground transition-all duration-300 relative flex-1 flex flex-col justify-between">
-        <div className={cn("uppercase bg-primary text-accent-foreground absolute -top-5 rounded h-10 p-2 px-6 py-2 text-base font-semibold transition-all duration-300", categoryColor)}>
+        <div
+          className={cn(
+            "uppercase bg-primary text-accent-foreground absolute -top-5 rounded h-10 p-2 px-6 py-2 text-base font-semibold transition-all duration-300",
+            categoryColor,
+          )}
+        >
           {post.category.title}
         </div>
 
