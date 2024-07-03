@@ -25,7 +25,7 @@ export function GridImages({ product }: GridImagesProps) {
   const principalImageURL = urlForImage(principalImage)
     ?.width(500)
     .fit("crop")
-    .auto("format")
+    .format("webp")
     .url();
 
   const [selectedImage, setSelectedImage] = useState<SelectedImage>({
@@ -49,7 +49,7 @@ export function GridImages({ product }: GridImagesProps) {
             <div
               key={image.asset._id + index}
               className={cn(
-                "aspect-[3/4] hover:ring-2 hover:ring-accent ring-offset-2 py-1 overflow-hidden relative max-h-44",
+                "aspect-[3/4] hover:ring-2 hover:ring-accent ring-offset-2 py-1 overflow-hidden relative max-h-44 w-full",
               )}
               onMouseEnter={() => setSelectedImage({ ...image, src: imageUrl })}
             >

@@ -88,3 +88,13 @@
   margin-left: -50vw;
   margin-right: -50vw;
 }
+/*
+.image-modal {
+  @apply aspect-[3/4];
+}
+
+@media (min-aspect-ratio: 1/1) {
+  .image-modal {
+    @apply aspect-[1/1];
+  }
+} */
