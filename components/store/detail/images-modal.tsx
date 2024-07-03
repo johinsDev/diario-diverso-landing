@@ -17,7 +17,7 @@ type ImagesModalProps = {
   images: GalleryImage[];
 };
 
-export function ImagesModal({ images }: ImagesModalProps) {
+function $ImagesModal({ images }: ImagesModalProps) {
   const { handleClose, src } = useImagesModal();
 
   const isOpen = src !== null;
@@ -30,6 +30,9 @@ export function ImagesModal({ images }: ImagesModalProps) {
     loop: true,
     initial: imageIndex,
     slideChanged(slider) {
+      setCurrentSlide(slider.track.details.rel);
+    },
+    created(slider) {
       setCurrentSlide(slider.track.details.rel);
     },
   });
@@ -159,4 +162,14 @@ export function ImagesModal({ images }: ImagesModalProps) {
       </Dialog>
     </MotionConfig>
   );
+}
+
+export function ImagesModal(props: ImagesModalProps) {
+  const { src } = useImagesModal();
+
+  const isOpen = src !== null;
+
+  if (!isOpen) return null;
+
+  return <$ImagesModal {...props} />;
 }

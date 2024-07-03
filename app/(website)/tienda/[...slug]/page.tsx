@@ -155,6 +155,7 @@ export default async function Page({ params }: Props) {
           </Carousel>
         </section>
       )}
+
       <ImagesModal images={product.gallery?.images ?? []} />
     </main>
   );
