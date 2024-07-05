@@ -274,7 +274,7 @@ export const querySimilarPosts = groq`
 `;
 
 export const queryLastProducts = groq`
-  *[_type == "product"]|order(_createdAt desc)[0..6] {
+  *[_type == "product"]|order(orderRank)[0..6] {
     _id,
     title,
     "slug": slug.current,

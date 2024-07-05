@@ -86,7 +86,7 @@ export async function Footer() {
 
       <div className="md:col-span-2 flex flex-col gap-4 justify-between">
         <div>
-          <h4 className="text-h4 font-semibold text-foreground lowercase first-letter:capitalize">
+          <h4 className="text-h5 font-semibold text-foreground lowercase first-letter:capitalize">
             DISFRUTA DE NUESTRA EXPERIENCIA
           </h4>
 
