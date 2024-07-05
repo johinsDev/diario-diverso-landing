@@ -1,6 +1,6 @@
 import { Categories } from "@/components/blog/categories";
 import { GridPosts } from "@/components/blog/grid-posts";
-import { loadPosts } from "@/sanity/loader/loadQuery";
+import { loadCategoriesPosts, loadPosts } from "@/sanity/loader/loadQuery";
 import Image from "next/image";
 
 export const metadata = {
@@ -10,6 +10,8 @@ export const metadata = {
 
 export default async function StorePage() {
   const { data } = await loadPosts();
+
+  const { data: categories } = await loadCategoriesPosts();
 
   return (
     <main className="flex-1 flex flex-col container pb-4 md:pb-10">
@@ -38,7 +40,7 @@ export default async function StorePage() {
               <div className="text-2xl font-bold capitalize">Categorias</div>
             </div>
 
-            <Categories posts={data} />
+            <Categories categories={categories} />
           </div>
 
           {/* <div className="mt-8">

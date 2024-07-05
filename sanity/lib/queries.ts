@@ -218,3 +218,57 @@ export const postsQuery = groq`
     seo,
   }
 `;
+
+export const postBySlugQuery = groq`
+  *[_type == "post" && slug.current == $slug][0] {
+    _id,
+    title,
+    "slug": slug.current,
+    date,
+    image{
+      ...,
+      asset->{
+        ...,
+        "_ref": _id,
+      },
+    },
+    content,
+    category->{
+      ...,
+      "slug": slug.current,
+    },
+    seo,
+  }
+`;
+
+export const queryCategoriesPosts = groq`
+  *[_type == "categoryPost"]|order(orderRank){
+    ...,
+    _id,
+    title,
+    "slug": slug.current,
+    seo,
+  }
+`;
+
+export const querySimilarPosts = groq`
+  *[_type == "post" && category._ref == $categoryId && slug.current != $slug][0..3] {
+    _id,
+    title,
+    "slug": slug.current,
+    date,
+    image{
+      ...,
+      asset->{
+        ...,
+        "_ref": _id,
+      },
+    },
+    content,
+    category->{
+      ...,
+      "slug": slug.current,
+    },
+    seo,
+  }
+`;
