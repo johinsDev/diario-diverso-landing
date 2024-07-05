@@ -272,3 +272,29 @@ export const querySimilarPosts = groq`
     seo,
   }
 `;
+
+export const queryLastProducts = groq`
+  *[_type == "product"]|order(_createdAt desc)[0..6] {
+    _id,
+    title,
+    "slug": slug.current,
+    price,
+    description,
+    highlightInHome,
+    category[]->{
+      ...,
+      "slug": slug.current,
+    },
+    gallery{
+        ...,
+        images[]{
+          ...,
+          asset->{
+            ...,
+            "_ref": _id,
+          },
+        },
+      },
+    seo,
+  }
+`;

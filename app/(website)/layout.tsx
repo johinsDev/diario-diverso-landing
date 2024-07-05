@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Montserrat, Poppins } from "next/font/google";
 import localFont from "next/font/local";
+import { Suspense } from "react";
 import "./globals.css";
 
 const moonTime = localFont({
@@ -86,7 +87,9 @@ export default function RootLayout({
           {children}
           <Toaster />
           <FloatingWhatsapp />
-          <Footer />
+          <Suspense>
+            <Footer />
+          </Suspense>
         </body>
       </CSPostHogProvider>
     </html>

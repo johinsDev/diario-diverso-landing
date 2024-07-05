@@ -35,7 +35,7 @@ export function Categories({ categories, detailed }: CategoriesProps) {
             selectedCategory?._id === category._id && "bg-primary text-white",
           )}
           onClick={() => {
-            onSelectCategory(category)
+            onSelectCategory(category);
             if (detailed) {
               router.push(`/blog/`);
             }

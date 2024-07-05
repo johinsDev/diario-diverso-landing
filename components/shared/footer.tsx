@@ -1,9 +1,13 @@
+import { resolveHref } from "@/sanity/lib/utils";
+import { loadLastProducts } from "@/sanity/loader/loadQuery";
 import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
 import SubscribeForm from "./subscribe-form";
 
-export function Footer() {
+export async function Footer() {
+  const { data: products } = await loadLastProducts();
+
   return (
     <footer className="py-16 container mx-auto grid grid-cols-1 md:grid-cols-3 gap-y-8 lg:grid-cols-5 text-left">
       <Link href={"/"} className="mx-auto">
@@ -65,71 +69,18 @@ export function Footer() {
 
       <div>
         <div className="mb-8 text-foreground font-semibold">Productos</div>
+
         <ul className="space-y-1">
-          <li>
-            <Link
-              href="/tienda/diario-de-amistad"
-              className="text-gray-500 hover:text-primary"
-            >
-              Diario de amistad
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/tienda/diario-de-parejas"
-              className="text-gray-500 hover:text-primary"
-            >
-              Diario de parejas
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/tienda/diario-de-habitos"
-              className="text-gray-500 hover:text-primary"
-            >
-              Diario de habitos
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/tienda/diario-lector"
-              className="text-gray-500 hover:text-primary"
-            >
-              Diario lector
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/tienda/diario-gratitud"
-              className="text-gray-500 hover:text-primary"
-            >
-              Diario de gratitud
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/tienda/separadores-magneticos"
-              className="text-gray-500 hover:text-primary"
-            >
-              Separadores magneticos
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/tienda/mini-portadas"
-              className="text-gray-500 hover:text-primary"
-            >
-              Mini portadas
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/tienda/esferos-de-gel"
-              className="text-gray-500 hover:text-primary"
-            >
-              Esferos en gel
-            </Link>
-          </li>
+          {products.map((product) => (
+            <li key={product._id}>
+              <Link
+                href={resolveHref("product", product.slug)}
+                className="text-gray-500 hover:text-primary capitalize"
+              >
+                {product.title.toLowerCase()}
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
 

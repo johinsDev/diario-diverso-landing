@@ -25,6 +25,7 @@ import {
   queryCategoriesPosts,
   queryCategoryBySlug,
   queryHeroProducts,
+  queryLastProducts,
   querySimilarPosts,
 } from "../lib/queries";
 
@@ -72,7 +73,7 @@ export function loadProducts() {
   return loadQuery<Product[]>(
     productsQuery,
     {},
-    { next: { tags: ["products"] } }
+    { next: { tags: ["products"] } },
   );
 }
 
@@ -80,7 +81,7 @@ export function loadProductBySlug(slug: string) {
   return loadQuery<Product>(
     productBySlugQuery,
     { slug },
-    { next: { tags: ["products", slug] } }
+    { next: { tags: ["products", slug] } },
   );
 }
 
@@ -88,7 +89,7 @@ export function loadProductsByCategory(categorySlug: string) {
   return loadQuery<Product[]>(
     productByCategoryQuery,
     { categorySlug },
-    { next: { tags: ["products", categorySlug] } }
+    { next: { tags: ["products", categorySlug] } },
   );
 }
 
@@ -96,7 +97,7 @@ export function loadCategories() {
   return loadQuery<Category[]>(
     queryCategories,
     {},
-    { next: { tags: ["categories"] } }
+    { next: { tags: ["categories"] } },
   );
 }
 
@@ -104,7 +105,7 @@ export function loadCategoryBySlug(slug: string) {
   return loadQuery<Category>(
     queryCategoryBySlug,
     { slug },
-    { next: { tags: ["categories", slug] } }
+    { next: { tags: ["categories", slug] } },
   );
 }
 
@@ -112,7 +113,7 @@ export function loadBestSeller() {
   return loadQuery<BestSeller>(
     queryBestSeller,
     { categorySlug: "best-seller" },
-    { next: { tags: ["products", "best-seller"] } }
+    { next: { tags: ["products", "best-seller"] } },
   );
 }
 
@@ -120,7 +121,7 @@ export function loadHeroProducts() {
   return loadQuery<HeroProducts>(
     queryHeroProducts,
     {},
-    { next: { tags: ["products", "hero-products"] } }
+    { next: { tags: ["products", "hero-products"] } },
   );
 }
 
@@ -128,7 +129,7 @@ export function loadLastPosts() {
   return loadQuery<PostDocument[]>(
     latestPostsQuery,
     {},
-    { next: { tags: ["posts", "latest"] } }
+    { next: { tags: ["posts", "latest"] } },
   );
 }
 
@@ -136,7 +137,7 @@ export function loadPosts() {
   return loadQuery<PostDocument[]>(
     postsQuery,
     {},
-    { next: { tags: ["posts"] } }
+    { next: { tags: ["posts"] } },
   );
 }
 
@@ -144,7 +145,7 @@ export function loadPostBySlug(slug: string) {
   return loadQuery<PostDocument>(
     postBySlugQuery,
     { slug },
-    { next: { tags: ["posts", slug] } }
+    { next: { tags: ["posts", slug] } },
   );
 }
 
@@ -152,7 +153,7 @@ export function loadCategoriesPosts() {
   return loadQuery<CategoryPost[]>(
     queryCategoriesPosts,
     {},
-    { next: { tags: ["posts", "categories"] } }
+    { next: { tags: ["posts", "categories"] } },
   );
 }
 
@@ -160,6 +161,14 @@ export function loadSimilarPosts(categoryId: string, slug: string) {
   return loadQuery<PostDocument[]>(
     querySimilarPosts,
     { categoryId, slug },
-    { next: { tags: ["posts", "similar", categoryId, slug] } }
+    { next: { tags: ["posts", "similar", categoryId, slug] } },
+  );
+}
+
+export function loadLastProducts() {
+  return loadQuery<Product[]>(
+    queryLastProducts,
+    {},
+    { next: { tags: ["products", "latest"] } },
   );
 }
