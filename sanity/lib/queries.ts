@@ -176,7 +176,7 @@ export const queryHeroProducts = groq`
 `;
 
 export const latestPostsQuery = groq`
-  *[_type == "post"]|order(date desc)[0..3] {
+  *[_type == "post"]|order(date desc)[0..2] {
     _id,
     title,
     "slug": slug.current,
