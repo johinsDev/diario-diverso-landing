@@ -57,6 +57,7 @@ export default function RootLayout({
     <html lang="en" className="min-h-full flex flex-col">
       <CSPostHogProvider>
         <head>
+          <meta name="facebook-domain-verification" content={process.env['FACEBOOK_DOMAIN_VERIFICATION_ID']} />
           <link
             rel="apple-touch-icon"
             sizes="180x180"
