@@ -22,6 +22,7 @@ import homeProduct from "./sanity/schemas/objects/home-product";
 import seo from "./sanity/schemas/objects/seo";
 import bestSeller from "./sanity/schemas/singletons/best-seller";
 import heroProducts from "./sanity/schemas/singletons/hero-products";
+import settings from "./sanity/schemas/singletons/settings";
 
 const title =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE ||
@@ -39,6 +40,7 @@ export default defineConfig({
       // Singletons
       bestSeller,
       heroProducts,
+      settings,
       // Documents
       product,
       category,
@@ -53,7 +55,7 @@ export default defineConfig({
   plugins: [
     colorInput(),
     structureTool({
-      structure: pageStructure([bestSeller, heroProducts]),
+      structure: pageStructure([settings, bestSeller, heroProducts]),
     }),
     presentationTool({
       resolve,
@@ -64,7 +66,7 @@ export default defineConfig({
       },
     }),
     // Configures the global "new document" button, and document actions, to suit the Settings document singleton
-    singletonPlugin([bestSeller.name, heroProducts.name]),
+    singletonPlugin([settings.name, bestSeller.name, heroProducts.name]),
     // Add an image asset source for Unsplash
     unsplashImageAsset(),
     // Vision lets you query your content with GROQ in the studio

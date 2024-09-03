@@ -5,7 +5,7 @@ import { Features } from "@/components/home/features";
 import { LatestPost } from "@/components/home/latest-post";
 import { Button } from "@/components/ui/button";
 import { resolveHref, urlForImage } from "@/sanity/lib/utils";
-import { loadHeroProducts } from "@/sanity/loader/loadQuery";
+import { loadHeroProducts, loadSettings } from "@/sanity/loader/loadQuery";
 import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
@@ -61,8 +61,80 @@ const IMAGES = [
   },
 ];
 
+function Hero({ images }: { images: Image[] }) {
+  return <section className="w-full pb-0 pt-12 lg:py-12 bg-secondary/20 overflow-hidden full-width">
+    <div className="container mx-auto flex items-center gap-8 flex-col lg:flex-row">
+      <div className="flex-1 flex flex-col items-center lg:items-start">
+        <h1 className="text-h2 leading-h2 text-center lg:text-left font-bold text-foreground font-poppins">
+          La{" "}
+          <span className="animate-text bg-gradient-to-b from-primary to-secondary bg-clip-text text-transparent">
+            clave para una vida{" "}
+          </span>
+          llena de inspiración y relaciones significativas
+        </h1>
+
+        <div className="mt-5 text-gray-500 text-center lg:text-left text-lg md:text-2xl">
+          Diarios personalizables que impulsan tu creatividad y tu salud
+          mental
+        </div>
+
+        <div className="mt-8 flex items-center gap-4">
+          <Button size={"xxl"} asChild>
+            <Link href="/tienda">Comprar</Link>
+          </Button>
+        </div>
+      </div>
+
+      <div className="w-full lg:w-2/5 lg:block">
+        <div className="items-center flex-wrap justify-center hidden lg:flex">
+          {images.map((image) => (
+            <Link
+              key={image.src}
+              href={image.url!}
+              className={image.className}
+            >
+              <Image
+                src={image.src}
+                width={180}
+                height={260}
+                alt="Hero Image"
+                priority
+                placeholder="blur"
+                blurDataURL={image.base64}
+              />
+            </Link>
+          ))}
+        </div>
+
+        <div className="flex items-center flex-wrap justify-center h-52 md:h-80 lg:h-52 relative full-width overflow-hidden lg:hidden">
+          {images.map((image) => (
+            <Link key={image.src} href={image.url!}>
+              <Image
+                src={image.src}
+                width={180}
+                height={260}
+                alt="Hero Image"
+                className={image.classNameMobile}
+                priority
+                placeholder="blur"
+                blurDataURL={image.base64}
+              />
+            </Link>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+}
+
 export default async function Home() {
   const { data } = await loadHeroProducts();
+
+  const { data: settings } = await loadSettings();
+
+  const heroImage = settings?.hero?.asset && urlForImage(settings.hero)?.width(2400).fit("max").url();
+
+  const heroImageMobile = settings?.heroMobile?.asset && urlForImage(settings.heroMobile)?.width(768).fit("max").url();
 
   const images = data.products.map((product, index) => {
     const image = product?.image || product?.product?.gallery?.images[0];
@@ -80,69 +152,52 @@ export default async function Home() {
 
   return (
     <main className="flex min-h-screen flex-col container">
-      <section className="w-full pb-0 pt-12 lg:py-12 bg-secondary/20 overflow-hidden full-width">
-        <div className="container mx-auto flex items-center gap-8 flex-col lg:flex-row">
-          <div className="flex-1 flex flex-col items-center lg:items-start">
-            <h1 className="text-h2 leading-h2 text-center lg:text-left font-bold text-foreground font-poppins">
-              La{" "}
-              <span className="animate-text bg-gradient-to-b from-primary to-secondary bg-clip-text text-transparent">
-                clave para una vida{" "}
-              </span>
-              llena de inspiración y relaciones significativas
-            </h1>
-
-            <div className="mt-5 text-gray-500 text-center lg:text-left text-lg md:text-2xl">
-              Diarios personalizables que impulsan tu creatividad y tu salud
-              mental
+      {
+        !heroImage ? (
+          <Hero images={images} />
+        ) :
+          <Link
+            href='/tienda'
+            className="aspect-[5/6] md:aspect-[4/1] full-width overflow-hidden relative min-h-96">
+            {/* Blurred background image */}
+            <div className="absolute inset-0 z-0 overflow-hidden hidden md:block">
+              <Image
+                src={heroImage}
+                alt="Blurred Background"
+                fill
+                priority
+                placeholder="blur"
+                blurDataURL={settings.hero?.asset.metadata.lqip}
+                className="object-cover w-full h-full scale-110 blur-2xl"
+              />
             </div>
 
-            <div className="mt-8 flex items-center gap-4">
-              <Button size={"xxl"} asChild>
-                <Link href="/tienda">Comprar</Link>
-              </Button>
-            </div>
-          </div>
+            {heroImageMobile &&
+              <div className="relative z-10 w-full h-full md:hidden">
+                <Image
+                  src={heroImageMobile}
+                  alt="Hero Image"
+                  fill
+                  priority
+                  placeholder="blur"
+                  blurDataURL={settings.hero?.asset.metadata.lqip}
+                  className="object-cover w-full h-full"
+                />
+              </div>}
 
-          <div className="w-full lg:w-2/5 lg:block">
-            <div className="items-center flex-wrap justify-center hidden lg:flex">
-              {images.map((image) => (
-                <Link
-                  key={image.src}
-                  href={image.url}
-                  className={image.className}
-                >
-                  <Image
-                    src={image.src}
-                    width={180}
-                    height={260}
-                    alt="Hero Image"
-                    priority
-                    placeholder="blur"
-                    blurDataURL={image.base64}
-                  />
-                </Link>
-              ))}
+            <div className="relative z-10 w-full h-full hidden md:block">
+              <Image
+                src={heroImage}
+                alt="Hero Image"
+                fill
+                priority
+                placeholder="blur"
+                blurDataURL={settings.hero?.asset.metadata.lqip}
+                className="object-cover w-full h-full"
+              />
             </div>
-
-            <div className="flex items-center flex-wrap justify-center h-52 md:h-80 lg:h-52 relative full-width overflow-hidden lg:hidden">
-              {images.map((image) => (
-                <Link key={image.src} href={image.url}>
-                  <Image
-                    src={image.src}
-                    width={180}
-                    height={260}
-                    alt="Hero Image"
-                    className={image.classNameMobile}
-                    priority
-                    placeholder="blur"
-                    blurDataURL={image.base64}
-                  />
-                </Link>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+          </Link>
+      }
 
       <Features />
 

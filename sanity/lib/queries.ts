@@ -301,3 +301,27 @@ export const queryLastProducts = groq`
     seo,
   }
 `;
+
+export const querySettings = groq`
+  *[_type == "settings"][0]{
+    ...,
+    _id,
+    title,
+    description,
+    seo,
+    heroMobile{
+      ...,
+      asset->{
+        ...,
+        "_ref": _id,
+      },
+    },
+    hero{
+      ...,
+      asset->{
+        ...,
+        "_ref": _id,
+      },
+    },
+  }
+`;

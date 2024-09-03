@@ -100,3 +100,13 @@ export interface PostDocument {
   seo?: Seo;
   content?: PortableTextBlock[];
 }
+
+export interface Settings {
+  _id: string;
+  _type: "settings";
+  title: string;
+  description: string;
+  seo?: Seo;
+  hero?: CustomImage["image"];
+  heroMobile?: CustomImage["image"];
+}
