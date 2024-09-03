@@ -9,7 +9,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { currencyFormat } from "@/lib/utils";
+import { cn, getPrice } from "@/lib/utils";
 import { _generateMetadata } from "@/sanity/lib/utils";
 import { generateStaticSlugs } from "@/sanity/loader/generateStaticSlugs";
 import { loadProductBySlug } from "@/sanity/loader/loadQuery";
@@ -57,7 +57,7 @@ export default async function Page({ params }: Props) {
     return notFound();
   }
 
-  const price = currencyFormat(product.price);
+  const { discount, hasDiscount, price } = getPrice(product);
 
   return (
     <main className="flex-1 flex flex-col container py-4 md:py-10">
@@ -90,33 +90,30 @@ export default async function Page({ params }: Props) {
           </div>
 
           <div>
-            <h2 className="text-h3 my-4 md:mt-12">{price}</h2>
+            <h2 className="text-h3 my-4 md:mt-12 flex items-center gap-4">
+              <span>{price}</span>
+
+              {
+                hasDiscount && (
+                  <span
+                    className={cn(
+                      "relative inline-block before:content-[''] before:absolute before:top-1/2 before:left-[-5%] before:w-[110%] before:h-[0.1em] before:bg-primary before:opacity-70 before:rounded-sm text-2xl text-primary/70",
+                    )}
+                  >
+                    {discount}
+                  </span>
+                )
+              }
+            </h2>
 
             <Button className="w-full" size={"xl"} variant={"accent"} asChild>
               <Link target="_blank" href="https://wa.me/message/3VYDBVF6QEELO1">
                 Comprar ahora
               </Link>
             </Button>
-
-            {/* <p className="text-center text-sm text-muted-foreground/80 mt-4">
-              Tiempo de entrega: 3-5 días hábiles.
-            </p>
-            <p className="text-center text-sm text-muted-foreground/80 mt-1">
-              Devolución dentro de los 45 días de la compra.
-            </p> */}
           </div>
         </div>
       </div>
-
-      {/* <section className="w-3/4 mx-auto aspect-video rounded-lg overflow-hidden mt-8 md:mt-20">
-        <iframe
-          id="player"
-          width="640"
-          className="w-full aspect-video"
-          src="http://www.youtube.com/embed/wUhqwq8Rwoc?enablejsapi=1&origin=http://example.com"
-          frameBorder="0"
-        ></iframe>
-      </section> */}
 
       {!!product.relatedProducts?.length && (
         <section className="mt-8 md:mt-20">

@@ -111,6 +111,12 @@ const config = {
     require("tailwindcss-3d"),
     require("@tailwindcss/typography"),
   ],
+  variants: {
+    extend: {
+      rotate: ["before"],
+      transform: ["before"],
+    },
+  },
 } satisfies Config;
 
 export default config;

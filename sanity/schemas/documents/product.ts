@@ -34,6 +34,25 @@ export default defineType({
       description: "Product price",
     }),
     defineField({
+      name: "discount",
+      title: "Discount",
+      type: "number",
+      validation: (rule) => rule.max(100),
+      description: "Product discount",
+    }),
+    defineField({
+      name: "discountDateStart",
+      title: "Discount date",
+      type: "date",
+      description: "Discount start date",
+    }),
+    defineField({
+      name: "discountDateEnd",
+      title: "Discount date",
+      type: "date",
+      description: "Discount end date",
+    }),
+    defineField({
       name: "description",
       title: "Description",
       type: "array",

@@ -41,6 +41,9 @@ export interface Product {
   _type: "product";
   category: Category[];
   relatedProducts?: Product[];
+  discount?: number;
+  discountDateStart?: string;
+  discountDateEnd?: string;
 }
 
 interface ImageType {

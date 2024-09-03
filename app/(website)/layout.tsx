@@ -59,7 +59,10 @@ export default function RootLayout({
     <html lang="en" className="min-h-full flex flex-col">
       <CSPostHogProvider>
         <head>
-          <meta name="facebook-domain-verification" content={process.env['FACEBOOK_DOMAIN_VERIFICATION_ID']} />
+          <meta
+            name="facebook-domain-verification"
+            content={process.env["FACEBOOK_DOMAIN_VERIFICATION_ID"]}
+          />
           <link
             rel="apple-touch-icon"
             sizes="180x180"
@@ -93,10 +96,7 @@ export default function RootLayout({
           <Suspense>
             <Footer />
           </Suspense>
-          <Script
-            id="facebook-pixel"
-            strategy="afterInteractive"
-          >
+          <Script id="facebook-pixel" strategy="afterInteractive">
             {`
           !function(f,b,e,v,n,t,s)
           {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -106,7 +106,7 @@ export default function RootLayout({
           t.src=v;s=b.getElementsByTagName(e)[0];
           s.parentNode.insertBefore(t,s)}(window, document,'script',
           'https://connect.facebook.net/en_US/fbevents.js');
-          fbq('init', '${process.env['FACEBOOK_PIXEL_ID']}');
+          fbq('init', '${process.env["FACEBOOK_PIXEL_ID"]}');
           fbq('track', 'PageView');
         `}
           </Script>
@@ -116,7 +116,7 @@ export default function RootLayout({
               width="1"
               alt=""
               style={{ display: "none" }}
-              src={`https://www.facebook.com/tr?id=${process.env['FACEBOOK_PIXEL_ID']}&ev=PageView&noscript=1`}
+              src={`https://www.facebook.com/tr?id=${process.env["FACEBOOK_PIXEL_ID"]}&ev=PageView&noscript=1`}
             />
           </noscript>
         </body>
