@@ -35,7 +35,7 @@ export async function LatestPost() {
   const { data } = await loadLastPosts();
 
   return (
-    <section className="bg-white full-width text-center py-20 w-full flex flex-col gap-4 items-center">
+    <section className=" bg-secondary/20 full-width text-center py-20 w-full flex flex-col gap-4 items-center">
       <div className="container mx-auto">
         <div>BLOG</div>
         <h2 className="text-h2 leading-h2 font-montserrat font-bold">

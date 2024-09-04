@@ -22,7 +22,7 @@ export async function BestSeller() {
   }
 
   return (
-    <section className="full-width bg-secondary/20">
+    <section className="full-width bg-white">
       <div className="container mx-auto text-center py-20">
         <div className="text-h2 leading-h2 font-montserrat font-bold">
           Nuestros diarios

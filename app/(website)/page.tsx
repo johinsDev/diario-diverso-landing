@@ -199,7 +199,6 @@ export default async function Home() {
           </Link>
       }
 
-      <Features />
 
       <Suspense>
         <BestSeller />
@@ -208,6 +207,8 @@ export default async function Home() {
       <Suspense>
         <LatestPost />
       </Suspense>
+
+      <Features />
 
       <AboutUs />
 

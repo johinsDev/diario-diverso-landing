@@ -46,11 +46,11 @@ export function ProductCard({ product, priority }: ProductCardProps) {
         <div className="text-lg text-foreground">{product.title}</div>
 
         <div className="text-lg text-muted-foreground flex items-center gap-4">
-          <span className="text-black font-bold">{price}</span>
+          <span className="text-black font-bold">{discount}</span>
 
           {hasDiscount && (
             <span className="relative inline-block before:content-[''] before:absolute before:top-[calc(50%_-1px)] before:left-[-5%] before:w-[110%] before:h-0.5 before:bg-destructive before:opacity-70 before:rounded-sm text-destructive/70">
-              {discount}
+              {price}
             </span>
           )}
         </div>

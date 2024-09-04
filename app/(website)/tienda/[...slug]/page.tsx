@@ -91,7 +91,7 @@ export default async function Page({ params }: Props) {
 
           <div>
             <h2 className="text-h3 my-4 md:mt-12 flex items-center gap-4">
-              <span>{price}</span>
+              <span>{discount}</span>
 
               {
                 hasDiscount && (
@@ -100,7 +100,7 @@ export default async function Page({ params }: Props) {
                       "relative inline-block before:content-[''] before:absolute before:top-1/2 before:left-[-5%] before:w-[110%] before:h-[0.1em] before:bg-primary before:opacity-70 before:rounded-sm text-2xl text-primary/70",
                     )}
                   >
-                    {discount}
+                    {price}
                   </span>
                 )
               }
