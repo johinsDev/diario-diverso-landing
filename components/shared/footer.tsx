@@ -149,10 +149,10 @@ export async function Footer() {
           </div>
 
           <Link
-            href="mailto:contacto@diariodiverso.com"
+            href="mailto:diariodiverso.info@gmail.com"
             className="text-primary text-lg"
           >
-            contacto@diariodiverso.com
+            diariodiverso.info@gmail.com
           </Link>
         </div>
       </div>
